@@ -9,3 +9,5 @@
 test-result/TEST-postit.PostitServiceTest.xml
 
 test-result/application.log
+
+conf/application.conf
