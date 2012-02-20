@@ -3,7 +3,10 @@
 # ~~~~
 
 # Home page
-GET     /                                       Users.index
+
+GET     /                                       Application.index
+
+#GET     /                                       Users.index
 GET		/user/{<\d+>id}/?						Users.show
 GET     /user/{<\d+>id}/image/?                 Users.image
 POST    /user/?               					Users.persist

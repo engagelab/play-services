@@ -14,7 +14,7 @@ public class Postits extends Controller {
         render();
     }
     
-    public static void create(JsonObject json) {
+    public static void create(String json) {
     	Postit p = new Postit(null, null, null, "tony");
     	p.save();
     	renderJSON(p);
