@@ -26,8 +26,8 @@ var AppRouter = Backbone.Router.extend({
             app.postitList.create({
             	wait : true,
             	owner : "jeremyt",
-            	scene : "simulation1",
-            	});
+            	scene : "simulation1"
+            });
         });
     },
 
