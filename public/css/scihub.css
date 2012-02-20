@@ -1,0 +1,62 @@
+html {
+	height: 100%;
+}
+
+body {
+	background: #c0c0c0;
+	margin: 0 auto;
+	height: 100%;
+}
+
+body > div#wrap {
+	height: auto;
+	min-height: 100%;
+}
+
+#header {
+	height: 60px;
+	display: block;
+	background: white;
+	-webkit-box-shadow: 0px 2px 5px gray;
+	-moz-box-shadow: 0px 2px 5px gray;
+	box-shadow: 0px 2px 5px gray;
+	text-align: left;
+}
+
+footer {
+	display: block;
+	height: 60px;
+	margin-top: -60px;
+	background: #666666;
+}
+
+div#content {
+	height: 100%
+}
+
+h1 {
+	display: inline;
+	color: #333333;
+}
+
+#scene-picker {
+	position:relative; 
+	margin: 0 auto;
+	width:800px; 
+	top: 200px;
+}
+
+.scene-picker-ui {
+	float: left;
+	border: 1px dashed #333333;
+	width: 200px;
+	margin: 0px 5px 0px 5px; 
+	text-align: center;
+	vertical-align: middle;
+}
+
+.scene-picker-ui:hover {
+	border: 1px solid #333333;
+	background-color: #666666;
+	color: #FFFFFF;
+}

@@ -4,9 +4,29 @@
     <head>
         <title>#{get 'title' /}</title>
         <meta charset="utf-8">
-        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}"></link>
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/drag.png'}"></link>
+        <link rel="stylesheet" rev="stylesheet" href="@{'/public/css/scihub.css'}">
+<link rel="stylesheet" rev="stylesheet" href="@{'/public/css/post-it.css'}">
     </head>
     <body>
         #{doLayout /}
+        
+        <div id="content">
+	<div id="header"></div>
+	<div id="scenes"></div>
+	<div id="board"></div>
+</div>
+        <footer></footer>
+        <script src="@{'/public/js/jquery-1.7.1.min.js'}"></script>
+<script src="@{'/public/js/underscore-min.js'}"></script>
+<script src="@{'/public/js/backbone-min.js'}"></script>
+<script src="@{'/public/js/jquery-ui.min.js'}"></script>
+<script src="@{'/public/js/jquery.ui.mouse.touch.js'}"></script>
+
+<script src="@{'/public/js/utils.js'}"></script>
+<script src="@{'/public/js/models/postitmodel.js'}"></script>
+<script src="@{'/public/js/views/header.js'}"></script>
+<script src="@{'/public/js/views/postitlist.js'}"></script>
+<script src="@{'/public/js/main.js'}"></script>
     </body>
 </html>
