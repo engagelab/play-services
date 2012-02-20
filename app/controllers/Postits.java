@@ -1,5 +1,11 @@
 package controllers;
 
+import java.util.List;
+
+import com.google.gson.JsonObject;
+
+import models.Postit;
+import play.db.jpa.JPABase;
 import play.mvc.*;
 
 public class Postits extends Controller {
@@ -8,10 +14,15 @@ public class Postits extends Controller {
         render();
     }
     
-    public static void create() {
-    	
-    	
-    	
+    public static void create(JsonObject json) {
+    	Postit p = new Postit(null, null, null, "tony");
+    	p.save();
+    	renderJSON(p);
+    }
+    
+    public static void all() {
+    	List<Postit> findAll = Postit.findAll();
+    	renderJSON(findAll);
     }
     
 

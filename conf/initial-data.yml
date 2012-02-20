@@ -1,0 +1,18 @@
+# you describe your data using the YAML notation here
+# and then load them using Fixtures.load("data.yml")
+
+Postit(p1):
+    scenceId: 1
+    ypos:     2
+    xpos:     2
+    content:  a note
+    user:     bob
+
+Postit(p2):
+    scenceId: 1
+    ypos:     2
+    xpos:     2
+    content:  a note
+    user:     bob    
+       
+

@@ -5,3 +5,7 @@
 .settings/
 
 .DS_Store
+
+test-result/TEST-postit.PostitServiceTest.xml
+
+test-result/application.log
