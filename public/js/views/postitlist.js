@@ -4,6 +4,7 @@ window.PostitListView = Backbone.View.extend({
 		this.model.bind("reset", this.render, this);
 		this.model.bind("add", this.render, this);
 	},
+	
 	render : function(eventName) {
 		$(this.el).html('');
 		_.each(this.model.models, function(postit) {
@@ -30,6 +31,9 @@ window.PostitListItemView = Backbone.View.extend({
 		this.model.attributes.xpos = pleft.substring(0, pleft.length-2);
 		var ptop = this.el.style.top;
 		this.model.attributes.ypos = ptop.substring(0, ptop.length-2);
+		
+		this.model.attributes.content = $('.editable').text();
+		
 		this.model.save();
 	},
 	
@@ -39,7 +43,7 @@ window.PostitListItemView = Backbone.View.extend({
 	},
 
 	render : function(eventName) {
-		this.model.id = this.model.attributes.id;
+		this.model.id = this.model.attributes._id;
 		$(this.el).attr('style', 'left:' + this.model.attributes.xpos + 'px;top:' + this.model.attributes.ypos + 'px')
 		$(this.el).attr('id', this.model.id)
 		$(this.el).html(this.template(this.model.toJSON()))

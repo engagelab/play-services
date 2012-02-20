@@ -11,6 +11,7 @@ var AppRouter = Backbone.Router.extend({
 
     initialize:function () {
         $('#header').html(new HeaderView().render().el);
+        //$('#header').html(new HeaderView().render().el);
     },
 
     routes:{
@@ -23,11 +24,7 @@ var AppRouter = Backbone.Router.extend({
     
     newPostit:function () {
         this.before(function () {
-            app.postitList.create({
-            	wait : true,
-            	owner : "jeremyt",
-            	scene : "simulation1"
-            });
+        	app.postitList.create({wait : true, owner: "jeremyt", scene: "simulation1" });
         });
     },
 
