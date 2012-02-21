@@ -13,3 +13,7 @@ conf/application.conf
 bin/
 
 .classpath
+
+conf/application.conf
+
+conf/application.conf
