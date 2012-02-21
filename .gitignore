@@ -1,8 +1,6 @@
 /eclipse
 /tmp
-.classpath
-.project
-.settings/
+
 
 .DS_Store
 
@@ -11,3 +9,7 @@ test-result/TEST-postit.PostitServiceTest.xml
 test-result/application.log
 
 conf/application.conf
+
+bin/
+
+.classpath
