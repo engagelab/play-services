@@ -22,19 +22,16 @@ public class Postits extends Controller {
    public static void create() throws IOException {
     	String json = IOUtils.toString(request.body);
     	Postit tmpPostit = new Gson().fromJson(json, Postit.class);
-    	Postit p = new Postit(tmpPostit.sceneId, tmpPostit.user,"0", "0" );
+    	Postit p = new Postit(tmpPostit.sceneId, tmpPostit.user);
     	p.save();
     	renderJSON(p);
     }
-    
-
     
     public static void all() {
     	//TODO: need to send user and scene as parameters for the search
     	List<Postit> findAll = Postit.findAll();
     	renderJSON(findAll);
     }
-    
     
     public static void update() throws IOException {
     	String json = IOUtils.toString(request.body);
