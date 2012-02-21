@@ -11,31 +11,45 @@ var AppRouter = Backbone.Router.extend({
 
     initialize:function () {
         $('#header').html(new HeaderView().render().el);
-        //$('#header').html(new HeaderView().render().el);
     },
 
     routes:{
-        "":"list"
+        "":"list",
+        "/simulations" : "viewSimulations"
     },
 
+	//executed when root path called
     list:function () {
-        this.before();
+        this.before(function () {
+        	app.showView('#scenes', new ScenePickerView());
+        });
     },
     
+    //create new postit
     newPostit:function () {
         this.before(function () {
         	app.postitList.create({wait : true, user: "jeremyt", sceneId: "simulation1" });
         });
     },
+    
+    //switch to simulations view
+    viewSimulations:function () {
+    	this.before(function () {
+            app.showView('#scenes', new SimulationsView());
+        });
+    },
 
+	//view switcher function
     showView:function (selector, view) {
-        if (this.currentView)
+        if (this.currentView) {
             this.currentView.close();
+        }
         $(selector).html(view.render().el);
         this.currentView = view;
         return view;
     },
 
+	//preloader of collections
     before:function (callback) {
         if (this.postitList) {
             if (callback) callback();
@@ -50,7 +64,8 @@ var AppRouter = Backbone.Router.extend({
 
 });
 
-tpl.loadTemplates(['header', 'postit-item'], function () {
+//loading html templates
+tpl.loadTemplates(['header', 'postit-item', 'scene-picker', 'simulations'], function () {
     app = new AppRouter();
     Backbone.history.start();
 });

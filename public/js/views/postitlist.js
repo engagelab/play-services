@@ -31,9 +31,7 @@ window.PostitListItemView = Backbone.View.extend({
 		this.model.attributes.xpos = pleft.substring(0, pleft.length-2);
 		var ptop = this.el.style.top;
 		this.model.attributes.ypos = ptop.substring(0, ptop.length-2);
-		
 		this.model.attributes.content = $('.editable').text();
-		
 		this.model.save();
 	},
 	
