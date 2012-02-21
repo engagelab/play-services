@@ -21,8 +21,8 @@ public class PostitServiceTest extends FunctionalTest {
 	
 	@Test
 	public void testPost() {
-		   Response response = POST("/postit/","application/json","{ author: 'tony' }"); 
-	       assertIsOk(response);
+        Response response = POST("/postit/","application/json","{ \"user\": \"jeremyt\", \"sceneId\": \"simulation1\" }"); 
+	    assertIsOk(response);
 	}
 	 
 	

@@ -1,12 +1,15 @@
 package controllers;
 
+import java.io.IOException;
 import java.util.List;
 
-import com.google.gson.JsonObject;
-
 import models.Postit;
-import play.db.jpa.JPABase;
-import play.mvc.*;
+
+import org.apache.commons.io.IOUtils;
+
+import play.mvc.Controller;
+
+import com.google.gson.Gson;
 
 public class Postits extends Controller {
 
@@ -14,13 +17,15 @@ public class Postits extends Controller {
         render();
     }
     
-    public static void create(String json) {
-    	//TODO: parse json object to extract user and scene
-    
-    	Postit p = new Postit(null, null, null, "tony");
+   public static void create() throws IOException {
+    	String json = IOUtils.toString(request.body);
+    	Postit temp = new Gson().fromJson(json, Postit.class);
+    	Postit p = new Postit(temp.sceneId, temp.user,"0", "0" );
     	p.save();
     	renderJSON(p);
     }
+    
+
     
     public static void all() {
     	//TODO: need to send user and scene as parameters for the search
