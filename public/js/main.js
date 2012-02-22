@@ -28,7 +28,7 @@ var AppRouter = Backbone.Router.extend({
     //create new postit
     newPostit:function () {
         this.before(function () {
-        	app.postitList.create({wait : true, user: "jeremyt", sceneId: "simulation1" });
+        	app.postitList.create({wait : true, user: "fahied", sceneId: "simulation1" });
         });
     },
     
@@ -55,7 +55,7 @@ var AppRouter = Backbone.Router.extend({
             if (callback) callback();
         } else {
             this.postitList = new PostitCollection();
-            this.postitList.fetch({success:function () {
+            this.postitList.fetch({data: { user: "fahied", sceneId: "simulation1" }, success:function () {
                 $('#board').html(new PostitListView({model:app.postitList}).render().el);
                 if (callback) callback();
             }});
