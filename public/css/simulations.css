@@ -19,7 +19,7 @@
 #sim-content, #sim-sidebar {
 	text-align: center;
 	border: 1px solid;
-	height: 648px;
+	height: 708px;
 }
 #sim-sidebar {
 	background-color: #DEF;
@@ -50,7 +50,7 @@
 	display: block;
 	outline: none;
 	width: 5px;
-	height: 648px;
+	height: 708px;
 }
 .use-sidebar #sim-separator {
 	border-color: #FFF;
