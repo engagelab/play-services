@@ -20,11 +20,7 @@ public class Scene extends Model{
 
     public String user;
     
-    @OneToMany(mappedBy="scene", cascade=CascadeType.ALL)
-    public List<Postit> postits;
-    
     public Scene(String user, String sceneId) { 
-        this.postits = new ArrayList<Postit>();
         //Author and User
         this.user = user;
         this.sceneId = sceneId;
@@ -34,7 +30,6 @@ public class Scene extends Model{
   //Create Empty Postick and return 
     public Postit createPostick(String user) {
         Postit newPostick = new Postit(this.user,this.sceneId);
-        this.postits.add(newPostick);
         this.save();
         return newPostick;
     }

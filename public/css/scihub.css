@@ -6,9 +6,11 @@ body {
 	background: #c0c0c0;
 	margin: 0 auto;
 	height: 100%;
+	min-height: 768px;
+	min-width: 1024px;
 }
 
-body > div#wrap {
+body > div#content {
 	height: auto;
 	min-height: 100%;
 }
@@ -39,18 +41,17 @@ h1 {
 	color: #333333;
 }
 
-#scene-picker {
+.scene-picker-ui {
 	position:relative; 
 	margin: 0 auto;
-	width:800px; 
-	top: 200px;
-}
-
-.scene-picker-ui {
-	float: left;
-	border: 1px dashed #333333;
-	width: 200px;
-	margin: 0px 5px 0px 5px; 
+	top: 249px;
+	width: 150px;
+	height: 150px;
+	border: 2px dashed #333333;
+	-moz-border-radius: 75px;
+	-webkit-border-radius: 75px;
+	border-radius: 75px;
+	background: #fff;
 	text-align: center;
 	vertical-align: middle;
 }
@@ -59,4 +60,11 @@ h1 {
 	border: 1px solid #333333;
 	background-color: #666666;
 	color: #FFFFFF;
+}
+
+#scenes {
+	margin: 0 auto;
+	width: 1024px;
+	height: 648px;
+	background-color: #999999;
 }
