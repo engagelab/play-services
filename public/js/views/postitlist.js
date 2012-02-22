@@ -41,7 +41,7 @@ window.PostitListItemView = Backbone.View.extend({
 	},
 
 	render : function(eventName) {
-		this.model.id = this.model.attributes.uid;
+		this.model.id = this.model.attributes._id;
 		$(this.el).attr('style', 'left:' + this.model.attributes.xpos + 'px;top:' + this.model.attributes.ypos + 'px')
 		$(this.el).attr('id', this.model.id)
 		$(this.el).html(this.template(this.model.toJSON()))
