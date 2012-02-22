@@ -75,9 +75,9 @@ public class Postits extends Controller {
     /*
      * Delete a Specific Postit using Unique ID
      * */
-    public static void delete(String _id) {
+    public static void delete(String id) {
     	//String uId = params.get("uId");
-		Postit.delete("from Postit p where p._id=?", _id);
+		Postit.delete("from Postit p where p._id=?", id);
     }
 
 }
