@@ -11,27 +11,16 @@ import play.db.jpa.Model;
 public class Scene extends Model{
 
 	@Required
-    public String sceneId;
+    public String title;
     
     @Required @As("yyyy-MM-dd")
     public Date postedAt;
-    
-    @Required
 
     public String user;
-    
-    public Scene(String user, String sceneId) { 
-        //Author and User
+
+    public Scene(String user, String title) { 
         this.user = user;
-        this.sceneId = sceneId;
+        this.title = title;
         this.postedAt = new Date();
     }
-    
-  //Create Empty Postick and return 
-    public Postit createPostick(String user) {
-        Postit newPostick = new Postit(this.user,this.sceneId);
-        this.save();
-        return newPostick;
-    }
-    
 }

@@ -1,18 +1,36 @@
 # you describe your data using the YAML notation here
 # and then load them using Fixtures.load("data.yml")
 
+
+User(u1):
+    name:   fahied
+    email:  fahied@gmail.com
+    age:     2
+    
+User(u2):
+    name:     tony
+    email:  tony@gmail.com
+    age:     2
+
+Scene(s1):
+    title:       Simmulation 1
+    user:        fahied
+    postedAt:    2009-03-25
+
 Postit(p1):
-    scenceId: 1
-    ypos:     2
+    user:     fahied
+    sceneId:  Simmulation 1
+    uid:      557d8446-fff7-465a-ab8f-c4a740aad4az
+    ypos:     222
     xpos:     2
-    content:  a note
-    user:     bob
+    content:  a note to you
 
 Postit(p2):
-    scenceId: 2
-    ypos:     2
+    user:     fahied
+    sceneId:  Simmulation 1
+    uid:      557d8446-fff7-465a-ab8f-c4a740aad4a8
+    ypos:     112
     xpos:     2
-    content:  a note
-    user:     bob    
+    content:  a note  
        
 
