@@ -41,7 +41,7 @@ public class Postits extends Controller {
     public static void all() {
     	//TODO get user and sceneId parameters
     	//JPQL query to find all postits from Postit Table specific to the user and the scene
-    	List<Postit> postits = Postit.find("select p from Postit p where p.user =? and p.sceneId=?","fahied","Simmulation 1").fetch();
+    	List<Postit> postits = Postit.find("select p from Postit p where p.user =? and p.sceneId=?","fahied","simulation1").fetch();
     	//JPA Function return all postits regardless of user and scene
     	//List<Postit> findAll = Postit.findAll();
         //render 404 page if the object does not found
@@ -49,7 +49,7 @@ public class Postits extends Controller {
         renderJSON(postits);
     }
     
-    public static void update() throws IOException {
+    public static void update(String id) throws IOException {
     	String json = IOUtils.toString(request.body);
     	Postit tmpPostit = new Gson().fromJson(json, Postit.class);
         Postit foundPostit = Postit.find("select distinct p from Postit p where p.uid=?", tmpPostit.uid).first() ;
