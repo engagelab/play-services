@@ -38,10 +38,13 @@ public class Postits extends Controller {
     /*
      * Show All postit on specific scene and specific user
      * */
-    public static void all() {
+    public static void all() throws IOException {
+    	String json = IOUtils.toString(request.body);
+    	Scene tmpScene = new Gson().fromJson(json, Scene.class);
+    	notFoundIfNull(tmpScene);
     	//TODO get user and sceneId parameters
     	//JPQL query to find all postits from Postit Table specific to the user and the scene
-    	List<Postit> postits = Postit.find("select p from Postit p where p.user =? and p.sceneId=?","fahied","simulation1").fetch();
+    	List<Postit> postits = Postit.find("select p from Postit p where p.user =? and p.sceneId=?",tmpScene.user,tmpScene.title).fetch();
     	//JPA Function return all postits regardless of user and scene
     	//List<Postit> findAll = Postit.findAll();
         //render 404 page if the object does not found
