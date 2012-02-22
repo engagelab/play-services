@@ -55,7 +55,7 @@ var AppRouter = Backbone.Router.extend({
             if (callback) callback();
         } else {
             this.postitList = new PostitCollection();
-            this.postitList.fetch({data: { user: "fahied", sceneId: "simulation1" }, success:function () {
+            this.postitList.fetch({success:function () {
                 $('#board').html(new PostitListView({model:app.postitList}).render().el);
                 if (callback) callback();
             }});
