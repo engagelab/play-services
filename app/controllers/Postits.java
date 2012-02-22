@@ -61,7 +61,7 @@ public class Postits extends Controller {
     public static void update(String id) throws IOException {
     	String json = IOUtils.toString(request.body);
     	Postit tmpPostit = new Gson().fromJson(json, Postit.class);
-        Postit foundPostit = Postit.find("select distinct p from Postit p where p.uid=?", tmpPostit.uid).first() ;
+        Postit foundPostit = Postit.find("select distinct p from Postit p where p.uid=?", tmpPostit._id).first() ;
         notFoundIfNull(foundPostit);
     	foundPostit.sceneId = tmpPostit.sceneId;
     	foundPostit.content = tmpPostit.content;

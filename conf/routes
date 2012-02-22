@@ -17,6 +17,7 @@ DELETE  /user/{<\d+>id}/?      					Users.delete
 POST    /postit/?               				Postits.create
 GET	    /postit/								Postits.all
 PUT     /postit/{id}               				Postits.update
+DELETE  /postit/{id}               				Postits.delete
 
 GET	    /scene/								Scenes.all
 

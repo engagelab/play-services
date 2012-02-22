@@ -30,7 +30,7 @@ public class Postit extends Model {
 	public float xpos;
 	public float ypos;
 	public Date postedAt;
-	public String uid;
+	public String _id;
 	
 	public Postit(String user, String sceneId) {
 		this.user = user;
@@ -39,7 +39,7 @@ public class Postit extends Model {
 		this.ypos = 0.0f;
 		this.xpos = 0.0f;
 		this.postedAt = new Date();
-		this.uid = Codec.UUID();
+		this._id = Codec.UUID();
 		}
 	
 	public Postit(String user, String sceneId,String content, float ypos, float xpos) {
