@@ -12,6 +12,10 @@ public class Scene extends Model{
 
 	@Required
     public String title;
+	
+	 @ManyToOne
+	 @Required
+	 public Act act;
 
     public Scene(String title) { 
         this.title = title;

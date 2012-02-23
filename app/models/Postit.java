@@ -6,6 +6,7 @@ import play.db.jpa.*;
 import play.libs.Codec;
 
 import javax.persistence.*;
+
 import java.util.*;
 
 @Entity
@@ -18,9 +19,9 @@ public class Postit extends Model {
     @Required
     public String sceneId;
     
-//    @ManyToOne
-//    @Required
-//    public Scene scene;
+	@ManyToOne
+    @Required
+	 Task task;
 
 	@Lob
     @Required
