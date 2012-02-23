@@ -4,7 +4,7 @@ window.SimulationsView = Backbone.View.extend({
 	className : "center-wrapper",
 	
 	initialize:function () {
-        this.template = _.template(tpl.get('simulations'));
+		this.template = _.template(tpl.get('simulations'));
     },
 
     render:function (eventName) {

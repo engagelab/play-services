@@ -9,8 +9,9 @@ Backbone.View.prototype.close = function () {
 
 var AppRouter = Backbone.Router.extend({
 
-    initialize:function () {
+	initialize:function () {
         $('#header').html(new HeaderView().render().el);
+        var appSelf = this;
     },
 
     routes:{
@@ -20,33 +21,38 @@ var AppRouter = Backbone.Router.extend({
 
 	//executed when root path called
     list:function () {
-        this.before(function () {
-        	app.showView('#scenes', new ScenePickerView());
-        });
+    	app.initPitBoard();
+    	app.showView('#scenes', new ScenePickerView(), 'menu');
+    	this.before();
     },
     
     //create new postit
     newPostit:function () {
-        this.before(function () {
-        	app.postitList.create({wait : true, user: "fahied", sceneId: "simulation1" });
-        });
+       app.postitList.create({wait : true, user: "fahied", sceneId: app.currentViewId });
     },
     
     //switch to simulations view
     viewSimulations:function () {
-    	this.before(function () {
-            app.showView('#scenes', new SimulationsView());
-        });
+    	app.initPitBoard();
+    	app.simulation = new SimulationsView();
+        app.showView('#scenes', app.simulation, 'simu1');
+        this.before();
     },
 
 	//view switcher function
-    showView:function (selector, view) {
+    showView:function (selector, view, viewid) {
         if (this.currentView) {
             this.currentView.close();
         }
         $(selector).html(view.render().el);
         this.currentView = view;
+        this.currentViewId = viewid;
         return view;
+    },
+    
+    initPitBoard:function() {
+    	$('#board').html('');
+        app.postitList = null;
     },
 
 	//preloader of collections
@@ -55,7 +61,7 @@ var AppRouter = Backbone.Router.extend({
             if (callback) callback();
         } else {
             this.postitList = new PostitCollection();
-            this.postitList.fetch({data: { user: "fahied", sceneId: "simulation1" }, success:function () {
+            this.postitList.fetch({data: { user: "fahied", sceneId: app.currentViewId }, success:function () {
                 $('#board').html(new PostitListView({model:app.postitList}).render().el);
                 if (callback) callback();
             }});

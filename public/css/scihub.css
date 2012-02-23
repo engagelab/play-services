@@ -32,15 +32,15 @@ footer {
 	background-image: url(../images/banner.jpg); background-repeat: repeat-x;
 }
 
-div#content {
+#content {
  	height: 100%;
 }
 
-div#board {
-	height: 100%;
+#board {
 	position:absolute;
  	top:0;
  	left:0;
+ 	background-color: #FF0000;
 }
 
 #headerTitle {
