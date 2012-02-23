@@ -15,11 +15,13 @@ DELETE  /user/{<\d+>id}/?      					Users.delete
 
 #postit 
 POST    /postit/?               				Postits.create
-GET	    /postit/								Postits.all
+GET	    /postit									Postits.all
+GET	    /postit/?								Postits.byUserAndScene
 PUT     /postit/{id}               				Postits.update
 DELETE  /postit/{id}               				Postits.delete
 
-GET	    /scene/								Scenes.all
+GET	    /scene/									Scenes.all
+GET	    /scene/{id}								Scenes.byUser
 
 
 # Map static resources from the /app/public folder to the /public path
