@@ -12,15 +12,8 @@ public class Scene extends Model{
 
 	@Required
     public String title;
-    
-    @Required @As("yyyy-MM-dd")
-    public Date postedAt;
 
-    public String user;
-
-    public Scene(String user, String title) { 
-        this.user = user;
+    public Scene(String title) { 
         this.title = title;
-        this.postedAt = new Date();
     }
 }
