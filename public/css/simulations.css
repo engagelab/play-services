@@ -5,11 +5,9 @@
 	height: 0;
 	line-height: 0;
 }
-
 .hidden {
 	display: none;
 }
-
 #center-wrapper {
 	margin: 0 auto;
 	width: 920px;
@@ -17,9 +15,8 @@
 /* Content & sidebar */
 
 #sim-content, #sim-sidebar {
-	text-align: center;
 	border: 1px solid;
-	height: 708px;
+	height: 677px;
 }
 #sim-sidebar {
 	background-color: #DEF;
@@ -50,7 +47,7 @@
 	display: block;
 	outline: none;
 	width: 5px;
-	height: 708px;
+	height: 677px;
 }
 .use-sidebar #sim-separator {
 	border-color: #FFF;
@@ -58,4 +55,26 @@
 #sim-separator:hover {
 	border-color: #ABC;
 	background: #DEF;
+}
+.sim-tabs {
+	margin: 0;
+	padding: 0;
+}
+.sim-tabs li {
+	list-style: none;
+	display: inline;
+}
+.sim-tabs div {
+	padding: 5px 10px;
+	display: inline-block;
+	background: #666;
+	color: #fff;
+	text-decoration: none;
+}
+.sim-tabs div.sim-active {
+	background: #fff;
+	color: #000;
+}
+#div-tab2 {
+	height: 677px;
 }
