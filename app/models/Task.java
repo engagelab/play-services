@@ -21,6 +21,10 @@ public class Task extends Model{
 	 @OneToMany(mappedBy="task", cascade=CascadeType.ALL)
 	 public List<Postit> postits;
 	 
+	 @ManyToOne
+	 @Required
+	 public Scene scene;
+	 
 	 public Task(String title){
 		 this.title = title;
 		 this.comments = new ArrayList<Comment>();

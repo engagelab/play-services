@@ -1,6 +1,7 @@
 package models;
 
 import java.util.*;
+
 import javax.persistence.*;
 
 import play.data.binding.*;
@@ -16,6 +17,9 @@ public class Scene extends Model{
 	 @ManyToOne
 	 @Required
 	 public Act act;
+	 
+	 @OneToMany(mappedBy="scene", cascade=CascadeType.ALL)
+	 public List<Task> tasks;
 
     public Scene(String title) { 
         this.title = title;
