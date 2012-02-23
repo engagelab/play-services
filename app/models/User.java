@@ -12,5 +12,4 @@ public class User extends Model {
 	public String email;
 	public int age;
 	public Blob image;
-
 }

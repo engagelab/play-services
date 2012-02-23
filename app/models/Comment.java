@@ -1,5 +1,9 @@
 package models;
 
+import javax.persistence.Entity;
+
+
+@Entity
 public class Comment {
 	
 	public String title;

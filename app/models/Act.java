@@ -3,6 +3,10 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+
+
+@Entity
 public class Act {
 	 public String title;
 	 public List<Scene> scenes;
