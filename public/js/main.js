@@ -12,13 +12,32 @@ var AppRouter = Backbone.Router.extend({
 		$('#header').html(new HeaderView().render().el);
 	},
 	routes : {
-		"" : "list",
+		"" : "def",
+		"/acts" : "listActs",
 		"/simulations" : "viewSimulations"
 	},
-
-	//executed when root path called
-	list : function() {
+	def : function() {
 		app.initPitBoard();
+		app.navigate("/#/acts", true);
+	},
+	//executed when root path called
+	listActs : function() {
+		this.actlist = new ActCollection();
+		this.actlist.fetch({
+			data : {
+				projectid : "12345"
+			},
+			success : function(event) {
+				app.showView('#stage', new ActPickerView({
+					model : app.actlist
+				}), 'acts');
+			}
+		});
+
+		//app.showView('#scenes', new ScenePickerView(), 'menu');
+	},
+	listScenes : function(acts) {
+		console.log("let's get scenes" + acts);
 		app.showView('#scenes', new ScenePickerView(), 'menu');
 	},
 	//create new postit
@@ -67,30 +86,30 @@ var AppRouter = Backbone.Router.extend({
 	},
 	//preloader of collections
 	/*before : function(callback) {
-		if(this.postitList) {
-			if(callback)
-				callback();
-		} else {
-			this.postitList = new PostitCollection();
-			this.postitList.fetch({
-				data : {
-					user : "fahied",
-					sceneId : app.currentViewId
-				},
-				success : function() {
-					$('#board').html(new PostitListView({
-						model : app.postitList
-					}).render().el);
-					if(callback)
-						callback();
-				}
-			});
-		}
-	}*/
+	 if(this.postitList) {
+	 if(callback)
+	 callback();
+	 } else {
+	 this.postitList = new PostitCollection();
+	 this.postitList.fetch({
+	 data : {
+	 user : "fahied",
+	 sceneId : app.currentViewId
+	 },
+	 success : function() {
+	 $('#board').html(new PostitListView({
+	 model : app.postitList
+	 }).render().el);
+	 if(callback)
+	 callback();
+	 }
+	 });
+	 }
+	 }*/
 });
 
 //loading html templates
-tpl.loadTemplates(['header', 'postit-item', 'scene-picker', 'simulations'], function() {
+tpl.loadTemplates(['header', 'act-picker', 'postit-item', 'scene-picker', 'simulations'], function() {
 	app = new AppRouter();
 	Backbone.history.start();
 });

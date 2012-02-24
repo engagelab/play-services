@@ -83,3 +83,9 @@ footer {
 	height: 708px;
 	background-color: #999999;
 }
+
+.actContainer {
+	position:relative; 
+	margin: 0 auto;
+	width: 300px;
+}
