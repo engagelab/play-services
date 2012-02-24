@@ -10,9 +10,7 @@ window.ActPickerView = Backbone.View.extend({
 	render : function(eventName) {
 		$(this.el).html('');
 		_.each(this.model.models, function(act) {
-			$(this.el).append(new ActListItemView({
-				model : act
-			}).render().el);
+			$(this.el).append(new ActListItemView({model : act}).render().el);
 		}, this);
 		return this;
 	}
@@ -27,12 +25,16 @@ window.ActListItemView = Backbone.View.extend({
 	},
 	
 	events : {
-		
+		"click .act-label" : "pickAct",
 	},
 
 	render : function(eventName) {
 		$(this.el).attr('id', this.model.id)
 		$(this.el).html(this.template(this.model.toJSON()))
 		return this;
+	},
+	
+	pickAct : function(event) {
+		app.navigate("/#/scenes/"+this.model.id, true);
 	}
 });

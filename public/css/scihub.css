@@ -56,10 +56,10 @@ footer {
 	margin-right: 5px;
 }
 
+/*  scene */
 .scene-picker-ui {
 	position:relative; 
 	margin: 0 auto;
-	top: 249px;
 	width: 150px;
 	height: 150px;
 	border: 2px dashed #333333;
@@ -68,7 +68,6 @@ footer {
 	border-radius: 75px;
 	background: #fff;
 	text-align: center;
-	vertical-align: middle;
 }
 
 .scene-picker-ui:hover {
@@ -77,15 +76,52 @@ footer {
 	color: #FFFFFF;
 }
 
-#scenes {
+#stage {
 	margin: 0 auto;
 	width: 1024px;
 	height: 708px;
 	background-color: #999999;
 }
 
-.actContainer {
-	position:relative; 
+.scene-label {
+	width: 100%;
+	height: 100%;
+	padding:1em 0 1em 0;
+}
+
+.sceneContainer {
+	position: relative; 
 	margin: 0 auto;
-	width: 300px;
+	width:430px;
+	top: 250px;
+}
+
+/*  act */
+.actContainer {
+	position: relative; 
+	margin: 0 auto;
+	width:430px;
+	top: 250px;
+}
+
+.act-picker-ui {
+	float: left;
+	border: 2px dashed #333333;
+	width: 200px;
+	height: 50px;
+	margin: 5px;
+	background: #fff;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.act-picker-ui:hover {
+	border: 1px solid #333333;
+	background-color: #666666;
+	color: #FFFFFF;
+}
+
+.act-label {
+	width: 100%;
+	height: 100%;;
 }

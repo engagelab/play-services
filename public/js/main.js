@@ -11,16 +11,19 @@ var AppRouter = Backbone.Router.extend({
 	initialize : function() {
 		$('#header').html(new HeaderView().render().el);
 	},
+	
 	routes : {
 		"" : "def",
 		"/acts" : "listActs",
-		"/simulations" : "viewSimulations"
+		"/scenes/:id" : "listScenes",
+		"/simulation/:id" : "viewSimulation"
 	},
+	
 	def : function() {
 		app.initPitBoard();
 		app.navigate("/#/acts", true);
 	},
-	//executed when root path called
+	
 	listActs : function() {
 		this.actlist = new ActCollection();
 		this.actlist.fetch({
@@ -28,19 +31,29 @@ var AppRouter = Backbone.Router.extend({
 				projectid : "12345"
 			},
 			success : function(event) {
-				app.showView('#stage', new ActPickerView({
-					model : app.actlist
-				}), 'acts');
+				app.showView('#stage', new ActPickerView({model : app.actlist}), 'root');
 			}
 		});
-
-		//app.showView('#scenes', new ScenePickerView(), 'menu');
 	},
-	listScenes : function(acts) {
-		console.log("let's get scenes" + acts);
-		app.showView('#scenes', new ScenePickerView(), 'menu');
+	
+	listScenes : function(id) {
+		this.scenelist = new SceneCollection();
+		this.scenelist.fetch({
+			data : {
+				actid : id
+			},
+			success : function(event) {
+				app.showView('#stage', new ScenePickerView({model : app.scenelist}), 'acts'+id);
+			}
+		});
 	},
-	//create new postit
+	
+	viewSimulation : function(id) {
+		app.initPitBoard();
+		app.simulation = new SimulationsView();
+		app.showView('#stage', app.simulation, 'simu'+id);
+	},
+	
 	newPostit : function() {
 		app.postitList.create({
 			wait : true,
@@ -48,13 +61,8 @@ var AppRouter = Backbone.Router.extend({
 			sceneId : app.currentViewId
 		});
 	},
-	//switch to simulations view
-	viewSimulations : function() {
-		app.initPitBoard();
-		app.simulation = new SimulationsView();
-		app.showView('#scenes', app.simulation, 'simu1');
-	},
-	//view switcher function
+	
+	
 	showView : function(selector, view, viewid) {
 		if(this.currentView) {
 			this.currentView.close();
@@ -66,10 +74,12 @@ var AppRouter = Backbone.Router.extend({
 		this.retrievePostIts();
 		return view;
 	},
+	
 	initPitBoard : function() {
 		$('#board').html('');
 		app.postitList = null;
 	},
+	
 	retrievePostIts : function() {
 		this.postitList = new PostitCollection();
 		this.postitList.fetch({
