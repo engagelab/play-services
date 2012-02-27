@@ -18,6 +18,4 @@ public class Project extends Model{
 	
 	@OneToMany(mappedBy="project", cascade=CascadeType.ALL)
     public List<Act> acts;
-	
-	
 }

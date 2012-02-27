@@ -1,0 +1,7 @@
+[
+#{list acts}
+  {
+      "title": "${_.title}"
+  } #{if !_isLast},#{/if}
+#{/list}
+]

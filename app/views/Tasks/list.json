@@ -1,0 +1,7 @@
+[
+#{list tasks}
+  {
+      "title": "${_.title}"
+  } #{if !_isLast},#{/if}
+#{/list}
+]

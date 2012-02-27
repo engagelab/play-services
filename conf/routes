@@ -6,7 +6,7 @@
 
 GET     /                                       Application.index
 
-#GET     /                                       Users.index
+#GET     /                                      Users.index
 GET		/user/{<\d+>id}/?						Users.show
 GET     /user/{<\d+>id}/image/?                 Users.image
 POST    /user/?               					Users.persist
@@ -22,6 +22,17 @@ DELETE  /postit/{id}               				Postits.delete
 
 GET	    /scene/									Scenes.all
 GET	    /scene/{id}								Scenes.byUser
+
+
+#New Routes for Project Controller Wrapper
+GET   /project/{id}                				Projects.getProject
+GET   /project/act/{id}							Projects.getActsByProject
+GET   /project/act/scene/{id}					Projects.getScenesByAct
+GET   /project/act/scene/task/{id}				Projects.getTasksByScene
+GET   /project/act/scene/task/comment/{id}		Projects.getCommentsByTask
+#GET   /project/act/scene/task/postit/{id}		Projects.getPostitsByTask
+
+
 
 
 # Map static resources from the /app/public folder to the /public path

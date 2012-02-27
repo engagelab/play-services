@@ -25,8 +25,9 @@ public class Comment extends Model {
 		this.message = message;
 	}
 
-	public static List<Comment> findByTask(String title) {
-		List<Comment> comments = Act.find("select c from Comment c where c.title =?",title).fetch();
+	public static List<Comment> findByTask(Long id) {
+		Task task = Task.findById(id);
+		List<Comment> comments = task.comments;
 		return comments;
 	}
 

@@ -1,0 +1,7 @@
+[
+#{list scenes}
+  {
+      "title": "${_.title}"
+  } #{if !_isLast},#{/if}
+#{/list}
+]

@@ -39,10 +39,11 @@ public class Act extends Model {
 	    	return acts;
 	    }
 
-
-		public static List<Act> findByProject(String title) {
-
-			List<Act> acts = Act.find("select a from Act a where a.title =?",title).fetch();
+		public static List<Act> findByProject(Long id) {
+			Project project = Project.findById(id);
+			List<Act> acts = project.acts;
 			return acts;
 		}
+		
+		
 }

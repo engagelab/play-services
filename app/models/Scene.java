@@ -25,8 +25,9 @@ public class Scene extends Model{
         this.title = title;
     }
 
-	public static List<Scene> findByAct(String title) {
-		List<Scene> scenes = Act.find("select s from Scene s where s.title =?",title).fetch();
+	public static List<Scene> findByAct(Long id) {
+		Act act = Act.findById(id);
+		List<Scene> scenes = act.scenes;
 		return scenes;
 	}
 }

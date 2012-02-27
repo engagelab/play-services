@@ -5,31 +5,38 @@ import java.util.List;
 import models.*;
 public class Projects extends Controller{
 	
-    public static void getProjet(Long id) {
+    public static void getProject(Long id) {
         Project project = Project.findById(id);
-        render(project);
+        renderTemplate("Projects/project.json", project);
+        //We can not use renderJSON() function be it does not support OneToMany Relation maping
+        //IllegalStateException occured : circular reference error Offending field: project Offending object: preserveType: false, type: class models.Project, obj: Project[1]
+        //renderJSON(project);
     }
     
-    public static void getActsByProject(String title) {
-        List <Act> acts = Act.findByProject(title);
-        render(acts);
+    public static void getActsByProject(Long id) {
+        List <Act> acts = Act.findByProject(id);
+        renderTemplate("Acts/list.json", acts);
     }
     
     
-    public static void getScenesByAct(String title) {
-        List <Scene> scenes = Scene.findByAct(title);
-        render(scenes);
+    public static void getScenesByAct(Long id) {
+        List <Scene> scenes = Scene.findByAct(id);
+        renderTemplate("Scenes/list.json", scenes);
     }
     
-    public static void getTasksByScene(String title) {
-        List <Task> tasks = Task.findByScene(title);
-        render(tasks);
+    public static void getTasksByScene(Long id) {
+        List <Task> tasks = Task.findByScene(id);
+        renderTemplate("Tasks/list.json", tasks);
     }
     
-    public static void getCommentsByTask(String title) {
-        List <Comment> comments = Comment.findByTask(title);
-        render(comments);
+    public static void getCommentsByTask(Long id) {
+        List <Comment> comments = Comment.findByTask(id);
+        renderTemplate("Comments/list.json", comments);
     }
     //TODO wrapper function for getPostitbyTask needed.
+    
+    public static void index(Long id) {
+ 
+    }
     
 }
