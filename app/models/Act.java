@@ -20,6 +20,10 @@ public class Act extends Model {
 	 @Required
 	 public User user;
 	 
+	 @ManyToOne
+	 @Required
+	 public Project project;
+	 
 	 @OneToMany(mappedBy="act", cascade=CascadeType.ALL)
 	 public List<Scene> scenes;
 	 
