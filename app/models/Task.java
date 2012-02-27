@@ -30,4 +30,9 @@ public class Task extends Model{
 		 this.comments = new ArrayList<Comment>();
 		 this.postits = new ArrayList<Postit>();
 	 }
+
+	public static List<Task> findByScene(String title) {
+		List<Task> tasks = Act.find("select t from Task t where t.title =?",title).fetch();
+		return tasks;
+	}
 }

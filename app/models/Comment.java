@@ -1,5 +1,7 @@
 package models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -21,6 +23,11 @@ public class Comment extends Model {
 	public Comment(String title, String message){
 		this.title = title;
 		this.message = message;
+	}
+
+	public static List<Comment> findByTask(String title) {
+		List<Comment> comments = Act.find("select c from Comment c where c.title =?",title).fetch();
+		return comments;
 	}
 
 }

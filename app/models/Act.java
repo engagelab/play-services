@@ -16,9 +16,9 @@ import play.db.jpa.Model;
 public class Act extends Model {
 	 public String title;
 	 
-	 @ManyToOne
-	 @Required
-	 public User user;
+//	 @ManyToOne
+//	 @Required
+//	 public User user;
 	 
 	 @ManyToOne
 	 @Required
@@ -32,4 +32,17 @@ public class Act extends Model {
 		 this.scenes = new ArrayList<Scene>();
 	 }
 
+	 
+	    public static List<Act>  getAllActs(String title) {
+	    	//JPQL query to find all acts
+	    	List<Act> acts = Act.findAll();
+	    	return acts;
+	    }
+
+
+		public static List<Act> findByProject(String title) {
+
+			List<Act> acts = Act.find("select a from Act a where a.title =?",title).fetch();
+			return acts;
+		}
 }

@@ -17,6 +17,6 @@ public class User extends Model {
 	public int age;
 	public Blob image;
 	
-	@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
-    public List<Act> acts;
+//	@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
+//    public List<Act> acts;
 }
