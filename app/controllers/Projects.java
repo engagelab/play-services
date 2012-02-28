@@ -1,7 +1,15 @@
 package controllers;
 
+import play.data.validation.Required;
 import play.mvc.Controller;
+
+import java.io.IOException;
 import java.util.List;
+
+import org.apache.commons.io.IOUtils;
+
+import com.google.gson.Gson;
+
 import models.*;
 public class Projects extends Controller{
 	
@@ -39,4 +47,11 @@ public class Projects extends Controller{
  
     }
     
+    public static void postComment(Long taskId) throws IOException {
+	    	String json = IOUtils.toString(request.body);
+	    	Comment comment = new Gson().fromJson(json, Comment.class);
+	    	
+            Task task = Task.findById(taskId);
+            task.addComment("total","sum of all numbers");
+        }
 }

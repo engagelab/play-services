@@ -36,4 +36,9 @@ public class Task extends Model{
 		List<Task> tasks = scene.tasks;
 		return tasks;
 	}
+
+	public void addComment(String title, String message) {
+		
+        new Comment(this, title, message).save();
+	}
 }

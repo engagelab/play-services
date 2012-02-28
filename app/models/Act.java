@@ -16,10 +16,6 @@ import play.db.jpa.Model;
 public class Act extends Model {
 	 public String title;
 	 
-//	 @ManyToOne
-//	 @Required
-//	 public User user;
-	 
 	 @ManyToOne
 	 @Required
 	 public Project project;
@@ -38,12 +34,13 @@ public class Act extends Model {
 	    	List<Act> acts = Act.findAll();
 	    	return acts;
 	    }
-
+	    
 		public static List<Act> findByProject(Long id) {
 			Project project = Project.findById(id);
 			List<Act> acts = project.acts;
 			return acts;
 		}
+		
 		
 		
 }

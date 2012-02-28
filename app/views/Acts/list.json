@@ -1,7 +1,8 @@
 [
 #{list acts}
   {
-      "title": "${_.title}"
+ 	"id": "${_.id}",
+     "title": "${_.title}"
   } #{if !_isLast},#{/if}
 #{/list}
 ]

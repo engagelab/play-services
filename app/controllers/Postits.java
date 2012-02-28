@@ -33,18 +33,6 @@ public class Postits extends Controller {
     	Postit tmpPostit = new Gson().fromJson(json, Postit.class);
     	Postit p = new Postit(tmpPostit.user, tmpPostit.sceneId);
     	p.save();
-    	// Create or Update the scene
-//    	Scene scene = Scene.find("select s from Scene s where s.user =?",tmpPostit.sceneId).first();
-//    	if (scene != null)
-//    		//do nothing
-//    		System.out.println("Scene already exist");
-//    		
-//    	else
-//    	{
-//    		Scene newScene = new Scene(tmpPostit.user, tmpPostit.sceneId);
-//    		newScene.save();
-//    	}
-    		
     	renderJSON(p);
     }
     /*

@@ -1,5 +1,6 @@
 [
   {
+  		"id": "${project.id}",
       "title": "${project.title}"
   }
 ]

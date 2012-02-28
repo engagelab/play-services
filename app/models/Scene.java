@@ -22,6 +22,7 @@ public class Scene extends Model{
 	 public List<Task> tasks;
 
     public Scene(String title) { 
+    	this.tasks = new ArrayList<Task>();
         this.title = title;
     }
 
@@ -30,4 +31,5 @@ public class Scene extends Model{
 		List<Scene> scenes = act.scenes;
 		return scenes;
 	}
+
 }

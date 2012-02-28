@@ -20,9 +20,15 @@ public class Comment extends Model {
     @Required
 	 Task task;
 	
-	public Comment(String title, String message){
+	public Comment(Task task,String title, String message){
+		this.task = task;
 		this.title = title;
 		this.message = message;
+	}
+	
+	public Comment(){
+		this.title = "";
+		this.message = "";
 	}
 
 	public static List<Comment> findByTask(Long id) {
