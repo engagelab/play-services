@@ -26,7 +26,6 @@ public class Projects extends Controller{
         renderTemplate("Acts/list.json", acts);
     }
     
-    
     public static void getScenesByAct(Long id) {
         List <Scene> scenes = Scene.findByAct(id);
         renderTemplate("Scenes/list.json", scenes);

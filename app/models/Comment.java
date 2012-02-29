@@ -20,6 +20,8 @@ public class Comment extends Model {
     @Required
 	 Task task;
 	
+	
+	
 	public Comment(Task task,String title, String message){
 		this.task = task;
 		this.title = title;

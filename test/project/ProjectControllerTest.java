@@ -18,11 +18,7 @@ public class ProjectControllerTest extends FunctionalTest {
 	public void setup() {
 	}
 	
-	@Test
-	public void testPost() {
-        Response response = POST("/project/act/scene/task/1","application/json","{ \"user\": \"fahied\", \"sceneId\": \"Simmulation 1\"}"); 
-	    assertIsOk(response);
-	}
+
 	
 	@Test
 	public void testGet() {
