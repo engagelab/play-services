@@ -13,6 +13,12 @@ import com.google.gson.Gson;
 import models.*;
 public class Projects extends Controller{
 	
+	
+    public static void getAllProjects() {
+        List <Project> projects = Project.findAll();
+        renderTemplate("Projects/list.json", projects);
+    }
+    
     public static void getProject(Long id) {
         Project project = Project.findById(id);
         renderTemplate("Projects/project.json", project);
@@ -45,12 +51,4 @@ public class Projects extends Controller{
     public static void index(Long id) {
  
     }
-    
-    public static void postComment(Long taskId) throws IOException {
-	    	String json = IOUtils.toString(request.body);
-	    	Comment comment = new Gson().fromJson(json, Comment.class);
-	    	
-            Task task = Task.findById(taskId);
-            task.addComment("total","sum of all numbers");
-        }
 }

@@ -13,26 +13,50 @@ import models.*;
 
 public class ProjectControllerTest extends FunctionalTest {
 	
-	
+
 	@Before
 	public void setup() {
 	}
 	
-
-	
 	@Test
-	public void testGet() {
-	       Response response = GET("/project/act/scene/task/comment/");
+	public void getAllProjects() {
+	       Response response = GET("/project");
 	       assertIsOk(response);
 	}
 	
-	//{"sceneId"=>nil, "_id"=>"4f4376d69c95054f3a000001", "ypos"=>"304", "xpos"=>"338", "content"=>"yoyo new text", "user"=>nil}
 	@Test
-	public void testUpdate() {
-		//Response response = PUT("/postit/","application/json","{ \"id\": \"1\", \"user\": \"tony\", \"sceneId\": \"4\", \"content\": \"this is an update\", \"ypos\":\"304\", \"xpos\":\"338\" }"); 
-		Response response = PUT("/project/act/scene/task/comment/","application/json","{ \"uid\": \"557d8446-fff7-465a-ab8f-c4a740aad4az\", \"content\": \"this is an update\", \"ypos\":\"304\", \"xpos\":\"338\" }");
-		assertIsOk(response);
+	public void getProject() {
+	       Response response = GET("/project/1");
+	       assertIsOk(response);
 	}
 	
-
+	@Test
+	public void getActsByProject() {
+	       Response response = GET("/acts/project/1");
+	       assertIsOk(response);
+	}
+	
+	@Test
+	public void getScenesByAct() {
+	       Response response = GET("/scenes/act/1");
+	       assertIsOk(response);
+	}
+	
+	@Test
+	public void getTasksByScene() {
+	       Response response = GET("/tasks/scene/1");
+	       assertIsOk(response);
+	}
+	
+	@Test
+	public void getCommentsByTask() {
+	       Response response = GET("/comments/task/1");
+	       assertIsOk(response);
+	}
+	
+	@Test
+	public void findByUserAndTask() {
+	       Response response = GET("/comments/?userId=2&taskId=1");
+	       assertIsOk(response);
+	}
 }

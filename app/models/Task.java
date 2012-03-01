@@ -37,8 +37,8 @@ public class Task extends Model{
 		return tasks;
 	}
 
-	public void addComment(String title, String message) {
-		
-        new Comment(this, title, message).save();
-	}
+//	public void addComment(String title, String message) {
+//		
+//        new Comment(this, title, message).save();
+//	}
 }
