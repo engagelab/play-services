@@ -25,15 +25,20 @@ GET	    /scene/{id}								Scenes.byUser
 
 
 #New Routes for Project Controller Wrapper
-GET   /project	                				Projects.getAllProjects
-GET   /project/{id}                				Projects.getProject
-GET   /acts/project/{id}						Projects.getActsByProject
-GET   /scenes/act/{id}							Projects.getScenesByAct
-GET   /tasks/scene/{id}							Projects.getTasksByScene
-GET   /comments/task/{id}						Projects.getCommentsByTask
+GET   		/project	                				Projects.getAllProjects
+GET   		/project/{id}                				Projects.getProject
+GET   		/acts/project/{id}							Projects.getActsByProject
+GET   		/scenes/act/{id}							Projects.getScenesByAct
+GET   		/tasks/scene/{id}							Projects.getTasksByScene
+GET   		/comments/task/{id}							Projects.getCommentsByTask
 
-GET   /comments/p/?							Comments.findByUserTaskAndProject
-GET   /comments/?							Comments.findByUserAndTask
+GET   		/comments/put/?								Comments.findByUserTaskAndProject
+POST  		/comments/put/								Users.postComment
+DELETE		/comments/{id}								Users.deleteComment
+GET   		/comments/?									Comments.findByUserAndTask
+
+
+
 
 
 

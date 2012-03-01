@@ -38,4 +38,14 @@ public class User extends Model {
 		this.age = age;
 		this.image = image;
 	}
+
+	public User addComment(Project project, Task task, String title,
+			String message) {
+			Comment newComment = new Comment(this, project,task, title, message);
+			this.comments.add(newComment);
+			this.save();
+			return this;
+	}
+	
+	
 }

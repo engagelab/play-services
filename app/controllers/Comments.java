@@ -18,7 +18,6 @@ public class Comments extends Controller {
 		return comments;
 	}
 	
-	
 	public static List<Comment> findByUserTaskAndProject() {
 		Long userId 	= params.get("userId",Long.class);
 		Long taskId 	= params.get("taskId",Long.class);
@@ -29,4 +28,5 @@ public class Comments extends Controller {
 		renderTemplate("Comments/list.json", comments);
 		return comments;
 	}
+	
 }

@@ -9,6 +9,7 @@ import javax.persistence.OneToMany;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
+import play.libs.Codec;
 import play.mvc.Controller;
 
 
@@ -20,26 +21,25 @@ public class Comment extends Model {
 	
 	@ManyToOne
     @Required
-	 public Task task;
+	 public Project project;
 	
 	@ManyToOne
     @Required
-	 public Project project;
+	 public Task task;
+	 
+	@Required
+	public String uid;
 	
 	public String title;
 	public String message;
 	
-	public Comment(Project project, User user, Task task,String title, String message){
-		this.project = project;
+	public Comment(User user, Project project, Task task,String title, String message){
 		this.user = user;
+		this.project = project;
 		this.task = task;
+		this.uid = Codec.UUID();
 		this.title = title;
 		this.message = message;
-	}
-	
-	public Comment(){
-		this.title = "";
-		this.message = "";
 	}
 
 	public static List<Comment> findByTask(Long id) {
@@ -52,5 +52,9 @@ public class Comment extends Model {
 		User user = User.findById(id);
 		List<Comment> comments = user.comments;
 		return comments;
+	}
+
+	public static void deleteComment(String uid) {
+		Comment.delete("from Comment c where c.uid=?", uid);
 	}
 }

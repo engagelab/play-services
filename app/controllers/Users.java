@@ -3,7 +3,13 @@ package controllers;
 import play.*;
 import play.mvc.*;
 
+import java.io.IOException;
 import java.util.*;
+
+import org.apache.commons.io.IOUtils;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import models.*;
 
@@ -116,12 +122,36 @@ public class Users extends Controller {
     	User user = User.findById(id);
     	
     	notFoundIfNull(user);
-    	
     	return user;
     }
     
+	public static void postComment() throws IOException {
+		String json = IOUtils.toString(request.body);
+    	JsonRequest req = new Gson().fromJson(json, JsonRequest.class);
+    	
+    	//tmpComment.get("userid")
+    	//get the project id from json look up the project
+    	Long projectId = req.projectId.longValue();
+    	Project project = Project.findById(projectId);
     
-    
-
-
+    	//get the userid from the json lookup the user
+    	Long userId 	= req.userId.longValue();
+    	User user 		= User.findById(userId);
+    	
+      	//get the taskid from the json and lookup the task
+    	Long taskId 	= req.taskId.longValue();
+    	Task task 		= Task.findById(taskId);
+    	
+    	String title 	= req.title.toString();
+    	String message 	= req.message.toString();
+    	
+    	user.addComment(project, task, title, message);
+	}
+	
+	
+	public static void deleteComment(String uid) {
+		
+    	Comment.deleteComment(uid);
+	}
+	
 }
