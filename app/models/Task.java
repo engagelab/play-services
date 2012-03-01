@@ -27,8 +27,8 @@ public class Task extends Model{
 	 
 	 public Task(String title){
 		 this.title = title;
-		 this.comments = new ArrayList<Comment>();
-		 this.postits = new ArrayList<Postit>();
+		 //this.comments = new ArrayList<Comment>();
+		 //this.postits = new ArrayList<Postit>();
 	 }
 
 	public static List<Task> findByScene(Long id) {
