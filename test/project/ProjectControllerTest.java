@@ -59,4 +59,15 @@ public class ProjectControllerTest extends FunctionalTest {
 	       Response response = GET("/comments/?userId=2&taskId=1");
 	       assertIsOk(response);
 	}
+	
+	//GET comments by user and project
+	//public void findCommentsByUserAndProject
+	
+	//POST comment by task and user
+	//public void postCommentByTaskAndUser
+	
+	//PUT UPDATE comment with new data
+	
+	
+	
 }
