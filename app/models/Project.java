@@ -29,6 +29,9 @@ public class Project extends Model{
 	@OneToMany(mappedBy="project", cascade=CascadeType.ALL)
     public List<Act> acts;
 	
+	@OneToMany(mappedBy="project", cascade=CascadeType.ALL)
+    public List<Comment> comments;
+	
 	
 	public Project(String title){
 		this.acts = new ArrayList<Act>();

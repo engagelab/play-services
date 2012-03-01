@@ -32,7 +32,9 @@ GET   /scenes/act/{id}							Projects.getScenesByAct
 GET   /tasks/scene/{id}							Projects.getTasksByScene
 GET   /comments/task/{id}						Projects.getCommentsByTask
 
-GET   /comments/?								Comments.findByUserAndTask
+GET   /comments/p/?							Comments.findByUserTaskAndProject
+GET   /comments/?							Comments.findByUserAndTask
+
 
 
 

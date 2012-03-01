@@ -22,10 +22,15 @@ public class Comment extends Model {
     @Required
 	 public Task task;
 	
+	@ManyToOne
+    @Required
+	 public Project project;
+	
 	public String title;
 	public String message;
 	
-	public Comment(User user, Task task,String title, String message){
+	public Comment(Project project, User user, Task task,String title, String message){
+		this.project = project;
 		this.user = user;
 		this.task = task;
 		this.title = title;
