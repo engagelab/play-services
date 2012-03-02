@@ -120,7 +120,6 @@ public class Users extends Controller {
      */
     private static User safeFindById(Long id) {
     	User user = User.findById(id);
-    	
     	notFoundIfNull(user);
     	return user;
     }
