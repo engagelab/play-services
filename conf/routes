@@ -34,6 +34,7 @@ GET   		/comments/task/{id}							Projects.getCommentsByTask
 
 GET   		/comments/put/?								Comments.findByUserTaskAndProject
 POST  		/comments/put/								Users.postComment
+PUT  		/comments/put/								Users.updateComment
 DELETE		/comments/{id}								Users.deleteComment
 GET   		/comments/?									Comments.findByUserAndTask
 

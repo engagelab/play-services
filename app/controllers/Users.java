@@ -153,4 +153,15 @@ public class Users extends Controller {
     	Comment.deleteComment(uid);
 	}
 	
+	
+	public static void updateComment() throws IOException {
+		
+		String json = IOUtils.toString(request.body);
+    	JsonRequest req = new Gson().fromJson(json, JsonRequest.class);
+    	
+    	String uid 		= req.uid.toString();
+    	String title 	= req.title.toString();
+    	String message 	= req.message.toString();
+    	Comment.updateComment(uid, title, message);
+	}
 }

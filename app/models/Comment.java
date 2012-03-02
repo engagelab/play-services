@@ -42,11 +42,13 @@ public class Comment extends Model {
 		this.message = message;
 	}
 
+	
 	public static List<Comment> findByTask(Long id) {
 		Task task = Task.findById(id);
 		List<Comment> comments = task.comments;
 		return comments;
 	}
+	
 	
 	public static List<Comment> findByUser(Long id) {
 		User user = User.findById(id);
@@ -54,7 +56,17 @@ public class Comment extends Model {
 		return comments;
 	}
 
+	
 	public static void deleteComment(String uid) {
 		Comment.delete("from Comment c where c.uid=?", uid);
+	}
+
+	
+	public static Comment updateComment(String uid, String title, String message) {
+		Comment myComment = Comment.find("uid", uid).first();
+		myComment.title = title;
+		myComment.message = message;
+		myComment.save();
+		return myComment;
 	}
 }
