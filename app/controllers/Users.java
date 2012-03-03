@@ -148,9 +148,9 @@ public class Users extends Controller {
 	}
 	
 	
-	public static void deleteComment(String uid) {
+	public static void deleteComment(Long id) {
 		
-    	Comment.deleteComment(uid);
+    	Comment.deleteComment(id);
 	}
 	
 	
@@ -159,9 +159,18 @@ public class Users extends Controller {
 		String json = IOUtils.toString(request.body);
     	JsonRequest req = new Gson().fromJson(json, JsonRequest.class);
     	
-    	String uid 		= req.uid.toString();
+    	Long id 		= req.id.longValue();
     	String title 	= req.title.toString();
     	String message 	= req.message.toString();
-    	Comment.updateComment(uid, title, message);
+    	Comment.updateComment(id, title, message);
+	}
+	
+	public static void createGroup() {
+	
+		//message json - list of usernames
+		//check if the usernames existing play, if not create new user
+		//rest call to rollcall create group with usernames
+		//get the groupId just created
+		//render groupId to jeremy via json
 	}
 }

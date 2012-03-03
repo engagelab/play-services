@@ -24,6 +24,9 @@ public class User extends Model {
 	public Blob image;
 	
 	
+	//public List<string> groupIds
+	//public string rollcallId
+	
 	//@ManyToMany(cascade=CascadeType.ALL) 
     //public Set<Project> followedProjects = new HashSet<Project>();; 
 	

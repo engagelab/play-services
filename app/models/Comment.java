@@ -1,5 +1,6 @@
 package models;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -20,26 +21,26 @@ public class Comment extends Model {
     public User user;
 	
 	@ManyToOne
-    @Required
+	//@Required  to avoid the project id
 	 public Project project;
 	
 	@ManyToOne
     @Required
 	 public Task task;
 	 
-	@Required
-	public String uid;
-	
 	public String title;
 	public String message;
+	
+	@Required
+	public Date postedAt;
 	
 	public Comment(User user, Project project, Task task,String title, String message){
 		this.user = user;
 		this.project = project;
 		this.task = task;
-		this.uid = Codec.UUID();
 		this.title = title;
 		this.message = message;
+		this.postedAt = new Date();
 	}
 
 	
@@ -57,13 +58,13 @@ public class Comment extends Model {
 	}
 
 	
-	public static void deleteComment(String uid) {
-		Comment.delete("from Comment c where c.uid=?", uid);
+	public static void deleteComment(Long id) {
+		Comment.delete("from Comment c where c.id=?", id);
 	}
 
 	
-	public static Comment updateComment(String uid, String title, String message) {
-		Comment myComment = Comment.find("uid", uid).first();
+	public static Comment updateComment(Long id, String title, String message) {
+		Comment myComment = Comment.findById(id);
 		myComment.title = title;
 		myComment.message = message;
 		myComment.save();

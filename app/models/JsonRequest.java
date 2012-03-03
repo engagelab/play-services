@@ -9,7 +9,7 @@ public class JsonRequest {
 	public Long projectId;
 	public Long userId;
 	public Long taskId;
-	public String uid;
+	public Long id;
 	public String title;
 	public String message;
 }

@@ -39,6 +39,11 @@ DELETE		/comments/{id}								Users.deleteComment
 GET   		/comments/?									Comments.findByUserAndTask
 
 
+#Fahied Testing work
+GET   		/fahied/									FahTest.index
+
+
+
 
 
 
