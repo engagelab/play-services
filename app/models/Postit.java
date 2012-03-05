@@ -13,43 +13,44 @@ import java.util.*;
 public class Postit extends Model {
 	
 	//{"scene":"","_id":"4f3e3bd09c95052c17000004","ypos":"","xpos":"","content":"","user":""}
-	@Required
-	 public String user;
-
-    @Required
-    public String sceneId;
-    
 	@ManyToOne
-    @Required
-	 Task task;
+    public MyGroup myGroup;
+	
+	@ManyToOne
+	//@Required  to avoid the project id
+	 public Project project;
+	
+	@ManyToOne
+	 public Task task;
 
 	@Lob
-    @Required
-    @MaxSize(10000)
+    @MaxSize(200)
     public String content;
 	
 	public float xpos;
 	public float ypos;
 	public Date postedAt;
-	public String _id;
+
+//	@PrePersist
+//	public void prePersist(){
+//		postedAt = new Date();
+//	}
 	
-	public Postit(String user, String sceneId) {
-		this.user = user;
-		this.sceneId = sceneId;
+	public Postit(MyGroup myGroup, Project project,  Task task) {
+		this.myGroup = myGroup;
+		this.project = project;
+		this.task = task;
 		this.content = "";
-		this.ypos = 0.0f;
 		this.xpos = 0.0f;
-		this.postedAt = new Date();
-		this._id = Codec.UUID();
+		this.ypos = 0.0f;
 		}
 	
-	public Postit(String user, String sceneId,String content, float ypos, float xpos) {
-		this.user = user;
-		this.sceneId = sceneId;
+	public Postit(MyGroup myGroup, Project project, Task task, float xpos, float ypos, String content) {
+		this.myGroup = myGroup;
+		this.project = project;
+		this.task = task;
 		this.content = content;
-		this.ypos = ypos;
 		this.xpos = xpos;
-		this.postedAt = new Date();
-	}
-    
+		this.xpos = ypos;
+		}
 }
