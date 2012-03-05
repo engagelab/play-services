@@ -166,7 +166,17 @@ public class Users extends Controller {
     	Comment.updateComment(id, title, message);
 	}
 	
-	public static void createGroup() {
+	
+	public static void checkGroup(User user) {
+		
+		//message json - list of usernames
+		//check if the usernames existing play, if not create new user
+		//rest call to rollcall create group with usernames
+		//get the groupId just created
+		//render groupId to jeremy via json
+	}
+	
+	public static void makeGroup(String usernames) {
 	
 		//message json - list of usernames
 		//check if the usernames existing play, if not create new user

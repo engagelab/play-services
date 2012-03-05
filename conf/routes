@@ -38,6 +38,8 @@ PUT  		/comments/put/								Users.updateComment
 DELETE		/comments/{id}								Users.deleteComment
 GET   		/comments/?									Comments.findByUserAndTask
 
+#Group Operation routs
+GET	    /group											Groups.all
 
 #Fahied Testing work
 GET   		/fahied/									FahTest.index
