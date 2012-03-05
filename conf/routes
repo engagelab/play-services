@@ -39,9 +39,14 @@ DELETE		/comments/{id}								Users.deleteComment
 GET   		/comments/?									Comments.findByUserAndTask
 
 #Group Operation routs
-GET	    /group											Groups.all
+GET	    	/groups											Groups.all
+GET	    	/groups/{id}									Groups.getById
+DELETE	    /groups/{id}									Groups.deleteGroup
 
-#Fahied Testing work
+
+
+
+#Fahied Testing  JQuery work
 GET   		/fahied/									FahTest.index
 
 
