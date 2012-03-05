@@ -18,4 +18,4 @@ p. The API can be accessed as follows (see "routes file":https://github.com/sebh
 p. Depending on the clients Accept header either a HTML, XML or JSON representation will be send back.
 
 
-"API Wiki":https://github.com/InterMedia/play-services/wiki
+"API Wiki":https://github.com/InterMedia/play-services/wiki/Sci-Works-API-Documentation
