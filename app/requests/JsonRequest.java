@@ -1,4 +1,4 @@
-package models;
+package requests;
 
 
 //This class represent the generic model for request that can be parsed to any other Model 
