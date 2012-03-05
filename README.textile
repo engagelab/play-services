@@ -16,3 +16,6 @@ p. The API can be accessed as follows (see "routes file":https://github.com/sebh
 * Delete single user: *DELETE /user/id/* 
 
 p. Depending on the clients Accept header either a HTML, XML or JSON representation will be send back.
+
+
+h2: API Wiki :https://github.com/InterMedia/play-services/wiki
