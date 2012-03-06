@@ -13,27 +13,18 @@ POST    /user/?               					Users.persist
 PUT     /user/{<\d+>id}/?      					Users.update
 DELETE  /user/{<\d+>id}/?      					Users.delete
 
-#postit 
-POST    /postit/	               				Postits.create
-GET	    /postit									Postits.all
-GET	    /postit/?								Postits.byUserAndScene
-PUT     /postit/{id}               				Postits.update
-DELETE  /postit/{id}               				Postits.delete
 
-GET	    /scene/									Scenes.all
-GET	    /scene/{id}								Scenes.byUser
-
-
-#New Routes for Project Controller Wrapper
+# Routes for Project Controller 
 GET   		/project	                				Projects.getAllProjects
 GET   		/project/{id}                				Projects.getProject
 GET   		/acts/project/{id}							Projects.getActsByProject
 GET   		/scenes/act/{id}							Projects.getScenesByAct
 GET   		/tasks/scene/{id}							Projects.getTasksByScene
 
+# Routes for Group Controller 
 
 GET  		/comments									Groups.showAllComments
-GET  		/comments/									Groups.showComments
+GET  		/comments/?									Groups.showComments
 POST  		/comments/									Groups.postComment
 PUT  		/comments/{id}								Groups.updateComment
 DELETE  	/comments/{id}								Groups.deleteComment
