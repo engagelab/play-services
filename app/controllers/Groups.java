@@ -3,17 +3,12 @@ package controllers;
 import java.io.IOException;
 import java.util.List;
 
-import models.Comment;
-import models.MyGroup;
-import models.Postit;
-import models.Project;
-import models.Task;
-
 import org.apache.commons.io.IOUtils;
+
+import models.*;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import com.google.gson.stream.JsonReader;
 
 import play.libs.WS;
 import play.libs.WS.HttpResponse;
@@ -21,14 +16,14 @@ import play.mvc.Before;
 import play.mvc.Controller;
 import requests.Comment_request;
 import requests.JsonRequest;
-import requests.Postit_request;
+
 
 public class Groups extends Controller{
     @Before
     static void createRollcallSession() {
     	String contents = "{ \"Session\": {\"username\":\"binden\" , \"password\":\"binden\"} }";
 		String url  = "http://imediamac28.uio.no:8080";
-		HttpResponse response = WS.url(url).body(contents).post();
+		WS.url(url).body(contents).post();
     }
     
 	//Retrieve the list of all groups
@@ -105,7 +100,6 @@ public class Groups extends Controller{
 	   
 	   public static void showComments(){
 		   Long group_id = params.get("group_id",Long.class);
-		   MyGroup group = MyGroup.findById(group_id);
 		   Long task_id = params.get("task_id",Long.class);
 			List<Comment> comments = Comment.find("SELECT c  from Comment c Where c.myGroup.id =? and c.task.id=?", group_id, task_id).fetch();
 	    	renderTemplate("Comments/list.json", comments);
