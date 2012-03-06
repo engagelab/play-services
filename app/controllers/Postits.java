@@ -34,12 +34,13 @@ public class Postits extends Controller {
     	//Serialize request
     	Long group_id = req.group_id;
     	Long project_id = req.project_id;
+    	Long run_id = req.run_id;
     	Long task_id = req.task_id;
     	
     	MyGroup myGroup = MyGroup.findById(group_id);
     	Project project = Project.findById(project_id);
     	Task task = Task.findById(task_id);
-    	Postit newPostit = myGroup.createPostit(project, task);
+    	Postit newPostit = myGroup.createPostit(project,run_id, task);
     	renderTemplate("Postits/postit.json", newPostit);
     }
    

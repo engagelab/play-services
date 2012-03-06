@@ -2,8 +2,9 @@
 #{list comments}
   {
   		"id": "${_.id}",
-      "title": "${_.title}",
-      "message": "${_.message}"
+  		"content": "${_.content}",
+  		"xpos": "${_.xpos}",
+  		"ypos": "${_.ypos}"
   } #{if !_isLast},#{/if}
 #{/list}
 ]

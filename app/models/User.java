@@ -30,23 +30,24 @@ public class User extends Model {
 	//@ManyToMany(cascade=CascadeType.ALL) 
     //public Set<Project> followedProjects = new HashSet<Project>();; 
 	
-	@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
-    public List<Comment> comments;
+//	@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
+//    public List<Comment> comments;
 	
 	//User Constructor
 	public User(String name,String email, int age, Blob image){
-		this.comments = new ArrayList<Comment>();
+		//this.comments = new ArrayList<Comment>();
 		this.name = name;
 		this.email = email;
 		this.age = age;
 		this.image = image;
 	}
 
-	public User addComment(Project project, Task task, String title,
-			String message) {
-			Comment newComment = new Comment(this, project,task, title, message);
-			this.comments.add(newComment);
-			this.save();
-			return this;
-	}
+	
+//	public User addComment(Project project, Task task, String title,
+//			String message) {
+//			Comment newComment = new Comment(this, project,task, title, message);
+//			this.comments.add(newComment);
+//			this.save();
+//			return this;
+//	}
 }

@@ -30,13 +30,14 @@ GET   		/project/{id}                				Projects.getProject
 GET   		/acts/project/{id}							Projects.getActsByProject
 GET   		/scenes/act/{id}							Projects.getScenesByAct
 GET   		/tasks/scene/{id}							Projects.getTasksByScene
-GET   		/comments/task/{id}							Projects.getCommentsByTask
 
-GET   		/comments/put/?								Comments.findByUserTaskAndProject
-POST  		/comments/put/								Users.postComment
-PUT  		/comments/put/								Users.updateComment
-DELETE		/comments/{id}								Users.deleteComment
-GET   		/comments/?									Comments.findByUserAndTask
+
+GET  		/comments									Groups.showAllComments
+GET  		/comments/									Groups.showComments
+POST  		/comments/									Groups.postComment
+PUT  		/comments/{id}								Groups.updateComment
+DELETE  	/comments/{id}								Groups.deleteComment
+								
 
 #Group Operation routs
 GET	    	/groups											Groups.all

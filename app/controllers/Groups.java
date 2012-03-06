@@ -1,17 +1,27 @@
 package controllers;
 
 import java.io.IOException;
+import java.util.List;
+
+import models.Comment;
+import models.MyGroup;
+import models.Postit;
+import models.Project;
+import models.Task;
 
 import org.apache.commons.io.IOUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+import com.google.gson.stream.JsonReader;
 
 import play.libs.WS;
 import play.libs.WS.HttpResponse;
 import play.mvc.Before;
 import play.mvc.Controller;
+import requests.Comment_request;
 import requests.JsonRequest;
+import requests.Postit_request;
 
 public class Groups extends Controller{
     @Before
@@ -32,31 +42,74 @@ public class Groups extends Controller{
 	}
 	
 	//Retrieve the group with ID `1`
-	public static void getById(String id){	
-		String url = "http://imediamac28.uio.no:8080/groups/1.json";//?id=%s";
+	public static void getById(String id){
+		//JsonReader.setLenient(true);
+		String url = "http://imediamac28.uio.no:8080/groups/" + id + ".json";
 		//WS.url accept only String type parameters
-		JsonElement result = WS.url(url,id).get().getJson();
-		renderJSON(result);
+		JsonElement result = WS.url(url).get().getJson();
+		String res = result.toString();
+		renderJSON(res);
 	}
 	
 	//Delete group with ID `1`
 	public static void deleteGroup(String id){
-		String url = "http://localhost:3000/groups/?id=%s";
-		Integer status = WS.url(url,id).delete().getStatus();
+		String url = "http://imediamac28.uio.no:8080/groups/" + id;
+		Integer status = WS.url(url).delete().getStatus();
 		if(status == 1)
 			renderText("Group deleted");
 	}
 	
-	//Make a new group with JSON username object "{ \"username\": {\"fahied\", \"jeremy\", \"tony\"}"
-	public static void makeGroup(String usernames) throws IOException{
-		//Retrive JSON usernames object from client
-		String json = IOUtils.toString(request.body);
-    	JsonRequest req = new Gson().fromJson(json, JsonRequest.class);
-    	
-    	String contents = "{ \"username\": {\"fahied\", \"jeremy\", \"tony\"} }";
-		String url  = "http://localhost:3000/groups";
-		HttpResponse response = WS.url(url).body(contents).post();
-		renderText(response);
-	}
-	
+	//{}
+	   public static void postComment() throws IOException {
+	    	String json = IOUtils.toString(request.body);
+	    	Comment_request req = new Gson().fromJson(json, Comment_request.class);
+	    	//Serialize request
+	    	Long project_id = req.project_id;
+	    	Long run_id = req.run_id;
+	    	Long group_id = req.group_id;
+	    	Long task_id = req.task_id;
+	    	
+	    	MyGroup myGroup = MyGroup.findById(group_id);
+	    	Project project = Project.findById(project_id);
+	    	Task task = Task.findById(task_id);
+	    	Comment comment = myGroup.postComment(project,run_id, task);
+	    	renderTemplate("Comments/comment.json", comment);
+	    }
+	   
+	   public static void updateComment() throws IOException {
+		   	String json = IOUtils.toString(request.body);
+		   	Comment_request req = new Gson().fromJson(json, Comment_request.class);
+		   	//Serialize request
+		   	Long comment_id = req.comment_id;
+		   	String content = req.content;
+		   	float xpos = req.xpos;
+		   	float ypos = req.ypos;
+		  
+		   	Comment comment = Comment.findById(comment_id);
+		   	comment.content = content;
+		   	comment.xpos = xpos;
+		   	comment.ypos = ypos;
+		   	comment.save();
+		   	renderTemplate("Comments/comment.json", comment);
+		   }
+	   
+	   public static void deleteComment(Long id){
+		   
+		   Comment.delete("from Comment c where c.id=?", id);
+	   }
+	   
+	   public static void showAllComments(Long id){
+	    	List<Comment> comments = Comment.findAll();
+	    	renderTemplate("Comments/list.json", comments);
+	   }
+	   
+	   public static void showComments(){
+		   Long group_id = params.get("group_id",Long.class);
+		   MyGroup group = MyGroup.findById(group_id);
+		   Long task_id = params.get("task_id",Long.class);
+			List<Comment> comments = Comment.find("SELECT c  from Comment c Where c.myGroup.id =? and c.task.id=?", group_id, task_id).fetch();
+	    	renderTemplate("Comments/list.json", comments);
+	   }
+	   
+	   
 }

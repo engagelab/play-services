@@ -49,7 +49,8 @@ public class Users extends Controller {
      * 
      * @param id	The ID of the user to update.
      */
-    public static void update(Long id) {
+    @SuppressWarnings("deprecation")
+	public static void update(Long id) {
     	// Fetch from user from DB
         User user = safeFindById(id);
         
@@ -125,63 +126,53 @@ public class Users extends Controller {
     	return user;
     }
     
-	public static void postComment() throws IOException {
-		String json = IOUtils.toString(request.body);
-    	JsonRequest req = new Gson().fromJson(json, JsonRequest.class);
-    	
-    	//tmpComment.get("userid")
-    	//get the project id from json look up the project
-    	Long projectId = req.projectId.longValue();
-    	Project project = Project.findById(projectId);
-    
-    	//get the userid from the json lookup the user
-    	Long userId 	= req.userId.longValue();
-    	User user 		= User.findById(userId);
-    	
-      	//get the taskid from the json and lookup the task
-    	Long taskId 	= req.taskId.longValue();
-    	Task task 		= Task.findById(taskId);
-    	
-    	String title 	= req.title.toString();
-    	String message 	= req.message.toString();
-    	
-    	user.addComment(project, task, title, message);
-	}
+//	public static void postComment() throws IOException {
+//		String json = IOUtils.toString(request.body);
+//    	JsonRequest req = new Gson().fromJson(json, JsonRequest.class);
+//    	
+//    	//get the project id from json look up the project
+//    	Long projectId = req.projectId.longValue();
+//    	Project project = Project.findById(projectId);
+//    
+//    	//get the userid from the json lookup the user
+//    	Long userId 	= req.userId.longValue();
+//    	User user 		= User.findById(userId);
+//    	
+//      	//get the taskid from the json and lookup the task
+//    	Long taskId 	= req.taskId.longValue();
+//    	Task task 		= Task.findById(taskId);
+//    	
+//    	String title 	= req.title.toString();
+//    	String message 	= req.message.toString();
+//    	
+//    	user.addComment(project, task, title, message);
+//	}
 	
 	
-	public static void deleteComment(Long id) {
-		
-    	Comment.deleteComment(id);
-	}
+//	public static void deleteComment(Long id) {
+//		
+//    	Comment.deleteComment(id);
+//	}
 	
 	
-	public static void updateComment() throws IOException {
-		
-		String json = IOUtils.toString(request.body);
-    	JsonRequest req = new Gson().fromJson(json, JsonRequest.class);
-    	
-    	Long id 		= req.id.longValue();
-    	String title 	= req.title.toString();
-    	String message 	= req.message.toString();
-    	Comment.updateComment(id, title, message);
-	}
+//	public static void updateComment() throws IOException {
+//		
+//		String json = IOUtils.toString(request.body);
+//    	JsonRequest req = new Gson().fromJson(json, JsonRequest.class);
+//    	
+//    	Long id 		= req.id.longValue();
+//    	String title 	= req.title.toString();
+//    	String message 	= req.message.toString();
+//    	Comment.updateComment(id, title, message);
+//	}
 	
 	
-	public static void checkGroup(User user) {
-		
-		//message json - list of usernames
-		//check if the usernames existing play, if not create new user
-		//rest call to rollcall create group with usernames
-		//get the groupId just created
-		//render groupId to jeremy via json
-	}
-	
-	public static void makeGroup(String usernames) {
-	
-		//message json - list of usernames
-		//check if the usernames existing play, if not create new user
-		//rest call to rollcall create group with usernames
-		//get the groupId just created
-		//render groupId to jeremy via json
-	}
+//	public static void checkGroup(User user) {
+//		
+//		//message json - list of usernames
+//		//check if the usernames existing play, if not create new user
+//		//rest call to rollcall create group with usernames
+//		//get the groupId just created
+//		//render groupId to jeremy via json
+//	}
 }

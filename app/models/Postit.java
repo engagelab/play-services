@@ -22,6 +22,8 @@ public class Postit extends Model {
 	
 	@ManyToOne
 	 public Task task;
+	
+	public Long run_id;
 
 	@Lob
     @MaxSize(200)
@@ -31,23 +33,24 @@ public class Postit extends Model {
 	public float ypos;
 	public Date postedAt;
 
-//	@PrePersist
-//	public void prePersist(){
-//		postedAt = new Date();
-//	}
+	@PrePersist
+	public void prePersist(){
+		postedAt = new Date();
+	}
 	
-	public Postit(MyGroup myGroup, Project project,  Task task) {
-		this.myGroup = myGroup;
+	public Postit(Project project, Long run_id, MyGroup myGroup, Task task) {
 		this.project = project;
-		this.task = task;
+		this.run_id = run_id;
+		this.myGroup = myGroup;
 		this.content = "";
 		this.xpos = 0.0f;
 		this.ypos = 0.0f;
 		}
 	
-	public Postit(MyGroup myGroup, Project project, Task task, float xpos, float ypos, String content) {
-		this.myGroup = myGroup;
+	public Postit(Project project, Long run_id, MyGroup myGroup, Task task, float xpos, float ypos, String content) {
 		this.project = project;
+		this.run_id = run_id;
+		this.myGroup = myGroup;
 		this.task = task;
 		this.content = content;
 		this.xpos = xpos;

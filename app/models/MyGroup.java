@@ -15,6 +15,9 @@ public class MyGroup extends Model{
 	@OneToMany(mappedBy="myGroup", cascade=CascadeType.ALL)
     public List<Postit> postits;
 	
+	@OneToMany(mappedBy="myGroup", cascade=CascadeType.ALL)
+    public List<Comment> comments;
+	
 	
 	//User Constructor
 	public MyGroup(String name, String run_id){
@@ -23,8 +26,8 @@ public class MyGroup extends Model{
 		this.run_id = run_id;
 	}
 
-	public Postit createPostit(Project project, Task task) {
-		Postit newPostit = new Postit(this, project,task);
+	public Postit createPostit(Project project, Long run_id, Task task) {
+		Postit newPostit = new Postit(project, run_id, this, task);
 		this.postits.add(newPostit);
 		this.save();
 		return newPostit;
@@ -42,4 +45,17 @@ public class MyGroup extends Model{
 			return tmpPostit;
 	}
 
+	public Comment postComment(Project project, Long run_id, Task task) {
+		Comment newComment = new Comment(project, run_id, this, task);
+		this.comments.add(newComment);
+		this.save();
+		return newComment;
+	}
+	
+//	public Comment updateComment(Long comment_id, String content) {
+//		Comment tmpComment = Comment.findById(comment_id);
+//		tmpComment.content = content;
+//		tmpComment.save();
+//		return tmpComment;
+//	}
 }
