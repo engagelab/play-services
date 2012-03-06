@@ -40,7 +40,7 @@ public class Postits extends Controller {
     	Project project = Project.findById(project_id);
     	Task task = Task.findById(task_id);
     	Postit newPostit = myGroup.createPostit(project, task);
-    	renderJSON(newPostit);
+    	renderTemplate("Postits/postit.json", newPostit);
     }
    
    public static void update() throws IOException {

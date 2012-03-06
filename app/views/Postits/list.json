@@ -1,0 +1,9 @@
+[
+#{list comments}
+  {
+  		"id": "${_.id}",
+      "title": "${_.title}",
+      "message": "${_.message}"
+  } #{if !_isLast},#{/if}
+#{/list}
+]

@@ -9,16 +9,23 @@ import com.google.gson.JsonElement;
 
 import play.libs.WS;
 import play.libs.WS.HttpResponse;
+import play.mvc.Before;
 import play.mvc.Controller;
 import requests.JsonRequest;
 
 public class Groups extends Controller{
-	
+    @Before
+    static void createRollcallSession() {
+    	String contents = "{ \"Session\": {\"username\":\"binden\" , \"password\":\"binden\"} }";
+		String url  = "http://imediamac28.uio.no:8080";
+		HttpResponse response = WS.url(url).body(contents).post();
+    }
+    
 	//Retrieve the list of all groups
 	public static void all(){
-		//play serve as client to Ruby rollcall server at port XXXX
-		//Talking to Jeremy Ruby Server for testing
-		String url = "http://129.240.161.29:4567/groups";
+		//play serve as client to Ruby rollcall server at port 8080
+		//Talking to Jeremy Ruby Server for testing http://129.240.161.29:4567/groups
+		String url = "http://imediamac28.uio.no:8080/groups.json";
 		JsonElement result = WS.url(url).get().getJson();
 		String res = result.toString();
 		renderJSON(res);
@@ -26,7 +33,7 @@ public class Groups extends Controller{
 	
 	//Retrieve the group with ID `1`
 	public static void getById(String id){	
-		String url = "http://localhost:3000/groups/?id=%s";
+		String url = "http://imediamac28.uio.no:8080/groups/1.json";//?id=%s";
 		//WS.url accept only String type parameters
 		JsonElement result = WS.url(url,id).get().getJson();
 		renderJSON(result);
