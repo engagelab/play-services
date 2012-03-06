@@ -27,7 +27,7 @@ public class Postits extends Controller {
         render();
     }
    
-   //{user: "jeremyt", sceneId: "simulation1" }
+   //{project_id: "1", group_id: "1" , task_id: "1"}
    public static void create() throws IOException {
     	String json = IOUtils.toString(request.body);
     	Postit_request req = new Gson().fromJson(json, Postit_request.class);
@@ -42,7 +42,6 @@ public class Postits extends Controller {
     	Postit newPostit = myGroup.createPostit(project, task);
     	renderJSON(newPostit);
     }
-   
    
    public static void update() throws IOException {
    	String json = IOUtils.toString(request.body);

@@ -12,7 +12,7 @@ import play.libs.WS.HttpResponse;
 import play.mvc.Controller;
 import requests.JsonRequest;
 
-public class MyGroups extends Controller{
+public class Groups extends Controller{
 	
 	//Retrieve the list of all groups
 	public static void all(){
