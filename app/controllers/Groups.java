@@ -73,11 +73,14 @@ public class Groups extends Controller{
 	    	Long run_id = req.run_id;
 	    	Long group_id = req.group_id;
 	    	Long task_id = req.task_id;
+	    	float xpos = req.xpos;
+		   	float ypos = req.ypos;
+		   	String content = req.content;
 	    	
 	    	MyGroup myGroup = MyGroup.findById(group_id);
 	    	Project project = Project.findById(project_id);
 	    	Task task = Task.findById(task_id);
-	    	Comment comment = myGroup.postComment(project,run_id, task);
+	    	Comment comment = myGroup.postComment(project,run_id, task, content, xpos, ypos);
 	    	renderTemplate("Comments/comment.json", comment);
 	    }
 	   
@@ -108,10 +111,9 @@ public class Groups extends Controller{
 	    	renderTemplate("Comments/list.json", comments);
 	   }
 	   
-	   public static void showComments(){
+	   public static void showCommentbyGT(){
 		   Long group_id = params.get("group_id",Long.class);
 		   Long task_id = params.get("task_id",Long.class);
-		  
 			List<Comment> comments = Comment.find("SELECT c  from Comment c Where c.myGroup.id =? and c.task.id=?"
 					, group_id, task_id).fetch();
 	    	renderTemplate("Comments/list.json", comments);

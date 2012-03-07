@@ -46,14 +46,6 @@ public class Comment extends Model {
 		postedAt = new Date();
 	}
 	
-	public Comment(Project project, Long run_id, MyGroup myGroup, Task task) {
-		this.project = project;
-		this.run_id = run_id;
-		this.myGroup = myGroup;
-		this.task 	= task;
-		this.content = "";
-
-		}
 	
 	public Comment(Project project, Long run_id, MyGroup myGroup, Task task, String content, float xpos, float ypos) {
 		this.project = project;

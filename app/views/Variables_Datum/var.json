@@ -1,0 +1,4 @@
+{
+"var_id": "${var.id}"
+"value": "${var.s1_meter}"
+}

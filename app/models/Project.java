@@ -32,6 +32,9 @@ public class Project extends Model{
 	@OneToMany(mappedBy="project", cascade=CascadeType.ALL)
     public List<Comment> comments;
 	
+	@OneToMany(mappedBy="project", cascade=CascadeType.ALL)
+	public List<Variables_Data> variables_data;
+	
 	
 	public Project(String title){
 		this.acts = new ArrayList<Act>();

@@ -32,17 +32,22 @@ GET			/task/id/{title}							Projects.getTaskIdByTitle
 # Routes for Group Controller 
 
 GET  		/comments									Groups.showAllComments
-GET  		/comments/?									Groups.showComments
+GET  		/comments/?									Groups.showCommentbyGT
 POST  		/comments/									Groups.postComment
-PUT  		/comments/{id}								Groups.updateComment
+PUT  		/comments/									Groups.updateComment
 DELETE  	/comments/{id}								Groups.deleteComment
 								
 
 #Group Operation routs
-GET	    	/groups											Groups.all
-GET	    	/groups/{id}									Groups.getById
-DELETE	    /groups/{id}									Groups.deleteGroup
+GET	    	/groups										Groups.all
+GET	    	/groups/{id}								Groups.getById
+DELETE	    /groups/{id}								Groups.deleteGroup
 
+
+# Routes for Variable Datum
+GET  		/var/?										Variables_Datum.getVarByTaskAndGroup
+POST  		/var/										Variables_Datum.saveVariables
+PUT  		/var/										Variables_Datum.updateVariables
 
 
 

@@ -10,17 +10,19 @@ public class GroupServicesTest extends FunctionalTest{
 	
 	@Test
 	public void postComment() {
-        Response response = POST("/comments/","application/json","{ \"project_id\": \"1\", \"run_id\": \"1\", \"group_id\": \"1\", \"task_id\": \"1\"}"); 
-	    assertIsOk(response);
-	}
-	
-	@Ignore
-	public void updateComment() {
-        Response response = PUT("/comments/","application/json","{ \"comment_id\": \"2\" , \"content\": \"Hello Mr\"}"); 
+        Response response = POST("/comments/","application/json","{ \"project_id\": \"1\", \"run_id\": \"2\", " +
+        		"\"group_id\": \"1\", \"task_id\": \"1\", \"xpos\": \"2\", \"ypos\": \"2\", \"content\": \"Hello Sir\"}"); 
 	    assertIsOk(response);
 	}
 	
 	@Test
+	public void updateComment() {
+        Response response = PUT("/comments/","application/json","{ \"project_id\": \"1\", \"run_id\": \"2\", " +
+        		"\"group_id\": \"1\", \"task_id\": \"1\",\"comment_id\": \"1\", \"xpos\": \"2\", \"ypos\": \"2\", \"content\": \"Welcome Sir\"}"); 
+	    assertIsOk(response);
+	}
+	
+	@Ignore
 	public void deleteComment() {
 
 	       Response response = DELETE("/comments/3");

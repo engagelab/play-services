@@ -18,6 +18,9 @@ public class Task extends Model{
 	 @OneToMany(mappedBy="task", cascade=CascadeType.ALL)
 	 public List<Comment> comments;
 	 
+	 @OneToMany(mappedBy="task", cascade=CascadeType.ALL)
+	 public List<Variables_Data> variables_data;
+	 
 	 @ManyToOne
 	 @Required
 	 public Scene scene;
