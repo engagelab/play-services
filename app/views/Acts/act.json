@@ -1,0 +1,4 @@
+{
+  "act_id": "${act.id}",
+  "title": "${act.title}",
+}

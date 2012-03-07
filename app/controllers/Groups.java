@@ -26,6 +26,16 @@ public class Groups extends Controller{
 		WS.url(url).body(contents).post();
     }
     
+	public static void getRunIdByTitle(String title){
+		String url = "http://imediamac28.uio.no:8080/runs.json";
+		//WS.url accept only String type parameters
+		JsonElement result = WS.url(url).get().getJson();
+		String res = result.toString();
+        if(res == null)
+            renderTemplate("/null.json");
+		renderJSON(res);
+	}
+    
 	//Retrieve the list of all groups
 	public static void all(){
 		//play serve as client to Ruby rollcall server at port 8080
@@ -101,7 +111,9 @@ public class Groups extends Controller{
 	   public static void showComments(){
 		   Long group_id = params.get("group_id",Long.class);
 		   Long task_id = params.get("task_id",Long.class);
-			List<Comment> comments = Comment.find("SELECT c  from Comment c Where c.myGroup.id =? and c.task.id=?", group_id, task_id).fetch();
+		  
+			List<Comment> comments = Comment.find("SELECT c  from Comment c Where c.myGroup.id =? and c.task.id=?"
+					, group_id, task_id).fetch();
 	    	renderTemplate("Comments/list.json", comments);
 	   }
 	   

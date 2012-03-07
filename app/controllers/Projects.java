@@ -42,10 +42,37 @@ public class Projects extends Controller{
         renderTemplate("Tasks/list.json", tasks);
     }
     
-    public static void getCommentsByTask(Long id) {
-        List <Comment> comments = Comment.findByTask(id);
-        renderTemplate("Comments/list.json", comments);
+    /////////////////////////////////////////////////////////////////////////
+    
+    public static void getProjectIdByTitle(String title) {
+    	//String title = params.get("title");
+        Project project = Project.find("byTitle",title).first();
+        if(project == null)
+        renderTemplate("/null.json");
+        renderTemplate("Projects/project.json", project);
     }
+    
+    public static void getActIdByTitle(String title) {
+        Act act = Act.find("byTitle",title).first();
+        if(act == null)
+            renderTemplate("/null.json");
+            renderTemplate("Acts/act.json", act);
+    }
+    
+    public static void getSceneIdByTitle(String title) {
+        Scene scene = Scene.find("byTitle",title).first();
+        if(scene == null)
+            renderTemplate("/null.json");
+            renderTemplate("Scenes/scene.json", scene);
+    }
+    
+    public static void getTaskIdByTitle(String title) {
+        Task task = Task.find("byTitle",title).first();
+        if(task == null)
+            renderTemplate("/null.json");
+            renderTemplate("Tasks/task.json", task);
+    }
+
     //TODO wrapper function for getPostitbyTask needed.
     
     public static void index(Long id) {

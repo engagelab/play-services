@@ -49,33 +49,32 @@ public class ProjectControllerTest extends FunctionalTest {
 	}
 	
 	@Test
-	public void getCommentsByTask() {
-	       Response response = GET("/comments/task/1");
+	public void getProjectIdByTitle() {
+			String title = "aprilrun";
+	       Response response = GET("/project/id/"+title);
 	       assertIsOk(response);
 	}
 	
 	@Test
-	public void findByUserAndTask() {
-	       Response response = GET("/comments/?userId=2&taskId=1");
+	public void getActIdByTitle() {
+			String title = "heatpump";
+	       Response response = GET("/act/id/"+title);
 	       assertIsOk(response);
 	}
 	
 	@Test
-	public void findByUserTaskAndProject() {
-	       Response response = GET("/comments/put/?projectId=1&userId=2&taskId=1");
+	public void getSceneIdByTitle() {
+			String title = "simulations";
+	       Response response = GET("/scene/id/"+title);
 	       assertIsOk(response);
 	}
 	
-	//GET comments by user and project
-	//public void findCommentsByUserAndProject
-	
-	//POST comment by task and user and project (PUT)
-	//public void postCommentByPUT
-	
-
-	
-	//PUT UPDATE comment with new data
-	
+	@Test
+	public void getTaskIdByTitle() {
+			String title = "level1";
+	       Response response = GET("/task/id/"+title);
+	       assertIsOk(response);
+	}
 	
 	
 }

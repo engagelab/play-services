@@ -1,8 +1,8 @@
 [
 #{list projects}
   {
-  		"id": "${_.id}",
-      "title": "${_.title}"
+  "project_id": "${_.id}",
+  "title": "${_.title}"
   } #{if !_isLast},#{/if}
 #{/list}
 ]

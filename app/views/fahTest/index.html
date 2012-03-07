@@ -1,31 +1,35 @@
-<html> 
+<!DOCTYPE html>
+<html>
 <head>
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<link rel="apple-touch-startup-image" href="/simu1.png">
-<title>Canvas Test</title> 
+<title>I have a back bone</title>
+</head>
+<body>
+<button id="add-friend">Add Friend</button>
+<ul id="friends-list">
+</ul>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.4/underscore-min.js"></script>
+<script src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js"></script>
 
 <script>
-	window.onload = function() { 
-		var ctxElement = document.getElementById('canvasTest04');
-		var ctx = ctxElement.getContext("2d"); 
-		if (ctx) {
-			ctx.strokeStyle = "#F00"; ctx.fillStyle = "#CCC"; ctx.lineWidth = 10;
-			ctx.fillRect(25,25,180,200); ctx.strokeRect(25,25,180,200);
-			ctx.save();
-			ctx.strokeStyle = "#000"; ctx.fillStyle = "#FFF"; ctx.lineWidth = 5; ctx.fillRect(230,25,180,200); ctx.strokeRect(230,25,180,200);
-			ctx.restore();
-			ctx.fillRect(435, 25, 180, 200); ctx.strokeRect(435,25,180,200);
-		}
-	}
-	</script>
-	</head> 
-	<body>
-	
-	<h1>Canvas Example 04</h1>
-	
-	<canvas id="canvasTest04" width="800" height="600">Please Enable Javascript Engine</canvas>
-	
-	</body>
-	 </html>
 
-					
+(function)($){
+	var ListView = Backbone.View.extend({
+		el:$('body'),
+		
+		intialize: function(){
+			_.bindAll(this,'render');
+			
+			this.render();
+		},
+		
+		render: function(){
+			$(this.el).append("<ul> <li> hello world </li></ul>");
+		}
+	});
+	
+	var listView = new ListView();
+}
+</script>
+</body>
+</html>

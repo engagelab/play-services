@@ -1,7 +1,7 @@
 [
 #{list comments}
   {
-  		"id": "${_.id}",
+  		"comment_id": "${_.id}",
   		"content": "${_.content}",
   		"xpos": "${_.xpos}",
   		"ypos": "${_.ypos}"

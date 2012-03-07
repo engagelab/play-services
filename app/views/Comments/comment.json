@@ -1,8 +1,6 @@
-[
-  {
-  		"id": "${comment.id}",
-  		"content": "${comment.content}",
-  		"xpos": "${comment.xpos}",
-  		"ypos": "${comment.ypos}"
-  }
-]
+{
+  "comment_id": "${comment.id}",
+  "content": "${comment.content}",
+  "xpos": "${comment.xpos}",
+  "ypos": "${comment.ypos}"
+}

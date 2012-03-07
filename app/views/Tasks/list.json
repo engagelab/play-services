@@ -1,8 +1,8 @@
 [
 #{list tasks}
   {
-  		"id": "${_.id}",
-      "title": "${_.title}"
+  	"task_id": "${_.id}",
+    "title": "${_.title}"
   } #{if !_isLast},#{/if}
 #{/list}
 ]
