@@ -23,3 +23,13 @@ conf/application.conf
 public/.project
 
 public/fahied/js/main.js
+
+app/views/fahTest/index.html
+
+public/fahied/css/styles.css
+
+public/fahied/js/jquery-1.7.1.min.js
+
+public/fahied/js/backbone-min.js
+
+.gitignore
