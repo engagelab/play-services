@@ -17,13 +17,13 @@ public class MyGroup extends Model{
     public List<Comment> comments;
 	
 	@OneToMany(mappedBy="myGroup", cascade=CascadeType.ALL)
-    public List<Variables_Data> variables_datum;
+    public List<TaskData> variables_datum;
 	
 	
 	//User Constructor
 	public MyGroup(String name, String run_id){
 		this.comments = new ArrayList<Comment>();
-		this.variables_datum = new ArrayList<Variables_Data>();
+		this.variables_datum = new ArrayList<TaskData>();
 		this.name = name;
 		this.run_id = run_id;
 	}
@@ -35,10 +35,10 @@ public class MyGroup extends Model{
 		return newComment;
 	}
 
-	public Variables_Data saveVariableData(Project project, Long run_id,
-			Task task, String s1_meter) {
+	public TaskData saveVariableData(Project project, Long run_id,
+			Task task) {
 		
-		Variables_Data var = new Variables_Data(project, run_id, this, task,s1_meter);
+		TaskData var = new TaskData(project, run_id, this, task);
 		this.variables_datum.add(var);
 		this.save();
 		return var;

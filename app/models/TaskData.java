@@ -6,7 +6,7 @@ import javax.persistence.ManyToOne;
 import play.db.jpa.Model;
 
 @Entity
-public class Variables_Data extends Model {
+public class TaskData extends Model {
 	@ManyToOne
     public MyGroup myGroup;
 	
@@ -19,13 +19,21 @@ public class Variables_Data extends Model {
 	
 	public Long run_id;
 	
-	public String s1_meter;
+	public String data;
 	
-	public Variables_Data(Project project, Long run_id, MyGroup myGroup, Task task, String s1_meter){
+	public TaskData(Project project, Long run_id, MyGroup myGroup, Task task){
 		this.project = project;
 		this.run_id = run_id;
 		this.myGroup = myGroup;
 		this.task = task;
-		this.s1_meter = s1_meter;
+		this.data = "";
+	}
+	
+	public TaskData(Project project, Long run_id, MyGroup myGroup, Task task, String data){
+		this.project = project;
+		this.run_id = run_id;
+		this.myGroup = myGroup;
+		this.task = task;
+		this.data = data;
 	}
 }

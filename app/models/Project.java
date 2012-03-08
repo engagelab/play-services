@@ -33,7 +33,7 @@ public class Project extends Model{
     public List<Comment> comments;
 	
 	@OneToMany(mappedBy="project", cascade=CascadeType.ALL)
-	public List<Variables_Data> variables_data;
+	public List<TaskData> variables_data;
 	
 	
 	public Project(String title){

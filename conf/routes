@@ -45,11 +45,9 @@ DELETE	    /groups/{id}								Groups.deleteGroup
 
 
 # Routes for Variable Datum
-GET  		/var/?										Variables_Datum.getVarByTaskAndGroup
-POST  		/var/										Variables_Datum.saveVariables
-PUT  		/var/										Variables_Datum.updateVariables
-
-
+GET  		/taskdata/?									TaskDatum.getVarByTaskAndGroup
+POST  		/taskdata/									TaskDatum.saveVariables
+PUT  		/taskdata/									TaskDatum.updateVariables
 
 #Fahied Testing  JQuery work
 GET   		/fahied/									FahTest.index
