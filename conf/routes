@@ -22,11 +22,12 @@ GET   		/scenes/act/{id}							Projects.getScenesByAct
 GET   		/tasks/scene/{id}							Projects.getTasksByScene
 
 # Get IDs for resources
-GET			/run/id/{title}								Group.getRunIdByTitle
+GET			/run/id/{title}								Groups.getRunIdByTitle
 GET			/project/id/{title}							Projects.getProjectIdByTitle
 GET			/act/id/{title}								Projects.getActIdByTitle
 GET			/scene/id/{title}							Projects.getSceneIdByTitle
 GET			/task/id/{title}							Projects.getTaskIdByTitle
+
 
 
 # Routes for Group Controller 
@@ -42,6 +43,8 @@ DELETE  	/comments/{id}								Groups.deleteComment
 GET	    	/groups										Groups.all
 GET	    	/groups/{id}								Groups.getById
 DELETE	    /groups/{id}								Groups.deleteGroup
+
+GET	    	/run/{title}								Groups.getRunIdByTitle
 
 
 # Routes for Variable Datum

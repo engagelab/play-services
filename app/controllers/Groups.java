@@ -16,6 +16,7 @@ import play.mvc.Before;
 import play.mvc.Controller;
 import requests.Comment_request;
 import requests.JsonRequest;
+import requests.RunId_request;
 
 
 public class Groups extends Controller{
@@ -27,13 +28,16 @@ public class Groups extends Controller{
     }
     
 	public static void getRunIdByTitle(String title){
-		String url = "http://imediamac28.uio.no:8080/runs.json";
+		String url = "http://imediamac28.uio.no:8080/groups/runs.json";
 		//WS.url accept only String type parameters
 		JsonElement result = WS.url(url).get().getJson();
 		String res = result.toString();
         if(res == null)
             renderTemplate("/null.json");
-		renderJSON(res);
+        RunId_request req = new Gson().fromJson(res, RunId_request.class);
+        req.run_id = "2";
+		renderJSON(req);
+		
 	}
     
 	//Retrieve the list of all groups

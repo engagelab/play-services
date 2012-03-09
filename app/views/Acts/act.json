@@ -1,4 +1,1 @@
-{
-  "act_id": "${act.id}",
-  "title": "${act.title}",
-}
+{"act_id": "${act.id}","title": "${act.title}"}
