@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
@@ -9,6 +10,7 @@ import models.*;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+import com.google.gson.reflect.TypeToken;
 
 import play.libs.WS;
 import play.libs.WS.HttpResponse;
@@ -28,15 +30,13 @@ public class Groups extends Controller{
     }
     
 	public static void getRunIdByTitle(String title){
-		String url = "http://imediamac28.uio.no:8080/groups/runs.json";
+		String url = "http://imediamac28.uio.no:8080/runs/" +title +".json";
 		//WS.url accept only String type parameters
 		JsonElement result = WS.url(url).get().getJson();
 		String res = result.toString();
         if(res == null)
             renderTemplate("/null.json");
-        RunId_request req = new Gson().fromJson(res, RunId_request.class);
-        req.run_id = "2";
-		renderJSON(req);
+		renderJSON(res);
 		
 	}
     

@@ -1,3 +1,5 @@
+//you can use private members with getter and setter
+
 package models;
 
 import java.util.Date;
