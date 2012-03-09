@@ -14,12 +14,13 @@ import play.db.jpa.Model;
 @Entity
 public class Task extends Model{
 	 public String title;
+	 public String data;
 	 
 	 @OneToMany(mappedBy="task", cascade=CascadeType.ALL)
 	 public List<Comment> comments;
 	 
 	 @OneToMany(mappedBy="task", cascade=CascadeType.ALL)
-	 public List<TaskData> variables_data;
+	 public List<TaskData> taskdata;
 	 
 	 @ManyToOne
 	 @Required
@@ -27,6 +28,7 @@ public class Task extends Model{
 	 
 	 public Task(String title){
 		 this.title = title;
+		 this.data = "1000";
 	 }
 
 	public static List<Task> findByScene(Long id) {
@@ -34,4 +36,9 @@ public class Task extends Model{
 		List<Task> tasks = scene.tasks;
 		return tasks;
 	}
+	
+
 }
+
+
+

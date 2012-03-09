@@ -26,8 +26,8 @@ GET			/run/id/{title}								Groups.getRunIdByTitle
 GET			/project/id/{title}							Projects.getProjectIdByTitle
 GET			/act/id/{title}								Projects.getActIdByTitle
 GET			/scene/id/{title}							Projects.getSceneIdByTitle
-GET			/task/id/{title}							Projects.getTaskIdByTitle
-
+GET			/task/?										Projects.getTaskIdByTitle
+PUT			/taskdata/?									Groups.updateTaskData
 
 
 # Routes for Group Controller 
@@ -47,9 +47,9 @@ DELETE	    /groups/{id}								Groups.deleteGroup
 GET	    	/run/{title}								Groups.getRunIdByTitle
 
 
-# Routes for Variable Datum
+# Routes for Task Datum
 GET  		/taskdata/?									TaskDatum.getVarByTaskAndGroup
-POST  		/taskdata/									TaskDatum.saveVariables
+GET  		/taskdata/?									TaskDatum.saveVariables
 PUT  		/taskdata/									TaskDatum.updateVariables
 
 #Fahied Testing  JQuery work

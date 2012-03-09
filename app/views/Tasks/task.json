@@ -1,4 +1,5 @@
 {
 "task_id": "${task.id}",
-"title": "${task.title}"
+"title": "${task.title}",
+"task_data": "${task.data}"
 }

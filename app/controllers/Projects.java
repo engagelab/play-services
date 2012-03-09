@@ -2,6 +2,7 @@ package controllers;
 
 import play.data.validation.Required;
 import play.mvc.Controller;
+import requests.ResponseData;
 
 import java.io.IOException;
 import java.util.List;
@@ -66,12 +67,27 @@ public class Projects extends Controller{
             renderTemplate("Scenes/scene.json", scene);
     }
     
-    public static void getTaskIdByTitle(String title) {
-        Task task = Task.find("byTitle",title).first();
-        if(task == null)
-            renderTemplate("/null.json");
-            renderTemplate("Tasks/task.json", task);
+    public static void getTaskIdByTitle() {
+    	String title = params.get("title");
+    	Long project_id = params.get("project_id", Long.class);
+    	Long run_id = params.get("run_id", Long.class);
+    	Long myGroup_id = params.get("group_id", Long.class);
+    	Task task = Task.find("byTitle",title).first();
+    	Long task_id = task.id;
+    	
+    	//find or create Taskdata object as group goes to specific task
+    	TaskData taskdata = TaskData.find("SELECT td  from TaskData td Where td.project.id=? and td.myGroup.id =? and td.task.id=? "
+				,project_id, myGroup_id, task_id).first();
+    	if(taskdata == null)
+    	{
+    		MyGroup group = MyGroup.findById(myGroup_id);
+    		Project project = Project.findById(project_id);
+    		taskdata = group.createTaskData(project, run_id, task);
+    		taskdata.save();
+    	}
+    	renderTemplate("TaskDatum/taskdata.json", taskdata);
     }
+
 
     //TODO wrapper function for getPostitbyTask needed.
     

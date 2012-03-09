@@ -33,8 +33,7 @@ public class Project extends Model{
     public List<Comment> comments;
 	
 	@OneToMany(mappedBy="project", cascade=CascadeType.ALL)
-	public List<TaskData> variables_data;
-	
+	public List<TaskData> taskdatum;
 	
 	public Project(String title){
 		this.acts = new ArrayList<Act>();
