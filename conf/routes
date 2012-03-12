@@ -35,7 +35,7 @@ PUT			/taskdata/?									Groups.updateTaskData
 GET  		/comments									Groups.showAllComments
 GET  		/comments/?									Groups.showCommentbyGT
 POST  		/comments/									Groups.postComment
-PUT  		/comments/									Groups.updateComment
+PUT  		/comments/{id}									Groups.updateComment
 DELETE  	/comments/{id}								Groups.deleteComment
 								
 

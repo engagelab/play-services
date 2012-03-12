@@ -92,16 +92,16 @@ public class Groups extends Controller{
     	renderTemplate("Comments/comment.json", comment);
     }
 	   
-	   public static void updateComment() throws IOException {
+	   public static void updateComment(Long id) throws IOException {
 		   	String json = IOUtils.toString(request.body);
+		   	System.out.println(json);
 		   	Comment_request req = new Gson().fromJson(json, Comment_request.class);
 		   	//Serialize request
-		   	Long comment_id = req.comment_id;
 		   	String content = req.content;
 		   	float xpos = req.xpos;
 		   	float ypos = req.ypos;
 		  
-		   	Comment comment = Comment.findById(comment_id);
+		   	Comment comment = Comment.findById(id);
 		   	comment.content = content;
 		   	comment.xpos = xpos;
 		   	comment.ypos = ypos;
@@ -129,6 +129,7 @@ public class Groups extends Controller{
 	   
 	   public static void updateTaskData() throws IOException {
 		   	String json = IOUtils.toString(request.body);
+		   	System.out.println(json);
 		   	Datum_request req = new Gson().fromJson(json, Datum_request.class);
 		   	//Serialize request
 		   
