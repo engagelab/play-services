@@ -28,7 +28,7 @@ public class Task extends Model{
 	 
 	 public Task(String title){
 		 this.title = title;
-		 this.data = "1000";
+		// this.data = "1000";
 	 }
 
 	public static List<Task> findByScene(Long id) {

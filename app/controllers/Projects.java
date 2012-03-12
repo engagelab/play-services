@@ -3,17 +3,19 @@ package controllers;
 import play.data.validation.Required;
 import play.mvc.Controller;
 import requests.ResponseData;
-
 import java.io.IOException;
 import java.util.List;
-
 import org.apache.commons.io.IOUtils;
-
 import com.google.gson.Gson;
-
 import models.*;
+
+/*******************************************************************************
+ *	Class Name: Project Controller
+ * - contain necessary implementations to facilitate retrieve data-set to a specific project. 
+ * - it also initialize some of the variables relating to a specific task.
+ *******************************************************************************/
+
 public class Projects extends Controller{
-	
 	
     public static void getAllProjects() {
         List <Project> projects = Project.findAll();
@@ -85,7 +87,7 @@ public class Projects extends Controller{
     		taskdata = group.createTaskData(project, run_id, task);
     		taskdata.save();
     	}
-    	renderTemplate("TaskDatum/taskdata.json", taskdata);
+    	renderTemplate("TaskDatum/taskdata.json", taskdata, task_id);
     }
 
 

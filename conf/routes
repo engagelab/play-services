@@ -50,7 +50,7 @@ GET	    	/run/{title}								Groups.getRunIdByTitle
 # Routes for Task Datum
 GET  		/taskdata/?									TaskDatum.getVarByTaskAndGroup
 GET  		/taskdata/?									TaskDatum.saveVariables
-PUT  		/taskdata/									TaskDatum.updateVariables
+PUT  		/taskdata/									TaskDatum.updateTaskData
 
 #Fahied Testing  JQuery work
 GET   		/fahied/									FahTest.index
