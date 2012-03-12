@@ -47,10 +47,9 @@ DELETE	    /groups/{id}								Groups.deleteGroup
 GET	    	/run/{title}								Groups.getRunIdByTitle
 
 
-# Routes for Task Datum
-GET  		/taskdata/?									TaskDatum.getVarByTaskAndGroup
-GET  		/taskdata/?									TaskDatum.saveVariables
-PUT  		/taskdata/									TaskDatum.updateTaskData
+# Routes for Task Datum									
+GET  		/taskdata/?									Projects.getTaskIdByTitle
+PUT  		/taskdata/									Groups.updateTaskData
 
 #Fahied Testing  JQuery work
 GET   		/fahied/									FahTest.index
