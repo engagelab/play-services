@@ -1,4 +1,1 @@
-{
-"data_id": "${taskdata.id}",
-"data": "${taskdata.taskdata}"
-}
+{"data_id": "${taskdata.id}","data": "${taskdata.taskdata}"}

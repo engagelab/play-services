@@ -69,12 +69,11 @@ public class ProjectControllerTest extends FunctionalTest {
 	       assertIsOk(response);
 	}
 	
-	@Test
-	public void getTaskIdByTitle() {
-			String title = "level1";
-	       Response response = GET("/task/id/"+title);
-	       assertIsOk(response);
-	}
-	
+//	@Test
+//	public void getTaskIdByTitle() {
+//			String title = "level1";
+//	       Response response = GET("/task/id/"+title);
+//	       assertIsOk(response);
+//	}
 	
 }

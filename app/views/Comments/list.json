@@ -1,10 +1,1 @@
-[
-#{list comments}
-  {
-  		"comment_id": "${_.id}",
-  		"content": "${_.content}",
-  		"xpos": "${_.xpos}",
-  		"ypos": "${_.ypos}"
-  } #{if !_isLast},#{/if}
-#{/list}
-]
+[#{list comments}{"comment_id": "${_.id}","content": "${_.content}","xpos": "${_.xpos}","ypos": "${_.ypos}"} #{if !_isLast},#{/if}#{/list}]

@@ -1,4 +1,1 @@
-{
-"project_id": "${project.id}",
-"title": "${project.title}"
-}
+{"project_id": "${project.id}","title": "${project.title}"}

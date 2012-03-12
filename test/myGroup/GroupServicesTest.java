@@ -22,17 +22,17 @@ public class GroupServicesTest extends FunctionalTest{
 	    assertIsOk(response);
 	}
 	
-	@Ignore
+	@Test
 	public void deleteComment() {
 
-	       Response response = DELETE("/comments/3");
+	       Response response = DELETE("/comments/4");
 	       assertIsOk(response);
 	}
 	
 	@Test
-	public void showCommentbyGR() {
+	public void showCommentbyGT() {
 
-	       Response response = GET("/comments/");
+	       Response response = GET("/comments/?group_id=1&task_id=1");
 	       assertIsOk(response);
 	}
 	

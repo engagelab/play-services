@@ -130,7 +130,7 @@ public class Groups extends Controller{
 		   	String json = IOUtils.toString(request.body);
 		   	Datum_request req = new Gson().fromJson(json, Datum_request.class);
 		   	//Serialize request
-		   	Long data_id = req.data_id;
+		   	Long data_id = req.data_id.longValue();
 		   	String data = req.data;
 
 		   	TaskData existing_var = TaskData.findById(data_id);

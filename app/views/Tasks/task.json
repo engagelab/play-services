@@ -1,5 +1,1 @@
-{
-"task_id": "${task.id}",
-"title": "${task.title}",
-"task_data": "${task.data}"
-}
+{"task_id": "${task.id}","title": "${task.title}","task_data": "${task.data}"}
