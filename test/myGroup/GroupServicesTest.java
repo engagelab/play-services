@@ -8,7 +8,7 @@ import play.test.FunctionalTest;
 
 public class GroupServicesTest extends FunctionalTest{
 	
-	@Test
+	@Ignore
 	public void postComment() {
         Response response = POST("/comments/","application/json","{ \"project_id\": \"1\", \"run_id\": \"2\", " +
         		"\"group_id\": \"1\", \"task_id\": \"1\", \"xpos\": \"2\", \"ypos\": \"2\", \"content\": \"Hello Sir\"}"); 

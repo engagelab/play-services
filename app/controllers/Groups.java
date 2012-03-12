@@ -3,6 +3,7 @@ package controllers;
 import java.io.Console;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.net.URLEncoder;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
@@ -96,13 +97,25 @@ public class Groups extends Controller{
 		   	String json = IOUtils.toString(request.body);
 		   	System.out.println(json);
 		   	Comment_request req = new Gson().fromJson(json, Comment_request.class);
+<<<<<<< HEAD
 		   	//Serialize request
+=======
+		  	System.out.println(json);
+		   	Long comment_id = req.comment_id;
+>>>>>>> post comment in utf-8 formate
 		   	String content = req.content;
+		   	String encoded_contents= URLEncoder.encode(content, "UTF-8");
 		   	float xpos = req.xpos;
 		   	float ypos = req.ypos;
+<<<<<<< HEAD
 		  
 		   	Comment comment = Comment.findById(id);
 		   	comment.content = content;
+=======
+		   	
+		   	Comment comment = Comment.findById(comment_id);
+		   	comment.content = encoded_contents;
+>>>>>>> post comment in utf-8 formate
 		   	comment.xpos = xpos;
 		   	comment.ypos = ypos;
 		   	comment.save();
