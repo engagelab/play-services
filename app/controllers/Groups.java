@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.Console;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
@@ -130,12 +131,13 @@ public class Groups extends Controller{
 		   	String json = IOUtils.toString(request.body);
 		   	Datum_request req = new Gson().fromJson(json, Datum_request.class);
 		   	//Serialize request
+		   
 		   	Long data_id = Long.parseLong(req.data_id);
 		   	String data = req.data;
-
+		   	//System.println(json);
 		   	TaskData existing_var = TaskData.findById(data_id);
 		   	existing_var.taskdata = data;
 		   	existing_var.save();
-		   	//renderTemplate("TaskDatum/taskdataU.json", existing_var);
+		   	renderTemplate("TaskDatum/taskdataU.json", existing_var);
 		   }
 }
