@@ -29,7 +29,7 @@ public class TaskDataTest extends FunctionalTest{
 	
 	@Test
 	public void updateData() {
-        Response response = PUT("/taskdata/","application/json","{ \"data_id\": \"2\", \"data\": \"22\"}"); 
+        Response response = PUT("/taskdata/","application/json","{ \"data_id\": \"1\", \"data\": \"22\"}"); 
 	    assertIsOk(response);
 	}
 }
