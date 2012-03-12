@@ -17,12 +17,12 @@ public class GroupServicesTest extends FunctionalTest{
 	
 	@Test
 	public void updateComment() {
-        Response response = PUT("/comments/","application/json","{ \"project_id\": \"1\", \"run_id\": \"2\", " +
-        		"\"group_id\": \"1\", \"task_id\": \"1\",\"comment_id\": \"1\", \"xpos\": \"2\", \"ypos\": \"2\", \"content\": \"Welcome Sir\"}"); 
+        Response response = PUT("/comments/1","application/json","{ \"project_id\": \"1\", \"run_id\": \"2\", " +
+        		"\"group_id\": \"1\", \"task_id\": \"1\",\"comment_id\": \"10\", \"xpos\": \"2\", \"ypos\": \"2\", \"content\": \"Gøt#######ebæeåå'\"}"); 
 	    assertIsOk(response);
 	}
 	
-	@Test
+	@Ignore
 	public void deleteComment() {
 
 	       Response response = DELETE("/comments/4");

@@ -92,54 +92,48 @@ public class Groups extends Controller{
     	Comment comment = myGroup.postComment(project,run_id, task, content, xpos, ypos);
     	renderTemplate("Comments/comment.json", comment);
     }
-	   
+   /********************* Update the Comment **********************************/
 	   public static void updateComment(Long id) throws IOException {
 		   	String json = IOUtils.toString(request.body);
-		   	System.out.println(json);
+		   	System.out.println("PUT comments/id:"+ json);
 		   	Comment_request req = new Gson().fromJson(json, Comment_request.class);
-<<<<<<< HEAD
-		   	//Serialize request
-=======
+
 		  	System.out.println(json);
 		   	Long comment_id = req.comment_id;
->>>>>>> post comment in utf-8 formate
+
 		   	String content = req.content;
-		   	String encoded_contents= URLEncoder.encode(content, "UTF-8");
+		   	//toString().getBytes("NS_4551-1");
+		   	//String encoded_contents= URLEncoder.encode(content, "UTF-8");
 		   	float xpos = req.xpos;
 		   	float ypos = req.ypos;
-<<<<<<< HEAD
-		  
-		   	Comment comment = Comment.findById(id);
-		   	comment.content = content;
-=======
-		   	
+
 		   	Comment comment = Comment.findById(comment_id);
-		   	comment.content = encoded_contents;
->>>>>>> post comment in utf-8 formate
+		   	comment.content = content;
 		   	comment.xpos = xpos;
 		   	comment.ypos = ypos;
 		   	comment.save();
 		   	renderTemplate("Comments/comment.json", comment);
 		   }
-	   
+	   /********************* Delete the Comment **********************************/
 	   public static void deleteComment(Long id){
 		   
 		   Comment.delete("from Comment c where c.id=?", id);
 	   }
-	   
-	   public static void showAllComments(Long id){
+	   /********************* Show all Comments **********************************/
+	   public static void showAllComments(){
 	    	List<Comment> comments = Comment.findAll();
 	    	renderTemplate("Comments/list.json", comments);
 	   }
-	   
+	   /********************* Show Comments by Group and Task **********************/
 	   public static void showCommentbyGT(){
 		   Long group_id = params.get("group_id",Long.class);
 		   Long task_id = params.get("task_id",Long.class);
 			List<Comment> comments = Comment.find("SELECT c  from Comment c Where c.myGroup.id =? and c.task.id=?"
 					, group_id, task_id).fetch();
+		
 	    	renderTemplate("Comments/list.json", comments);
 	   } 
-	   
+	   /********************* Update Task Data **********************************/
 	   public static void updateTaskData() throws IOException {
 		   	String json = IOUtils.toString(request.body);
 		   	System.out.println(json);
