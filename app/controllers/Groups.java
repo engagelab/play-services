@@ -22,6 +22,7 @@ import requests.Comment_request;
 import requests.Datum_request;
 import requests.JsonRequest;
 import requests.RunId_request;
+import util.UnicodeString;
 
 /*******************************************************************************
  *	Class Name: Group Controller
@@ -101,9 +102,12 @@ public class Groups extends Controller{
 		  	System.out.println(json);
 		   	Long comment_id = req.comment_id;
 
-		   	String content = req.content;
-		   	//toString().getBytes("NS_4551-1");
-		   	//String encoded_contents= URLEncoder.encode(content, "UTF-8");
+		   	//Unicode conversion
+		   	UnicodeString us = new UnicodeString();
+		   	String content = us.convert(req.content);
+		   	
+		   	//String content = req.content;
+
 		   	float xpos = req.xpos;
 		   	float ypos = req.ypos;
 
