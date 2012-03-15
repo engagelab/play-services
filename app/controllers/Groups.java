@@ -111,7 +111,7 @@ public class Groups extends Controller{
 		   	float xpos = req.xpos;
 		   	float ypos = req.ypos;
 
-		   	Comment comment = Comment.findById(comment_id);
+		   	Comment comment = Comment.findById(id);
 		   	comment.content = content;
 		   	comment.xpos = xpos;
 		   	comment.ypos = ypos;
