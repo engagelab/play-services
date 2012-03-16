@@ -4,7 +4,8 @@
 
 # Home page
 
-GET     /                                       Application.index
+GET     /                                     	Application.index
+POST    /upload                                 Application.upload
 
 #GET     /                                      Users.index
 GET		/user/{<\d+>id}/?						Users.show
@@ -37,6 +38,8 @@ GET  		/comments/?									Groups.showCommentbyGT
 POST  		/comments/									Groups.postComment
 PUT  		/comments/{id}								Groups.updateComment
 DELETE  	/comments/{id}								Groups.deleteComment
+GET  		/CommenstbyGroup/{name}							Groups.showCommentbyG
+GET  		/showBBCommentbyG/{name}					Comments.index
 								
 
 #Group Operation routs

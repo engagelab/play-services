@@ -98,20 +98,20 @@ public class Groups extends Controller{
 		   	String json = IOUtils.toString(request.body);
 		   	System.out.println("PUT comments/id:"+ json);
 		   	Comment_request req = new Gson().fromJson(json, Comment_request.class);
-
 		  	System.out.println(json);
 		   	Long comment_id = req.comment_id;
-
 		   	//Unicode conversion
 		   	UnicodeString us = new UnicodeString();
 		   	String content = us.convert(req.content);
-		   	
-		   	//String content = req.content;
-
+		   	//String content = req.content
 		   	float xpos = req.xpos;
 		   	float ypos = req.ypos;
+<<<<<<< HEAD
 
 		   	Comment comment = Comment.findById(id);
+=======
+		   	Comment comment = Comment.findById(comment_id);
+>>>>>>> alot of changes
 		   	comment.content = content;
 		   	comment.xpos = xpos;
 		   	comment.ypos = ypos;
@@ -127,7 +127,14 @@ public class Groups extends Controller{
 	   public static void showAllComments(){
 	    	List<Comment> comments = Comment.findAll();
 	    	renderTemplate("Comments/list.json", comments);
+	    	
 	   }
+	   /********************* Show Comments by Group **********************/
+	   public static void showCommentbyG(String name){
+			List<Comment> comments = Comment.find("SELECT c  from Comment c Where c.myGroup.name =?"
+					, name).fetch();
+	    	renderTemplate("Comments/list.json", comments);
+	   } 
 	   /********************* Show Comments by Group and Task **********************/
 	   public static void showCommentbyGT(){
 		   Long group_id = params.get("group_id",Long.class);

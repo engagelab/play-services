@@ -1,0 +1,80 @@
+.sim-clearer {
+	clear: both;
+	display: block;
+	font-size: 0;
+	height: 0;
+	line-height: 0;
+}
+.hidden {
+	display: none;
+}
+#center-wrapper {
+	margin: 0 auto;
+	width: 920px;
+}
+/* Content & sidebar */
+
+#sim-content, #sim-sidebar {
+	border: 1px solid;
+	height: 677px;
+}
+#sim-sidebar {
+	background-color: #DEF;
+	border-color: #BCD;
+	display: none;
+}
+#sim-content {
+	background-color: #EFE;
+	border-color: #CDC;
+	width: 1015px;
+}
+.use-sidebar #sim-content {
+	width: 813px;
+}
+.use-sidebar #sim-sidebar {
+	display: block;
+	width: 200px;
+}
+.sidebar-at-left #sim-content, .use-sidebar.sidebar-at-right #sim-sidebar, .sidebar-at-right #sim-separator {
+	float: right;
+}
+.sidebar-at-right #sim-content, .use-sidebar.sidebar-at-left #sim-sidebar, .sidebar-at-left #sim-separator {
+	float: left;
+}
+#sim-separator {
+	background-color: #EEE;
+	border: 1px solid #CCC;
+	display: block;
+	outline: none;
+	width: 5px;
+	height: 677px;
+}
+.use-sidebar #sim-separator {
+	border-color: #FFF;
+}
+#sim-separator:hover {
+	border-color: #ABC;
+	background: #DEF;
+}
+.sim-tabs {
+	margin: 0;
+	padding: 0;
+}
+.sim-tabs li {
+	list-style: none;
+	display: inline;
+}
+.sim-tabs div {
+	padding: 5px 10px;
+	display: inline-block;
+	background: #666;
+	color: #fff;
+	text-decoration: none;
+}
+.sim-tabs div.sim-active {
+	background: #fff;
+	color: #000;
+}
+#div-tab2 {
+	height: 677px;
+}

@@ -1,1 +1,13 @@
 #{extends 'main.html' /}
+#{if groups.size()}
+<h2 class="title">Students Groups for April Run 2012</h2>
+        <div id = "groups">
+            #{list items:groups, as:'group'}
+        <div>
+        <br/>
+          <a href="@{Groups.showCommentbyG(group.name)}" class='button large green'><span>${group.name}</span></a> 
+          <br/><br/>
+         </div>
+            #{/list}
+        	</div>
+        #{/if}

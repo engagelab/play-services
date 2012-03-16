@@ -27,6 +27,10 @@ public class MyGroup extends Model{
 		this.run_id = run_id;
 	}
 
+	public MyGroup() {
+		
+	}
+
 	public Comment postComment(Project project, Long run_id, Task task, String content, float xpos, float ypos ) {
 		Comment newComment = new Comment(project, run_id, this, task, content, xpos, ypos);
 		this.comments.add(newComment);

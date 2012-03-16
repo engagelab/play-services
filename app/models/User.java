@@ -18,20 +18,12 @@ import play.db.jpa.Model;
 @Entity
 public class User extends Model {
 	
+
 	public String name;
 	public String email;
 	public int age;
 	public Blob image;
 	
-	
-	//public List<string> groupIds
-	//public string rollcallId
-	
-	//@ManyToMany(cascade=CascadeType.ALL) 
-    //public Set<Project> followedProjects = new HashSet<Project>();; 
-	
-//	@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
-//    public List<Comment> comments;
 	
 	//User Constructor
 	public User(String name,String email, int age, Blob image){
@@ -42,12 +34,11 @@ public class User extends Model {
 		this.image = image;
 	}
 
-	
-//	public User addComment(Project project, Task task, String title,
-//			String message) {
-//			Comment newComment = new Comment(this, project,task, title, message);
-//			this.comments.add(newComment);
-//			this.save();
-//			return this;
-//	}
+    public static User connect(String email, String password) {
+        return find("byEmailAndPassword", email, password).first();
+    }
+    
+    public String toString() {
+        return email;
+    }
 }
