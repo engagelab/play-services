@@ -106,12 +106,7 @@ public class Groups extends Controller{
 		   	//String content = req.content
 		   	float xpos = req.xpos;
 		   	float ypos = req.ypos;
-<<<<<<< HEAD
-
 		   	Comment comment = Comment.findById(id);
-=======
-		   	Comment comment = Comment.findById(comment_id);
->>>>>>> alot of changes
 		   	comment.content = content;
 		   	comment.xpos = xpos;
 		   	comment.ypos = ypos;
