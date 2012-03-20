@@ -4,8 +4,9 @@
 
 # Home page
 
-GET     /                                     	Application.index
-POST    /upload                                 Application.upload
+GET     /                                     	Groups.index
+GET		/sgroups/								Application.index
+
 
 #GET     /                                      Users.index
 GET		/user/{<\d+>id}/?						Users.show
@@ -38,7 +39,7 @@ GET  		/comments/?									Groups.showCommentbyGT
 POST  		/comments/									Groups.postComment
 PUT  		/comments/{id}								Groups.updateComment
 DELETE  	/comments/{id}								Groups.deleteComment
-GET  		/CommenstbyGroup/{name}							Groups.showCommentbyG
+GET  		/CommenstbyGroup/{name}						Groups.showCommentbyG
 GET  		/showBBCommentbyG/{name}					Comments.index
 								
 
@@ -54,8 +55,6 @@ GET	    	/run/{title}								Groups.getRunIdByTitle
 GET  		/taskdata/?									Projects.getTaskIdByTitle
 PUT  		/taskdata/									Groups.updateTaskData
 
-#Fahied Testing  JQuery work
-GET   		/fahied/									FahTest.index
 
 
 

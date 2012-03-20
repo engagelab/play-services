@@ -8,12 +8,6 @@ import play.mvc.Controller;
 
 public class Comments extends Controller {
 	
-    public static void index(String name) {
-    	MyGroup group = MyGroup.find("byName", name).first();
-    	List<Comment> comments = group.comments;
-    	render(comments);
-    }
-	
 	public static List<Comment> findByUserAndTask() {
 		Long userId = params.get("userId",Long.class);
 		Long taskId = params.get("taskId",Long.class);

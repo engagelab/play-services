@@ -154,4 +154,9 @@ public class Groups extends Controller{
 		   	existing_var.save();
 		   	renderTemplate("TaskDatum/taskdataU.json", existing_var);
 		   }
+	   
+	    public static void index(String name) {
+	    	List<MyGroup> groups = MyGroup.findAll();
+	    	render(groups);
+	    }
 }
