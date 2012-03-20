@@ -59,7 +59,7 @@ public class Application extends Controller {
 			}
 			groups.add(gr.group);
 		}
-		render(groups);
+		renderJSON(groups);
 	}
 	
 	
