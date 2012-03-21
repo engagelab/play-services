@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 
 <html>
-<head>
-<title>Sci-Works Student Portal</title>
-<meta charset="utf-8">
-<link rel="stylesheet" media="screen, projection, print"href="/public/css/scihub.css" />
-<link rel="stylesheet" media="screen, projection, print"href="/public/css/groups.css" />
-        #{get 'moreStyles' /}
-</head>
-<body>
-	<header id="header"> 
-	<span id = "headerTitle"> Sci-Works</span>
-	</header>
-	#{doLayout /}
-	</body>
-	<footer id="footer"></footer>
+    <head>
+        <title>#{get 'title' /}</title>
+        <meta charset="utf-8">
+        <!--
+        <link rel="stylesheet" rev="stylesheet" href="@{'/public/css/scihub.css'}">
+		-->
+   		<script src="@{'/public/js/jquery-1.7.1.min.js'}"></script>
+		<script src="@{'/public/js/underscore-min.js'}"></script>
+		<script src="@{'/public/js/backbone-min.js'}"></script>
+		<script src="@{'/public/js/jquery-ui.min.js'}"></script>
+		<script src="@{'/public/js/jquery.ui.mouse.touch.js'}"></script>
+
+		<script src="@{'/public/js/utils.js'}"></script>
+		<script src="@{'/public/js/models/scihubmodel.js'}"></script>
+		<script src="@{'/public/js/views/header.js'}"></script>
+		<script src="@{'/public/js/views/groups.js'}"></script>
+		<script src="@{'/public/js/main.js'}"></script>
+    </head>
+    <body>
+        <div id="content">
+			<div id="header"></div>
+			<div id="groups"></div>
+		</div>
+        <footer></footer>
+    </body>
 </html>
