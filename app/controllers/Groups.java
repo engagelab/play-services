@@ -31,48 +31,18 @@ import util.UnicodeString;
  *******************************************************************************/
 public class Groups extends Controller{
 	
-
-	/********************* Establish Connection with RollCall ******************/
-    @Before
-    static void createRollcallSession() {
-    	String contents = "{ \"Session\": {\"username\":\"binden\" , \"password\":\"binden\"} }";
-		String url  = "http://imediamac28.uio.no:8080";
-		WS.url(url).body(contents).post();
-    }
-    /********************* Retrieve the list of all groups *********************/
-	public static void all(){
-		//play serve as client to Ruby rollcall server at port 8080
-		//Talking to Jeremy Ruby Server for testing http://129.240.161.29:4567/groups
-		String url = "http://imediamac28.uio.no:8080/groups.json";
-		JsonElement result = WS.url(url).get().getJson();
-		String res = result.toString();
-		renderJSON(res);
-	}
-    /********************* Retrieve the group with ID `1` **********************/
-	public static void getById(String id){
-		//JsonReader.setLenient(true);
-		String url = "http://imediamac28.uio.no:8080/groups/" + id + ".json";
-		//WS.url accept only String type parameters
-		JsonElement result = WS.url(url).get().getJson();
-		String res = result.toString();
-		renderJSON(res);
-	}
-	
-    /********************* Retrieve the runid by title **********************/
+	/********************* Retrieve the runid by title **********************/
 	public static void getRunIdByTitle(String title){
-		//JsonReader.setLenient(true);
-		String url = "http://imediamac28.uio.no:8080/runs/" + title + ".json";
-		//WS.url accept only String type parameters
-		JsonElement result = WS.url(url).get().getJson();
-		String res = result.toString();
+		String res = "";
+		if(title == "aprilrun")
+			res = "{ \"run_id\": \"2\"}";
 		renderJSON(res);
 	}
-    /********************* Delete group with ID `1` ****************************/
-	public static void deleteGroup(String id){
-		String url = "http://imediamac28.uio.no:8080/groups/" + id;
-		Integer status = WS.url(url).delete().getStatus();
-		if(status == 1)
-			renderText("Group deleted");
+	/********************* Retrieve the list of all groups *********************/
+	public static void all(){
+		List <MyGroup> groups = MyGroup.findAll();
+		String res = groups.toString();
+		renderJSON(res);
 	}
     /********************* Create new Comment **********************************/
    public static void postComment() throws IOException {
@@ -160,3 +130,47 @@ public class Groups extends Controller{
 	    	render(groups);
 	    }
 }
+
+
+///********************* Establish Connection with RollCall ******************/
+//@Before
+//static void createRollcallSession() {
+//	String contents = "{ \"Session\": {\"username\":\"binden\" , \"password\":\"binden\"} }";
+//	String url  = "http://imediamac28.uio.no:8080";
+//	WS.url(url).body(contents).post();
+//}
+///********************* Retrieve the list of all groups *********************/
+//public static void all(){
+//	//play serve as client to Ruby rollcall server at port 8080
+//	//Talking to Jeremy Ruby Server for testing http://129.240.161.29:4567/groups
+//	String url = "http://imediamac28.uio.no:8080/groups.json";
+//	JsonElement result = WS.url(url).get().getJson();
+//	String res = result.toString();
+//	renderJSON(res);
+//}
+///********************* Retrieve the group with ID `1` **********************/
+//public static void getById(String id){
+//	//JsonReader.setLenient(true);
+//	String url = "http://imediamac28.uio.no:8080/groups/" + id + ".json";
+//	//WS.url accept only String type parameters
+//	JsonElement result = WS.url(url).get().getJson();
+//	String res = result.toString();
+//	renderJSON(res);
+//}
+//
+///********************* Retrieve the runid by title **********************/
+//public static void getRunIdByTitle(String title){
+//	//JsonReader.setLenient(true);
+//	String url = "http://imediamac28.uio.no:8080/runs/" + title + ".json";
+//	//WS.url accept only String type parameters
+//	JsonElement result = WS.url(url).get().getJson();
+//	String res = result.toString();
+//	renderJSON(res);
+//}
+///********************* Delete group with ID `1` ****************************/
+//public static void deleteGroup(String id){
+//	String url = "http://imediamac28.uio.no:8080/groups/" + id;
+//	Integer status = WS.url(url).delete().getStatus();
+//	if(status == 1)
+//		renderText("Group deleted");
+//}
