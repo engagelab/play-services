@@ -18,6 +18,8 @@ import play.db.jpa.Model;
 @Entity
 public class User extends Model {
 	
+	@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
+    public List<Member> members;
 
 	public String name;
 	public String email;

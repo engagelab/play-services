@@ -13,6 +13,9 @@ public class MyGroup extends Model{
 	public String run_id;
 	
 	@OneToMany(mappedBy="myGroup", cascade=CascadeType.ALL)
+    public List<Member> members;
+	
+	@OneToMany(mappedBy="myGroup", cascade=CascadeType.ALL)
     public List<Comment> comments;
 	
 	@OneToMany(mappedBy="myGroup", cascade=CascadeType.ALL)

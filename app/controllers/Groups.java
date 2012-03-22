@@ -10,9 +10,13 @@ import org.apache.commons.io.IOUtils;
 
 import models.*;
 
+import com.cedarsoftware.util.io.JsonWriter;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+
+import flexjson.JSONSerializer;
 
 import play.libs.WS;
 import play.libs.WS.HttpResponse;
@@ -22,7 +26,9 @@ import requests.Comment_request;
 import requests.Datum_request;
 import requests.JsonRequest;
 import requests.RunId_request;
+import respones.RollCall;
 import util.UnicodeString;
+
 
 /*******************************************************************************
  *	Class Name: Group Controller
@@ -40,9 +46,14 @@ public class Groups extends Controller{
 	}
 	/********************* Retrieve the list of all groups *********************/
 	public static void all(){
+		RollCall rollcall = new RollCall();
 		List <MyGroup> groups = MyGroup.findAll();
-		String res = groups.toString();
-		renderJSON(res);
+		
+		JSONSerializer modelSerializer = new JSONSerializer().include("name","run_id","members.user.name").exclude("*"); 
+	     renderJSON(modelSerializer.serialize(groups));
+		//by using import com.cedarsoftware.util.io.JsonWriter;
+		//String json = JsonWriter.toJson(groups).toString();
+		//renderText(json);
 	}
     /********************* Create new Comment **********************************/
    public static void postComment() throws IOException {
