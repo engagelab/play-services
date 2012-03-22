@@ -40,7 +40,7 @@ public class Groups extends Controller{
 	/********************* Retrieve the runid by title **********************/
 	public static void getRunIdByTitle(String title){
 		String res = "";
-		if(title == "aprilrun")
+		if(title == "miracle1")
 			res = "{ \"run_id\": \"2\"}";
 		renderJSON(res);
 	}
