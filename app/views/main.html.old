@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Sci-Works Student Portal</title>
+<meta charset="utf-8">
+<link rel="stylesheet" media="screen, projection, print"href="/public/css/scihub.css" />
+<link rel="stylesheet" media="screen, projection, print"href="/public/css/groups.css" />
+        #{get 'moreStyles' /}
+</head>
+<body>
+	<header id="header"> 
+	<span id = "headerTitle"> Sci-Works</span>
+	</header>
+	#{doLayout /}
+	</body>
+	<footer id="footer"></footer>
+</html>
