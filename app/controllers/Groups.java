@@ -48,12 +48,14 @@ public class Groups extends Controller{
 	public static void all(){
 		RollCall rollcall = new RollCall();
 		List <MyGroup> groups = MyGroup.findAll();
-		
+		//By Using FlexJSON liberary
 		JSONSerializer modelSerializer = new JSONSerializer().include("name","run_id","members.user.name").exclude("*"); 
 	     renderJSON(modelSerializer.serialize(groups));
 		//by using import com.cedarsoftware.util.io.JsonWriter;
 		//String json = JsonWriter.toJson(groups).toString();
 		//renderText(json);
+		//by template
+		//renderTemplate("Groups/list.json", groups);
 	}
     /********************* Create new Comment **********************************/
    public static void postComment() throws IOException {

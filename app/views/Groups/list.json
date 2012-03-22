@@ -1,1 +1,5 @@
-[#{list groups}{"id": "${_.id}","name": "${_.name},"run_id": "${_.run_id}"} #{if !_isLast},#{/if}#{/list}]
+[#{list groups}
+{"id": "${_.id}","name": "${_.name},"run_id": "${_.run_id}"
+[#{list _.members}
+{"id": "${_.id}","name": "${_.name},"run_id": "${_.run_id}"
+} #{if !_isLast},#{/if}#{/list}]
