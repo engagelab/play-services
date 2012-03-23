@@ -39,9 +39,11 @@ public class Groups extends Controller{
 	
 	/********************* Retrieve the runid by title **********************/
 	public static void getRunIdByTitle(String title){
-		String res = "";
-		if(title == "miracle1")
+		String res = "Null";
+		//if(title == "miracle1")
+		{
 			res = "{ \"run_id\": \"2\"}";
+		}
 		renderJSON(res);
 	}
 	/********************* Retrieve the list of all groups *********************/
@@ -49,7 +51,7 @@ public class Groups extends Controller{
 		RollCall rollcall = new RollCall();
 		List <MyGroup> groups = MyGroup.findAll();
 		//By Using FlexJSON liberary
-		JSONSerializer modelSerializer = new JSONSerializer().include("name","run_id","members.user.name").exclude("*"); 
+		JSONSerializer modelSerializer = new JSONSerializer().include("name","id","run_id","members.user.name").exclude("*"); 
 	     renderJSON(modelSerializer.serialize(groups));
 		//by using import com.cedarsoftware.util.io.JsonWriter;
 		//String json = JsonWriter.toJson(groups).toString();

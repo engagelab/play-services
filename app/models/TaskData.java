@@ -27,8 +27,7 @@ public class TaskData extends Model{
 	public Long run_id;
 	
 	public String taskdata;
-
-
+	
 	@PrePersist
 	public void prePersist(){
 		taskdata = "1000";
