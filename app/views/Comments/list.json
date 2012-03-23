@@ -1,1 +1,3 @@
-[#{list comments}{"comment_id": "${_.id}","content": "${_.content}","xpos": "${_.xpos}","ypos": "${_.ypos}"} #{if !_isLast},#{/if}#{/list}]
+[#{list comments}{"comment_id": "${comment.id}","content": "${comment.content}","xpos": "${comment.xpos}","ypos": "${comment.ypos},
+"run_id": "${comment.run.id},"project_id": "${comment.project.id},"task_id": "${comment.task.id}"} 
+#{if !_isLast},#{/if}#{/list}]

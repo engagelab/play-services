@@ -114,10 +114,16 @@ public class Groups extends Controller{
 		   Long group_id = params.get("grpid",Long.class);
 		   MyGroup group = MyGroup.findById(group_id);
 		   
+			List<Comment> comments = Comment.find("SELECT c from Comment c Where myGroup_id =?", group_id).fetch();
+		   JSONSerializer modelSerializer = new JSONSerializer().include("xpos","ypos","content","myGroup.id","project.id","task.id","run_id").exclude("*"); 
+		     renderJSON(modelSerializer.serialize(comments));
+		   
+		   /*
 			List<Comment> comments = group.comments;
 					//Comment.find("SELECT c  from Comment c Where c.myGroup.id =?"
 					//, group_id).fetch();
 	    	renderTemplate("Comments/list.json", comments);
+	    	*/
 	   } 
 	   /********************* Show Comments by Group and Task **********************/
 	   public static void showCommentbyGT(){
