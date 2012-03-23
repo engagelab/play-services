@@ -3,15 +3,14 @@ window.GroupListView = Backbone.View.extend({
 	className : "groupContainer",
 	
     initialize : function() {
-		/*this.model.bind("reset", this.render, this);
-		this.model.bind("add", this.render, this);*/
+		this.model.bind("reset", this.render, this);
+		this.model.bind("add", this.render, this);
 	},
 	
 	render : function(eventName) {
 		$(this.el).html('');
 		_.each(this.model.models, function(group) {
 			$(this.el).append(new GroupListItemView({model : group}).render().el);
-			$(this.el).append("<br />");
 		}, this);
 		return this;
 	}
@@ -26,12 +25,17 @@ window.GroupListItemView = Backbone.View.extend({
 	},
 	
 	events : {
-		
+		"click" : "getCommentsByGroup"
 	},
 
+	getCommentsByGroup : function(event) {
+		app.selectedGroupName = this.model.attributes.name;
+		app.navigate("/#/commentsbyid/"+this.model.attributes.id, true);
+	},
+	
 	render : function(eventName) {
 		$(this.el).html(this.template(this.model.toJSON()));
-		_.each(this.model.attributes.group.members, function(member) {
+		_.each(this.model.attributes.members, function(member) {
 			$(this.el).append(new MemberListItemView({model : member}).render().el);
 		}, this);
 		return this;

@@ -14,7 +14,8 @@ var AppRouter = Backbone.Router.extend({
 	
 	routes : {
 		"" : "def",
-		"/groups" : "listGroups"
+		"/groups" : "listGroups",
+		"/commentsbyid/:id" : "listComments"
 	},
 	
 	def : function() {
@@ -22,26 +23,37 @@ var AppRouter = Backbone.Router.extend({
 	},
 	
 	listGroups : function() {
+		this.selectedGroupName = '';
 		this.groupList = new GroupCollection();
 		this.groupList.fetch({success:function () {
-				$('#groups').html(new GroupListView({model : app.groupList}).render().el);
-			}
+				app.showView('#stage', new GroupListView({model : app.groupList}));
+			},
+			wait: true
 		});
 	},
 	
-	showView : function(selector, view, viewid) {
+	listComments : function(id) {
+		this.commentList = new CommentCollection();
+		this.commentList.fetch({ data: $.param({ grpid: id}),
+			success : function(event) {
+				app.showView('#stage', new CommentView({model : app.commentList}));
+			},
+			wait: true
+		});
+	},
+	
+	showView : function(selector, view) {
 		if(this.currentView) {
 			this.currentView.close();
 		}
 		$(selector).html(view.render().el);
 		this.currentView = view;
-		this.currentViewId = viewid;
 		return view;
 	}
 });
 
 //loading html templates
-tpl.loadTemplates(['header_tpl', 'groups_tpl', 'members_tpl'], function() {
+tpl.loadTemplates(['header_tpl', 'groups_tpl', 'members_tpl', 'comment_tpl'], function() {
 	app = new AppRouter();
 	Backbone.history.start();
 });
