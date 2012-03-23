@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<update xmlns="http://ns.adobe.com/air/framework/update/description/2.6">
-  <versionNumber>1.1.0</versionNumber>
+<update xmlns="http://ns.adobe.com/air/framework/update/description/2.5">
+  <versionNumber>1.1.1</versionNumber>
   <url>http://scihub.uio.no:9000/public/simulation/simuApril2012.air</url>
   <description>
-    <![CDATA[Version 1.1.0:
-        * New installer
+    <![CDATA[Version 1.1.1:
+        * Updated video
     ]]>
   </description>
 </update>
