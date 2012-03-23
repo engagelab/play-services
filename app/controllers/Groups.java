@@ -62,12 +62,15 @@ public class Groups extends Controller {
 	}
 
 	public static void allGroupsByRunId(Long id) {
-		List<MyGroup> groups = MyGroup.find("SELECT g from MyGroup g Where run_id =?", id.toString()).fetch();
+		List<MyGroup> groups = MyGroup.find(
+				"SELECT g from MyGroup g Where run_id =?", id.toString())
+				.fetch();
 		// By Using FlexJSON library
-		JSONSerializer modelSerializer = new JSONSerializer().include("name").exclude("*");
+		JSONSerializer modelSerializer = new JSONSerializer().include("name")
+				.exclude("*");
 		renderJSON(modelSerializer.serialize(groups));
-
 	}
+
 	/********************* Create new Comment **********************************/
 	public static void postComment() throws IOException {
 		String json = IOUtils.toString(request.body);
@@ -196,9 +199,9 @@ public class Groups extends Controller {
 	 * Youtube services
 	 * ******/
 	/********************* add Youtube links by Group **********************************/
+	// @parms {group_name:"Test", task_name:"spray can", yt_url:"http://"}
 	public static void addYoutubeLink(Long id) throws IOException {
 		String json = IOUtils.toString(request.body);
-
 		YT_request req = new Gson().fromJson(json, YT_request.class);
 		System.out.println(json);
 		String group_name = req.group_name;
@@ -206,37 +209,38 @@ public class Groups extends Controller {
 		String url = req.url;
 		// Unicode conversion
 		MyGroup group = MyGroup.find("byName", group_name).first();
-
 		YTubeVideo yt = group.addYTlink(task_name, url);
 		JSONSerializer modelSerializer = new JSONSerializer().include("id",
 				"url", "content").exclude("*");
 		renderJSON(modelSerializer.serialize(yt));
 	}
-	
+
 	public static void showVideosbyG() {
 		Long group_id = params.get("grpid", Long.class);
-		
+
 		MyGroup group = MyGroup.findById(group_id);
 		MyGroup tgroup = new MyGroup();
-		
+
 		List<YTubeVideo> ytlist = group.ytVideos;
 		List<Comment> comments = group.comments;
-		
+
 		tgroup.ytVideos = ytlist;
 		tgroup.comments = comments;
 		tgroup.id = group.id;
 		tgroup.name = group.name;
 		tgroup.run_id = group.run_id;
 
-		JSONSerializer modelSerializer = new JSONSerializer().include("ytVideos.id","ytVideos.url","comments.xpos","comments.ypos", "comments.content",
-				"id","run_id").exclude("*");
+		JSONSerializer modelSerializer = new JSONSerializer().include(
+				"ytVideos.id", "ytVideos.url", "comments.xpos",
+				"comments.ypos", "comments.content", "id", "run_id").exclude(
+				"*");
 		renderJSON(modelSerializer.serialize(tgroup));
 	}
 }
 
-//"xpos",
-//"ypos", "content", "myGroup.id", "project.id", "task.id",
-//"run_id"
+// "xpos",
+// "ypos", "content", "myGroup.id", "project.id", "task.id",
+// "run_id"
 
 // /********************* Establish Connection with RollCall ******************/
 // @Before
