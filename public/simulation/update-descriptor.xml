@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <update xmlns="http://ns.adobe.com/air/framework/update/description/2.6">
-  <versionNumber>1.0.6</versionNumber>
-  <url>http://localhost:9000/public/simulation/simuApril2012.air</url>
+  <versionNumber>1.1.0</versionNumber>
+  <url>http://scihub.uio.no:9000/public/simulation/simuApril2012.air</url>
   <description>
-    <![CDATA[Version 1.0.6:
+    <![CDATA[Version 1.1.0:
         * New installer
     ]]>
   </description>

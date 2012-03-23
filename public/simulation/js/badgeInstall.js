@@ -1,12 +1,12 @@
 var flashvars = {};
 flashvars.id = 'air_badge';
-flashvars.airversion = '2.6';
+flashvars.airversion = '3.1';
 flashvars.appname = 'MiracleSimulation';
-flashvars.appurl = 'http://localhost:9000/public/simulation/simuApril2012.air';
+flashvars.appurl = 'http://scihub.uio.no:9000/public/simulation/simuApril2012.air';
 flashvars.imageurl = 'assets/badge.png';
 flashvars.appid = 'simuApril2012.air';
 flashvars.pubid = '';
-flashvars.appversion = '1.0.6';
+flashvars.appversion = '1.1.0';
 flashvars.installarg = 'null';
 flashvars.launcharg = 'null';
 flashvars.helpurl = 'help.html';
