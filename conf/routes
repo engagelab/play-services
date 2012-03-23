@@ -41,6 +41,10 @@ PUT  		/comments/{id}								Groups.updateComment
 DELETE  	/comments/{id}								Groups.deleteComment
 GET  		/commentsbyid?								Groups.showCommentbyG
 GET  		/showBBCommentbyG/{name}					Comments.index
+
+# Routes for Youtue
+GET  		/youtube									Groups.showVideosbyG
+GET  		/groupnames/{id}							Groups.allGroupsByRunId
 								
 
 #Group Operation routs

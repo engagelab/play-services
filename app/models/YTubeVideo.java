@@ -10,15 +10,11 @@ public class YTubeVideo extends Model {
 	
 	@ManyToOne
     public MyGroup myGroup;
-	
-	
 	public String url;
 	
-	
-	
-	
-	
-	
-	
+	public YTubeVideo(String url) {
+		this.url = url;
+	}
+
 
 }

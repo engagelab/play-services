@@ -28,7 +28,7 @@ public class MyGroup extends Model{
 	public MyGroup(String name, String run_id){
 		this.comments = new ArrayList<Comment>();
 		this.taskdatum = new ArrayList<TaskData>();
-		
+		this.ytVideos = new ArrayList<YTubeVideo>();
 		this.name = name;
 		this.run_id = run_id;
 	}
@@ -50,5 +50,12 @@ public class MyGroup extends Model{
 		this.taskdatum.add(taskdata);
 		this.save();
 		return taskdata;
+	}
+
+	public YTubeVideo addYTlink(String task_name, String url) {
+		YTubeVideo nLink = new YTubeVideo(url);
+		this.ytVideos.add(nLink);
+		this.save();
+		return nLink;
 	}
 }
