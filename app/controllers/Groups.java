@@ -50,7 +50,7 @@ public class Groups extends Controller{
 	public static void all(){
 		RollCall rollcall = new RollCall();
 		List <MyGroup> groups = MyGroup.findAll();
-		//By Using FlexJSON liberary
+		//By Using FlexJSON library
 		JSONSerializer modelSerializer = new JSONSerializer().include("name","id","run_id","members.user.name").exclude("*"); 
 	     renderJSON(modelSerializer.serialize(groups));
 		//by using import com.cedarsoftware.util.io.JsonWriter;
@@ -110,9 +110,13 @@ public class Groups extends Controller{
 	    	
 	   }
 	   /********************* Show Comments by Group **********************/
-	   public static void showCommentbyG(String name){
-			List<Comment> comments = Comment.find("SELECT c  from Comment c Where c.myGroup.name =?"
-					, name).fetch();
+	   public static void showCommentbyG(){
+		   Long group_id = params.get("grpid",Long.class);
+		   MyGroup group = MyGroup.findById(group_id);
+		   
+			List<Comment> comments = group.comments;
+					//Comment.find("SELECT c  from Comment c Where c.myGroup.id =?"
+					//, group_id).fetch();
 	    	renderTemplate("Comments/list.json", comments);
 	   } 
 	   /********************* Show Comments by Group and Task **********************/
@@ -144,6 +148,31 @@ public class Groups extends Controller{
 	    	List<MyGroup> groups = MyGroup.findAll();
 	    	render(groups);
 	    }
+	    
+	    /********
+	     * FaceBook style Comment Services
+	     * ******/
+	    
+	    /********************* Update the Comment **********************************/
+		   public static void addFbComment(Long id) throws IOException {
+			   	String json = IOUtils.toString(request.body);
+			   	System.out.println("PUT comments/id:"+ json);
+			   	Comment_request req = new Gson().fromJson(json, Comment_request.class);
+			  	System.out.println(json);
+			   	Long comment_id = req.comment_id;
+			   	//Unicode conversion
+			   	UnicodeString us = new UnicodeString();
+			   	String content = us.convert(req.content);
+			   	//String content = req.content
+			   	float xpos = req.xpos;
+			   	float ypos = req.ypos;
+			   	Comment comment = Comment.findById(id);
+			   	comment.content = content;
+			   	comment.xpos = xpos;
+			   	comment.ypos = ypos;
+			   	comment.save();
+			   	renderTemplate("Comments/comment.json", comment);
+			   }
 }
 
 

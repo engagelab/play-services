@@ -5,6 +5,7 @@ package models;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
@@ -21,6 +22,9 @@ import play.mvc.Controller;
 
 @Entity
 public class Comment extends Model {
+	
+	@OneToMany(mappedBy="comment", cascade=CascadeType.ALL)
+    public List<FbComment> fbComments;
 	
 	@ManyToOne
     public MyGroup myGroup;

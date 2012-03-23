@@ -39,7 +39,7 @@ GET  		/comments/?									Groups.showCommentbyGT
 POST  		/comments/									Groups.postComment
 PUT  		/comments/{id}								Groups.updateComment
 DELETE  	/comments/{id}								Groups.deleteComment
-GET  		/CommenstbyGroup/{name}						Groups.showCommentbyG
+GET  		/commentsbyid?								Groups.showCommentbyG
 GET  		/showBBCommentbyG/{name}					Comments.index
 								
 
