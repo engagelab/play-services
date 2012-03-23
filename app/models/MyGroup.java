@@ -16,6 +16,9 @@ public class MyGroup extends Model{
     public List<Member> members;
 	
 	@OneToMany(mappedBy="myGroup", cascade=CascadeType.ALL)
+    public List<YTubeVideo> ytVideos;
+	
+	@OneToMany(mappedBy="myGroup", cascade=CascadeType.ALL)
     public List<Comment> comments;
 	
 	@OneToMany(mappedBy="myGroup", cascade=CascadeType.ALL)

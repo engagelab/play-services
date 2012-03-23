@@ -1,1 +1,1 @@
-{"comment_id": "${comment.id}","content": "${comment.content}","xpos": "${comment.xpos}","ypos": "${comment.ypos},"run_id": "${comment.run_id},"group_id": "${comment.myGroup_id},"project_id": "${comment.project_id},"task_id": "${comment.task_id}"}
+{"comment_id": "${comment.id}","content": "${comment.content}","xpos": "${comment.xpos}","ypos": "${comment.ypos}"}
