@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <update xmlns="http://ns.adobe.com/air/framework/update/description/2.5">
-  <versionNumber>1.1.1</versionNumber>
-  <url>http://scihub.uio.no:9000/public/simulation/simuApril2012.air</url>
+  <versionNumber>1.1.2</versionNumber>
+  <url>http://scihub.uio.no/public/simulation/simuApril2012.air</url>
   <description>
-    <![CDATA[Version 1.1.1:
+    <![CDATA[Version 1.1.2:
         * Updated video
     ]]>
   </description>
