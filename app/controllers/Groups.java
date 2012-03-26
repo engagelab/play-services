@@ -134,7 +134,7 @@ public class Groups extends Controller {
 				"SELECT c from Comment c Where myGroup_id =?", group_id)
 				.fetch();
 		JSONSerializer modelSerializer = new JSONSerializer().include("xpos",
-				"ypos", "content", "myGroup.id", "project.id", "task.id",
+				"ypos", "content", "myGroup.id", "project.id", "task.id","rawcontent",
 				"run_id").exclude("*");
 		renderJSON(modelSerializer.serialize(comments));
 	}
