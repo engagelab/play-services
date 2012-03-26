@@ -43,7 +43,7 @@ GET  		/commentsbyid?								Groups.showCommentbyG
 GET  		/showBBCommentbyG/{name}					Comments.index
 
 # Routes for Youtue
-GET  		/contents									Groups.showGroupContents
+GET  		/contents?									Groups.showGroupContents
 GET  		/groupnames/{id}							Groups.allGroupsByRunId
 								
 

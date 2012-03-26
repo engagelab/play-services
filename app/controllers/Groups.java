@@ -215,12 +215,10 @@ public class Groups extends Controller {
 		renderJSON(modelSerializer.serialize(yt));
 	}
 
-	public static void showVideosbyG() {
+	public static void showGroupContents() {
 		Long group_id = params.get("grpid", Long.class);
-
 		MyGroup group = MyGroup.findById(group_id);
 		MyGroup tgroup = new MyGroup();
-
 		List<YTubeVideo> ytlist = group.ytVideos;
 		List<Comment> comments = group.comments;
 
@@ -238,9 +236,7 @@ public class Groups extends Controller {
 	}
 }
 
-// "xpos",
-// "ypos", "content", "myGroup.id", "project.id", "task.id",
-// "run_id"
+
 
 // /********************* Establish Connection with RollCall ******************/
 // @Before
