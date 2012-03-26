@@ -232,7 +232,7 @@ public class Groups extends Controller {
 
 		JSONSerializer modelSerializer = new JSONSerializer().include(
 				"ytVideos.id", "ytVideos.url", "comments.xpos",
-				"comments.ypos", "comments.content", "id", "run_id").exclude(
+				"comments.ypos", "comments.content", "id", "run_id","comments.task.id","comments.project.id").exclude(
 				"*");
 		renderJSON(modelSerializer.serialize(tgroup));
 	}
