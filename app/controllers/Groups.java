@@ -102,7 +102,7 @@ public class Groups extends Controller {
 		System.out.println("PUT comments/id:" + json);
 		Comment_request req = new Gson().fromJson(json, Comment_request.class);
 		System.out.println(json);
-		Long comment_id = req.comment_id;
+		//Long comment_id = req.comment_id;
 		// Unicode conversion
 		UnicodeString us = new UnicodeString();
 		String content = us.convert(req.content);
@@ -218,6 +218,25 @@ public class Groups extends Controller {
 				"*");
 		renderJSON(modelSerializer.serialize(tgroup));
 	}
+	
+	/********************* Update the Comment **********************************/
+	public static void updateYtBoxPos(Long id) throws IOException {
+		String json = IOUtils.toString(request.body);
+		YT_request req = new Gson().fromJson(json, YT_request.class);
+		System.out.println(json);
+
+		// String content = req.content
+		int wxpos = req.wxpos;
+		int wypos = req.wypos;
+		YTubeVideo  ytv = YTubeVideo.findById(id);
+
+		ytv.wxpos = wxpos;
+		ytv.wypos = wypos;
+		ytv.save();
+		renderTemplate("YTubeVideos/ytv.json", ytv);
+	}
+	
+	
 	
 	/********************* add fb comment **********************************/
 	public static void addFbComment(Long id) throws IOException {

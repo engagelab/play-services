@@ -14,4 +14,11 @@ public class YoutbueTest extends FunctionalTest{
 	    assertIsOk(response);
 	}
 
+	
+	@Test
+	public void updatePos() {
+        Response response = PUT ("/youtube/","application/json","{ \"group_name\": \"group1\", \"task_name\": \"level1\", " +
+        		"\"yt_url\": \"http://www.youtube.com/v/CXlXpQcHKCA\"}"); 
+	    assertIsOk(response);
+	}
 }
