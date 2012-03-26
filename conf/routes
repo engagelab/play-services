@@ -45,6 +45,7 @@ GET  		/showBBCommentbyG/{name}					Comments.index
 # Routes for Youtue
 GET  		/contents?									Groups.showGroupContents
 GET  		/groupnames/{id}							Groups.allGroupsByRunId
+POST		/youtube/									Groups.addYoutubeLink
 								
 
 #Group Operation routs

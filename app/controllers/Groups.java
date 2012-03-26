@@ -199,15 +199,14 @@ public class Groups extends Controller {
 	 * Youtube services
 	 * ******/
 	/********************* add Youtube links by Group **********************************/
-	// @parms {group_name:"Test", task_name:"spray can", yt_url:"http://"}
-	public static void addYoutubeLink(Long id) throws IOException {
+	// @parms {group_name:"Test", task_name:"spray can", url:"http://"}
+	public static void addYoutubeLink() throws IOException {
 		String json = IOUtils.toString(request.body);
 		YT_request req = new Gson().fromJson(json, YT_request.class);
 		System.out.println(json);
 		String group_name = req.group_name;
 		String task_name = req.task_name;
 		String url = req.url;
-		// Unicode conversion
 		MyGroup group = MyGroup.find("byName", group_name).first();
 		YTubeVideo yt = group.addYTlink(task_name, url);
 		JSONSerializer modelSerializer = new JSONSerializer().include("id",

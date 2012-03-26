@@ -12,8 +12,9 @@ public class YTubeVideo extends Model {
     public MyGroup myGroup;
 	public String url;
 	
-	public YTubeVideo(String url) {
+	public YTubeVideo(String url, MyGroup myGroup) {
 		this.url = url;
+		this.myGroup = myGroup;
 	}
 
 
