@@ -151,3 +151,13 @@ footer {
  	top:50px;
  	left:10px;
 }
+
+.ytvideo-ui {
+	float: left;
+	border: 1px solid #333333;
+	background: #9DC43F;
+	width: 280px;
+	height: 235px;
+	margin: 5px;
+	vertical-align: middle;
+}

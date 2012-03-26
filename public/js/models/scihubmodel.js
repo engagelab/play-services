@@ -11,3 +11,10 @@ window.CommentCollection = Backbone.Collection.extend({
 	model : Comment,
 	url : "/commentsbyid"
 });
+
+window.Content = Backbone.Model.extend({});
+
+window.ContentCollection = Backbone.Collection.extend({
+	model : Content,
+	url : "/contents"
+});
