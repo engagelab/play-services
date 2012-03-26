@@ -53,7 +53,8 @@ public class MyGroup extends Model{
 	}
 
 	public YTubeVideo addYTlink(String task_name, String url) {
-		YTubeVideo nLink = new YTubeVideo(url, this);
+		Task task = Task.find("byTitle", task_name).first();
+		YTubeVideo nLink = new YTubeVideo(url, this,task);
 		this.ytVideos.add(nLink);
 		this.save();
 		return nLink;

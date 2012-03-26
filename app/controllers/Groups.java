@@ -207,9 +207,14 @@ public class Groups extends Controller {
 		System.out.println(json);
 		String group_name = req.group_name;
 		String task_name = req.task_name;
-		String url = req.url;
-		MyGroup group = MyGroup.find("byName", group_name).first();
-		YTubeVideo yt = group.addYTlink(task_name, url);
+		
+		
+		String yt_url = req.yt_url;
+		yt_url= yt_url.substring(25);
+		
+		MyGroup tgroup = MyGroup.find("byName", group_name).first();
+		
+		YTubeVideo yt = tgroup.addYTlink(task_name, yt_url);
 		JSONSerializer modelSerializer = new JSONSerializer().include("id",
 				"url", "content").exclude("*");
 		renderJSON(modelSerializer.serialize(yt));
@@ -229,7 +234,7 @@ public class Groups extends Controller {
 		tgroup.run_id = group.run_id;
 
 		JSONSerializer modelSerializer = new JSONSerializer().include(
-				"ytVideos.id", "ytVideos.url", "comments.xpos",
+				"ytVideos.id", "ytVideos.yt_url", "comments.xpos",
 				"comments.ypos", "comments.rawcontent", "id", "run_id","comments.task.id","comments.project.id").exclude(
 				"*");
 		renderJSON(modelSerializer.serialize(tgroup));

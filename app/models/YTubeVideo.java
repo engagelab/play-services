@@ -10,11 +10,16 @@ public class YTubeVideo extends Model {
 	
 	@ManyToOne
     public MyGroup myGroup;
-	public String url;
 	
-	public YTubeVideo(String url, MyGroup myGroup) {
-		this.url = url;
+	@ManyToOne
+    public Task task;
+	
+	public String yt_url;
+	
+	public YTubeVideo(String yt_url, MyGroup myGroup, Task task) {
+		this.yt_url = yt_url;
 		this.myGroup = myGroup;
+		this.task = task;
 	}
 
 
