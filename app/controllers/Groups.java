@@ -107,6 +107,7 @@ public class Groups extends Controller {
 		float ypos = req.ypos;
 		Comment comment = Comment.findById(id);
 		comment.content = content;
+		comment.rawcontent = req.content;
 		comment.xpos = xpos;
 		comment.ypos = ypos;
 		comment.save();
@@ -229,7 +230,7 @@ public class Groups extends Controller {
 
 		JSONSerializer modelSerializer = new JSONSerializer().include(
 				"ytVideos.id", "ytVideos.url", "comments.xpos",
-				"comments.ypos", "comments.content", "id", "run_id","comments.task.id","comments.project.id").exclude(
+				"comments.ypos", "comments.rawcontent", "id", "run_id","comments.task.id","comments.project.id").exclude(
 				"*");
 		renderJSON(modelSerializer.serialize(tgroup));
 	}

@@ -42,8 +42,10 @@ public class Comment extends Model {
 	public float ypos;
 	
 	@Lob
-    @MaxSize(200)
     public String content;
+	
+	@Lob
+    public String rawcontent;
 	
 	public Date postedAt;
 
