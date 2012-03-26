@@ -36,7 +36,11 @@ import util.UnicodeString;
  * client[flash, HTML5] and RollCall
  *******************************************************************************/
 public class Groups extends Controller {
-
+	
+	
+	/***********************************************************************
+	 * Heat pump Simulation Services
+	 **********************************************************************/
 	/********************* Retrieve the runid by title **********************/
 	public static void getRunIdByTitle(String title) {
 		String res = "Null";
@@ -171,10 +175,50 @@ public class Groups extends Controller {
 		render(groups);
 	}
 
-	/********
-	 * FaceBook style Comment Services
-	 * ******/
+	/***********************************************************************
+	 * Swipe to Wall Services
+	 **********************************************************************/
+	/********************* add Youtube links by Group *********************/
+	// @parms {group_name:"Test", task_name:"spray can", url:"http://"}
+	public static void addYoutubeLink() throws IOException {
+		String json = IOUtils.toString(request.body);
+		YT_request req = new Gson().fromJson(json, YT_request.class);
+		System.out.println(json);
+		String group_name = req.group_name;
+		String task_name = req.task_name;
+		String yt_url = req.url;
+		//Remove the base you-tube link
+		yt_url= yt_url.substring(25);
+		MyGroup tgroup = MyGroup.find("byName", group_name).first();
+		YTubeVideo yt = tgroup.addYTlink(task_name, yt_url);
+		JSONSerializer modelSerializer = new JSONSerializer().include("id",
+				"url", "content").exclude("*");
+		renderJSON(modelSerializer.serialize(yt));
+	}
 
+	/***********************************************************************
+	 * SciWorks Services
+	 **********************************************************************/
+	public static void showGroupContents() {
+		Long group_id = params.get("grpid", Long.class);
+		MyGroup group = MyGroup.findById(group_id);
+		MyGroup tgroup = new MyGroup();
+		//Assign contents to tgroup
+		List<YTubeVideo> ytlist = group.ytVideos;
+		List<Comment> comments = group.comments;
+		tgroup.ytVideos = ytlist;
+		tgroup.comments = comments;
+		tgroup.id = group.id;
+		tgroup.name = group.name;
+		tgroup.run_id = group.run_id;
+
+		JSONSerializer modelSerializer = new JSONSerializer().include(
+				"ytVideos.id", "ytVideos.yt_url", "comments.xpos",
+				"comments.ypos", "comments.rawcontent", "id", "run_id","comments.task.id","comments.project.id").exclude(
+				"*");
+		renderJSON(modelSerializer.serialize(tgroup));
+	}
+	
 	/********************* add fb comment **********************************/
 	public static void addFbComment(Long id) throws IOException {
 		String json = IOUtils.toString(request.body);
@@ -194,50 +238,6 @@ public class Groups extends Controller {
 		comment.ypos = ypos;
 		comment.save();
 		renderTemplate("Comments/comment.json", comment);
-	}
-
-	/*********
-	 * Youtube services
-	 * ******/
-	/********************* add Youtube links by Group **********************************/
-	// @parms {group_name:"Test", task_name:"spray can", url:"http://"}
-	public static void addYoutubeLink() throws IOException {
-		String json = IOUtils.toString(request.body);
-		YT_request req = new Gson().fromJson(json, YT_request.class);
-		System.out.println(json);
-		String group_name = req.group_name;
-		String task_name = req.task_name;
-		
-		
-		String yt_url = req.yt_url;
-		yt_url= yt_url.substring(25);
-		
-		MyGroup tgroup = MyGroup.find("byName", group_name).first();
-		
-		YTubeVideo yt = tgroup.addYTlink(task_name, yt_url);
-		JSONSerializer modelSerializer = new JSONSerializer().include("id",
-				"url", "content").exclude("*");
-		renderJSON(modelSerializer.serialize(yt));
-	}
-
-	public static void showGroupContents() {
-		Long group_id = params.get("grpid", Long.class);
-		MyGroup group = MyGroup.findById(group_id);
-		MyGroup tgroup = new MyGroup();
-		List<YTubeVideo> ytlist = group.ytVideos;
-		List<Comment> comments = group.comments;
-
-		tgroup.ytVideos = ytlist;
-		tgroup.comments = comments;
-		tgroup.id = group.id;
-		tgroup.name = group.name;
-		tgroup.run_id = group.run_id;
-
-		JSONSerializer modelSerializer = new JSONSerializer().include(
-				"ytVideos.id", "ytVideos.yt_url", "comments.xpos",
-				"comments.ypos", "comments.rawcontent", "id", "run_id","comments.task.id","comments.project.id").exclude(
-				"*");
-		renderJSON(modelSerializer.serialize(tgroup));
 	}
 }
 
