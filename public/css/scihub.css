@@ -79,7 +79,6 @@ footer {
 
 #stage {
 	margin: 0 auto;
-	background-color: #999999;
 }
 
 /* group */
@@ -144,4 +143,10 @@ footer {
 
 .comGrpName {
 	padding: 5px;
+}
+
+.res {
+	position:absolute;
+ 	top:50px;
+ 	left:10px;
 }

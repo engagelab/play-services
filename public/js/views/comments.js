@@ -32,7 +32,8 @@ window.CommentItemView = Backbone.View.extend({
 		$(this.el).html(this.template(this.model.toJSON()));
 		$(this.el).draggable({
 			//handle : '.toolbar',
-			stack: "div"
+			stack: "div",
+			containment: 'commentsContainer'
 		});
 		return this;
 	}

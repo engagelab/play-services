@@ -15,6 +15,7 @@ var AppRouter = Backbone.Router.extend({
 	routes : {
 		"" : "def",
 		"/groups" : "listGroups",
+		"/resources" : "listResources",
 		"/commentsbyid/:id" : "listComments"
 	},
 	
@@ -22,7 +23,12 @@ var AppRouter = Backbone.Router.extend({
 		app.navigate("/#/groups", true);
 	},
 	
+	listResources : function() {
+		app.showView('#stage', new ResourceView());
+	},
+	
 	listGroups : function() {
+		$('#stage').html('');
 		this.selectedGroupName = '';
 		this.groupList = new GroupCollection();
 		this.groupList.fetch({success:function () {
@@ -30,6 +36,7 @@ var AppRouter = Backbone.Router.extend({
 			},
 			wait: true
 		});
+		//$('#res').html(tpl.get('resource_tpl'));
 	},
 	
 	listComments : function(id) {
@@ -53,7 +60,7 @@ var AppRouter = Backbone.Router.extend({
 });
 
 //loading html templates
-tpl.loadTemplates(['header_tpl', 'groups_tpl', 'members_tpl', 'comment_tpl'], function() {
+tpl.loadTemplates(['header_tpl', 'groups_tpl', 'members_tpl', 'comment_tpl', 'resource_tpl'], function() {
 	app = new AppRouter();
 	Backbone.history.start();
 });
