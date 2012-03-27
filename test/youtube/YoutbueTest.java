@@ -9,16 +9,19 @@ public class YoutbueTest extends FunctionalTest{
 	
 	@Test
 	public void postLink() {
+		for(int it = 0; it<20;it++)
+		{
         Response response = POST("/youtube/","application/json","{ \"group_name\": \"group1\", \"task_name\": \"level1\", " +
-        		"\"yt_url\": \"http://www.youtube.com/v/CXlXpQcHKCA\"}"); 
+        		"\"url\": \"http://www.youtube.com/v/CXlXpQcHKCA\"}"); 
 	    assertIsOk(response);
+		}
 	}
 
-	
+	//{wxpos:50,wypos:25}
 	@Test
 	public void updatePos() {
-        Response response = PUT ("/youtube/","application/json","{ \"group_name\": \"group1\", \"task_name\": \"level1\", " +
-        		"\"yt_url\": \"http://www.youtube.com/v/CXlXpQcHKCA\"}"); 
+        Response response = PUT ("/youtube/","application/json","{ \"yt_id\": \"1\", \"wxpos\": \"20\",  \"wypos\": \"40\"}"); 
 	    assertIsOk(response);
 	}
+	
 }

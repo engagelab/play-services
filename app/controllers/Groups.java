@@ -199,6 +199,26 @@ public class Groups extends Controller {
 	/***********************************************************************
 	 * SciWorks Services
 	 **********************************************************************/
+	/********************* Update the YTbox **********************************/
+	public static void updateYtBoxPos() throws IOException {
+		String json = IOUtils.toString(request.body);
+		YT_request req = new Gson().fromJson(json, YT_request.class);
+		System.out.println(json);
+
+		// String content = req.content
+		int wxpos = req.wxpos;
+		int wypos = req.wypos;
+		Long yt_id = req.yt_id;
+		YTubeVideo  ytv = YTubeVideo.findById(yt_id);
+
+		ytv.wxpos = wxpos;
+		ytv.wypos = wypos;
+		ytv.save();
+		renderTemplate("YTubeVideos/ytv.json", ytv);
+	}
+	
+	/********************* Show All contents by group **********************************/
+	
 	public static void showGroupContents() {
 		Long group_id = params.get("grpid", Long.class);
 		MyGroup group = MyGroup.findById(group_id);
@@ -214,28 +234,10 @@ public class Groups extends Controller {
 
 		JSONSerializer modelSerializer = new JSONSerializer().include(
 				"ytVideos.id", "ytVideos.yt_url", "comments.xpos",
-				"comments.ypos", "comments.rawcontent", "id", "run_id","comments.task.id","comments.project.id").exclude(
+				"comments.ypos", "comments.wxpos","comments.wypos","comments.rawcontent", "id", "run_id","comments.task.id","comments.project.id").exclude(
 				"*");
 		renderJSON(modelSerializer.serialize(tgroup));
 	}
-	
-	/********************* Update the Comment **********************************/
-	public static void updateYtBoxPos(Long id) throws IOException {
-		String json = IOUtils.toString(request.body);
-		YT_request req = new Gson().fromJson(json, YT_request.class);
-		System.out.println(json);
-
-		// String content = req.content
-		int wxpos = req.wxpos;
-		int wypos = req.wypos;
-		YTubeVideo  ytv = YTubeVideo.findById(id);
-
-		ytv.wxpos = wxpos;
-		ytv.wypos = wypos;
-		ytv.save();
-		renderTemplate("YTubeVideos/ytv.json", ytv);
-	}
-	
 	
 	
 	/********************* add fb comment **********************************/

@@ -41,6 +41,9 @@ public class Comment extends Model {
 	public float xpos;
 	public float ypos;
 	
+	public int wxpos;
+	public int wypos;
+	
 	@Lob
     public String content;
 	
@@ -52,6 +55,8 @@ public class Comment extends Model {
 	@PrePersist
 	public void prePersist(){
 		postedAt = new Date();
+		wxpos = 0;
+		wypos = 0;
 	}
 	
 	public Comment(Project project, Long run_id, MyGroup myGroup, Task task, String content, float xpos, float ypos) {
@@ -63,7 +68,7 @@ public class Comment extends Model {
 		this.xpos  = xpos;
 		this.ypos = ypos;
 		}
-	
+
 	public static List<Comment> findByTask(Long id) {
 		Task task = Task.findById(id);
 		List<Comment> comments = task.comments;

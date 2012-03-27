@@ -6,5 +6,6 @@ public class YT_request {
 	public String url;
 	public int wxpos;
 	public int wypos;
+	public Long yt_id;
 
 }

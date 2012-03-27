@@ -46,6 +46,7 @@ GET  		/showBBCommentbyG/{name}					Comments.index
 GET  		/contents?									Groups.showGroupContents
 GET  		/groupnames/{id}							Groups.allGroupsByRunId
 POST		/youtube/									Groups.addYoutubeLink
+PUT		/youtube/									Groups.updateYtBoxPos
 								
 
 #Group Operation routs
