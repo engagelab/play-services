@@ -219,6 +219,17 @@ public class Groups extends Controller {
 	
 	/********************* Show All contents by group **********************************/
 	
+	public static void showYTVidoByGroup() {
+		Long group_id = params.get("grpid", Long.class);
+		MyGroup group = MyGroup.findById(group_id);
+		List<YTubeVideo> ytlist = group.ytVideos;
+		
+		JSONSerializer modelSerializer = new JSONSerializer().include(
+				"id", "yt_url", "wxpos","wypos").exclude("*");
+		renderJSON(modelSerializer.serialize(ytlist));
+	}
+	
+	
 	public static void showGroupContents() {
 		Long group_id = params.get("grpid", Long.class);
 		MyGroup group = MyGroup.findById(group_id);
