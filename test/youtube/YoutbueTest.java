@@ -1,5 +1,6 @@
 package youtube;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import play.mvc.Http.Response;
@@ -18,7 +19,7 @@ public class YoutbueTest extends FunctionalTest{
 	}
 
 	//{wxpos:50,wypos:25}
-	@Test
+	@Ignore
 	public void updatePos() {
         Response response = PUT ("/youtube/","application/json","{ \"yt_id\": \"1\", \"wxpos\": \"20\",  \"wypos\": \"40\"}"); 
 	    assertIsOk(response);
