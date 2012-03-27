@@ -139,7 +139,7 @@ public class Groups extends Controller {
 				.fetch();
 		JSONSerializer modelSerializer = new JSONSerializer().include("xpos",
 				"ypos", "content", "myGroup.id", "project.id", "task.id","rawcontent",
-				"run_id").exclude("*");
+				"run_id","wxpos","wypos").exclude("*");
 		renderJSON(modelSerializer.serialize(comments));
 	}
 
