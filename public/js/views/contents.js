@@ -51,7 +51,7 @@ window.CommentContentItemView = Backbone.View.extend({
 	},
 	
 	events : {
-		//"dragstop .toolbar" : "updatePosition"
+		"dragstop" : "updatePosition"
 	},
 
 	render : function(eventName) {
