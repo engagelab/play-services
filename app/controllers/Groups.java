@@ -137,7 +137,7 @@ public class Groups extends Controller {
 		List<Comment> comments = Comment.find(
 				"SELECT c from Comment c Where myGroup_id =?", group_id)
 				.fetch();
-		JSONSerializer modelSerializer = new JSONSerializer().include("xpos",
+		JSONSerializer modelSerializer = new JSONSerializer().include("id", "xpos",
 				"ypos", "content", "myGroup.id", "project.id", "task.id","rawcontent",
 				"run_id","wxpos","wypos").exclude("*");
 		renderJSON(modelSerializer.serialize(comments));

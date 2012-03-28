@@ -31,6 +31,8 @@ window.CommentItemView = Backbone.View.extend({
 		var ptop = this.el.style.top;
 		this.model.attributes.ypos = ptop.substring(0, ptop.length-2);
 		this.model.attributes.content = $('div#'+this.model.id+' .editable').text();*/
+		this.model.attributes.wxpos = 50;
+		this.model.attributes.wypos = 80;
 		this.model.save();
 	},
 	
