@@ -18,12 +18,17 @@ import play.db.jpa.Model;
 @Entity
 public class FbComment extends Model{
 	
-	private String fbComment;
+	private String fbcontent;
 	public Date postedAt;
 	
 	@ManyToOne
     public Comment comment;
 	
+	public FbComment(Comment comment, String fbcontent) {
+		this.comment = comment;
+		this.fbcontent = fbcontent;
+	}
+
 	@PrePersist
 	public void prePersist(){
 		postedAt = new Date();
@@ -33,14 +38,14 @@ public class FbComment extends Model{
 	 * @return the fbComment
 	 */
 	public String getFbComment() {
-		return fbComment;
+		return fbcontent;
 	}
 
 	/**
 	 * @param fbComment the fbComment to set
 	 */
 	public void setFbComment(String fbComment) {
-		this.fbComment = fbComment;
+		this.fbcontent = fbComment;
 	}
 	
 

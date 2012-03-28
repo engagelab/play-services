@@ -53,7 +53,8 @@ PUT			/ytvideosbyid/{id}							Groups.updateYtBoxPos
 GET  		/ytvideosbyid?								Groups.showYTVidoByGroup
 
 # Routes for Facebook Comments
-GET  		/fbcomments?									Groups.showfbComments
+GET  		/fbcomments?								Groups.showfbComments
+POST  		/fbcomments									Groups.addFbComment
 								
 
 #Group Operation routs

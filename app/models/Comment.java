@@ -74,6 +74,13 @@ public class Comment extends Model {
 		List<Comment> comments = task.comments;
 		return comments;
 	}
+
+	public FbComment addFbComment(String fbcontent) {
+		FbComment newfbComment = new FbComment(this,fbcontent);
+		this.fbComments.add(newfbComment);
+		this.save();
+		return newfbComment;
+	}
 	
 	
 //	public static List<Comment> findByUser(Long id) {

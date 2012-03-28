@@ -24,6 +24,7 @@ import play.mvc.Before;
 import play.mvc.Controller;
 import requests.Comment_request;
 import requests.Datum_request;
+import requests.FBComment_request;
 import requests.JsonRequest;
 import requests.RunId_request;
 import requests.YT_request;
@@ -266,35 +267,29 @@ public class Groups extends Controller {
 		renderJSON(modelSerializer.serialize(tgroup));
 	}
 	
-	/********************* show fb comment **********************************/
+	/********************* show fb comments by Comment id ******************/
 	public static void showfbComments() {
 		Long comment_id = params.get("comment_id", Long.class);
 		Comment comment = Comment.findById(comment_id);
-		
 		List<FbComment> fbcomments = comment.fbComments;
-		JSONSerializer modelSerializer = new JSONSerializer().include("id","fbComment").exclude(
+		JSONSerializer modelSerializer = new JSONSerializer().include("id","fbcontent").exclude(
 				"*");
 		renderJSON(modelSerializer.serialize(fbcomments));
 	}
-	/********************* add fb comment **********************************/
-	public static void addFbComment(Long id) throws IOException {
+	/********************* add fb comment /post *****************************/
+	public static void addFbComment() throws IOException {
 		String json = IOUtils.toString(request.body);
 		System.out.println("PUT comments/id:" + json);
-		Comment_request req = new Gson().fromJson(json, Comment_request.class);
+		FBComment_request req = new Gson().fromJson(json, FBComment_request.class);
 		System.out.println(json);
 		Long comment_id = req.comment_id;
-		// Unicode conversion
-		UnicodeString us = new UnicodeString();
-		String content = us.convert(req.content);
-		// String content = req.content
-		float xpos = req.xpos;
-		float ypos = req.ypos;
-		Comment comment = Comment.findById(id);
-		comment.content = content;
-		comment.xpos = xpos;
-		comment.ypos = ypos;
-		comment.save();
-		renderTemplate("Comments/comment.json", comment);
+		String fbcontent = req.fbcontent;
+		Comment comment = Comment.findById(comment_id);
+		FbComment fbcomment = comment.addFbComment(fbcontent);
+		JSONSerializer modelSerializer = new JSONSerializer().include("id","fbcontent").exclude(
+				"*");
+		renderJSON(modelSerializer.serialize(fbcomment));
+
 	}
 }
 
