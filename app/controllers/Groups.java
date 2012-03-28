@@ -88,8 +88,8 @@ public class Groups extends Controller {
 		Task task = Task.findById(task_id);
 		Comment comment = myGroup.postComment(project, run_id, task, content,
 				xpos, ypos);
-		//Set postion of Postit notes 
-		comment.wxpos = (int)((comment.id *40) % 800);
+		//Set postion of Postit notes automatically 
+		comment.wxpos = (int)((comment.id * 40) % 800);
 		comment.save();
 		System.out.println(comment.toString());
 		renderTemplate("Comments/comment.json", comment);
@@ -206,6 +206,10 @@ public class Groups extends Controller {
 		yt_url= yt_url.substring(25);
 		MyGroup tgroup = MyGroup.find("byName", group_name).first();
 		YTubeVideo yt = tgroup.addYTlink(task_name, yt_url);
+		
+		//Set postion of Youtube box automatically 
+		yt.wxpos = (int)((yt.id * 40) % 800);
+		yt.save();
 		JSONSerializer modelSerializer = new JSONSerializer().include("id",
 				"url", "content").exclude("*");
 		renderJSON(modelSerializer.serialize(yt));
@@ -219,13 +223,10 @@ public class Groups extends Controller {
 		String json = IOUtils.toString(request.body);
 		YT_request req = new Gson().fromJson(json, YT_request.class);
 		System.out.println(json);
-
 		// String content = req.content
 		int wxpos = req.wxpos;
 		int wypos = req.wypos;
-
 		YTubeVideo  ytv = YTubeVideo.findById(id);
-
 		ytv.wxpos = wxpos;
 		ytv.wypos = wypos;
 		ytv.save();
