@@ -5,7 +5,7 @@ window.HeaderView = Backbone.View.extend({
     },
 
     render:function (eventName) {
-        $(this.el).html(this.template(arguments[0]));
+        $(this.el).html(this.template({ name: this.options}));
         return this;
     },
 

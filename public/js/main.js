@@ -8,7 +8,7 @@ Backbone.View.prototype.close = function() {
 var AppRouter = Backbone.Router.extend({
 
 	initialize : function() {
-		$('#header').html(new HeaderView('titlellll').render().el);
+		$('#header').html(new HeaderView('null').render().el);
 	},
 	
 	routes : {
@@ -38,6 +38,7 @@ var AppRouter = Backbone.Router.extend({
 	},
 	
 	listComments : function(id) {
+		$('#header').html(new HeaderView(this.selectedGroupName).render().el);
 		$('#stage').html('');
 		
 		this.commentList = new CommentCollection();
