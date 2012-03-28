@@ -8,27 +8,16 @@ import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 
+import com.google.gson.Gson;
+
 import models.*;
 
-import com.cedarsoftware.util.io.JsonWriter;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
 
 import flexjson.JSONSerializer;
 
-import play.libs.WS;
-import play.libs.WS.HttpResponse;
 import play.mvc.Before;
 import play.mvc.Controller;
-import requests.Comment_request;
-import requests.Datum_request;
-import requests.FBComment_request;
-import requests.JsonRequest;
-import requests.RunId_request;
-import requests.YT_request;
-import respones.RollCall;
+import requests.*;
 import util.UnicodeString;
 
 /*******************************************************************************
@@ -37,8 +26,7 @@ import util.UnicodeString;
  * client[flash, HTML5] and RollCall
  *******************************************************************************/
 public class Groups extends Controller {
-	
-	
+
 	/***********************************************************************
 	 * Heat pump Simulation Services
 	 **********************************************************************/
@@ -60,7 +48,7 @@ public class Groups extends Controller {
 				"id", "run_id", "members.user.name").exclude("*");
 		renderJSON(modelSerializer.serialize(groups));
 	}
-
+	/********************* Retrieve the list of all groups by run_id **********/
 	public static void allGroupsByRunId(Long id) {
 		List<MyGroup> groups = MyGroup.find(
 				"SELECT g from MyGroup g Where run_id =?", id.toString())
@@ -89,20 +77,20 @@ public class Groups extends Controller {
 		Task task = Task.findById(task_id);
 		Comment comment = myGroup.postComment(project, run_id, task, content,
 				xpos, ypos);
-		//Set postion of Postit notes automatically 
-		comment.wxpos = (int)((comment.id * 40) % 800);
+		// Set postion of Postit notes automatically
+		comment.wxpos = (int) ((comment.id * 40) % 800);
 		comment.save();
 		System.out.println(comment.toString());
 		renderTemplate("Comments/comment.json", comment);
 	}
 
-	/********************* Update the Comment on flash**********************************/
+	/********************* Update the Comment in FLASH **********************************/
 	public static void updateComment(Long id) throws IOException {
 		String json = IOUtils.toString(request.body);
 		System.out.println("PUT comments/id:" + json);
 		Comment_request req = new Gson().fromJson(json, Comment_request.class);
 		System.out.println(json);
-		//Long comment_id = req.comment_id;
+		// Long comment_id = req.comment_id;
 		// Unicode conversion
 		UnicodeString us = new UnicodeString();
 		String content = us.convert(req.content);
@@ -117,14 +105,11 @@ public class Groups extends Controller {
 		comment.save();
 		renderTemplate("Comments/comment.json", comment);
 	}
-	
+
 	/********************* Update the Comment on web **********************************/
 	public static void updateCommentPos(Long id) throws IOException {
 		String json = IOUtils.toString(request.body);
-		System.out.println("PUT comments/id:" + json);
 		Comment_request req = new Gson().fromJson(json, Comment_request.class);
-		System.out.println(json);
-
 		int wxpos = req.wxpos;
 		int wypos = req.wypos;
 		Comment comment = Comment.findById(id);
@@ -146,16 +131,16 @@ public class Groups extends Controller {
 		renderTemplate("Comments/list.json", comments);
 
 	}
-
 	/********************* Show Comments by Group **********************/
 	public static void showCommentbyG() {
 		Long group_id = params.get("grpid", Long.class);
 		List<Comment> comments = Comment.find(
 				"SELECT c from Comment c Where myGroup_id =?", group_id)
 				.fetch();
-		JSONSerializer modelSerializer = new JSONSerializer().include("id", "xpos",
-				"ypos", "content", "myGroup.id", "project.id", "task.id","rawcontent",
-				"run_id","wxpos","wypos").exclude("*");
+		JSONSerializer modelSerializer = new JSONSerializer().include("id",
+				"xpos", "ypos", "content", "myGroup.id", "project.id",
+				"task.id", "rawcontent", "run_id", "wxpos", "wypos").exclude(
+				"*");
 		renderJSON(modelSerializer.serialize(comments));
 	}
 
@@ -166,7 +151,6 @@ public class Groups extends Controller {
 		List<Comment> comments = Comment
 				.find("SELECT c  from Comment c Where c.myGroup.id =? and c.task.id=?",
 						group_id, task_id).fetch();
-
 		renderTemplate("Comments/list.json", comments);
 	}
 
@@ -179,7 +163,6 @@ public class Groups extends Controller {
 
 		Long data_id = Long.parseLong(req.data_id);
 		String data = req.data;
-		// System.println(json);
 		TaskData existing_var = TaskData.findById(data_id);
 		existing_var.taskdata = data;
 		existing_var.save();
@@ -203,13 +186,13 @@ public class Groups extends Controller {
 		String group_name = req.group_name;
 		String task_name = req.task_name;
 		String yt_url = req.url;
-		//Remove the base you-tube link
-		yt_url= yt_url.substring(25);
+		// Remove the base you-tube link
+		yt_url = yt_url.substring(25);
 		MyGroup tgroup = MyGroup.find("byName", group_name).first();
 		YTubeVideo yt = tgroup.addYTlink(task_name, yt_url);
-		
-		//Set postion of Youtube box automatically 
-		yt.wxpos = (int)((yt.id * 40) % 800);
+
+		// Set postion of Youtube box automatically
+		yt.wxpos = (int) ((yt.id * 40) % 800);
 		yt.save();
 		JSONSerializer modelSerializer = new JSONSerializer().include("id",
 				"url", "content").exclude("*");
@@ -227,31 +210,30 @@ public class Groups extends Controller {
 		// String content = req.content
 		int wxpos = req.wxpos;
 		int wypos = req.wypos;
-		YTubeVideo  ytv = YTubeVideo.findById(id);
+		YTubeVideo ytv = YTubeVideo.findById(id);
 		ytv.wxpos = wxpos;
 		ytv.wypos = wypos;
 		ytv.save();
 		renderTemplate("YTubeVideos/ytv.json", ytv);
 	}
-	
+
 	/********************* Show All contents by group **********************************/
-	
+
 	public static void showYTVidoByGroup() {
 		Long group_id = params.get("grpid", Long.class);
 		MyGroup group = MyGroup.findById(group_id);
 		List<YTubeVideo> ytlist = group.ytVideos;
-		
-		JSONSerializer modelSerializer = new JSONSerializer().include(
-				"id", "yt_url", "wxpos","wypos").exclude("*");
+
+		JSONSerializer modelSerializer = new JSONSerializer().include("id",
+				"yt_url", "wxpos", "wypos").exclude("*");
 		renderJSON(modelSerializer.serialize(ytlist));
 	}
-	
-	
+
 	public static void showGroupContents() {
 		Long group_id = params.get("grpid", Long.class);
 		MyGroup group = MyGroup.findById(group_id);
 		MyGroup tgroup = new MyGroup();
-		//Assign contents to tgroup
+		// Assign contents to tgroup
 		List<YTubeVideo> ytlist = group.ytVideos;
 		List<Comment> comments = group.comments;
 		tgroup.ytVideos = ytlist;
@@ -262,38 +244,39 @@ public class Groups extends Controller {
 
 		JSONSerializer modelSerializer = new JSONSerializer().include(
 				"ytVideos.id", "ytVideos.yt_url", "comments.xpos",
-				"comments.ypos", "comments.wxpos","comments.wypos","comments.rawcontent", "id", "run_id","comments.task.id","comments.project.id").exclude(
-				"*");
+				"comments.ypos", "comments.wxpos", "comments.wypos",
+				"comments.rawcontent", "id", "run_id", "comments.task.id",
+				"comments.project.id").exclude("*");
 		renderJSON(modelSerializer.serialize(tgroup));
 	}
-	
+
 	/********************* show fb comments by Comment id ******************/
 	public static void showfbComments() {
 		Long comment_id = params.get("comment_id", Long.class);
 		Comment comment = Comment.findById(comment_id);
 		List<FbComment> fbcomments = comment.fbComments;
-		JSONSerializer modelSerializer = new JSONSerializer().include("id","fbcontent").exclude(
-				"*");
+		JSONSerializer modelSerializer = new JSONSerializer().include("id",
+				"fbcontent").exclude("*");
 		renderJSON(modelSerializer.serialize(fbcomments));
 	}
+
 	/********************* add fb comment /post *****************************/
 	public static void addFbComment() throws IOException {
 		String json = IOUtils.toString(request.body);
 		System.out.println("PUT comments/id:" + json);
-		FBComment_request req = new Gson().fromJson(json, FBComment_request.class);
+		FBComment_request req = new Gson().fromJson(json,
+				FBComment_request.class);
 		System.out.println(json);
 		Long comment_id = req.comment_id;
 		String fbcontent = req.fbcontent;
 		Comment comment = Comment.findById(comment_id);
 		FbComment fbcomment = comment.addFbComment(fbcontent);
-		JSONSerializer modelSerializer = new JSONSerializer().include("id","fbcontent").exclude(
-				"*");
+		JSONSerializer modelSerializer = new JSONSerializer().include("id",
+				"fbcontent").exclude("*");
 		renderJSON(modelSerializer.serialize(fbcomment));
 
 	}
 }
-
-
 
 // /********************* Establish Connection with RollCall ******************/
 // @Before
