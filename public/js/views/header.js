@@ -5,16 +5,10 @@ window.HeaderView = Backbone.View.extend({
     },
 
     render:function (eventName) {
-        $(this.el).html(this.template());
+        $(this.el).html(this.template(arguments[0]));
         return this;
     },
 
     events:{
-        "click .new":"newPostit"
-    },
-
-    newPostit:function (event) {
-        app.newPostit();
     }
-
 });

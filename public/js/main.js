@@ -8,7 +8,7 @@ Backbone.View.prototype.close = function() {
 var AppRouter = Backbone.Router.extend({
 
 	initialize : function() {
-		$('#header').html(new HeaderView().render().el);
+		$('#header').html(new HeaderView('titlellll').render().el);
 	},
 	
 	routes : {
