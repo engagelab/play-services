@@ -51,6 +51,9 @@ GET  		/groupnames/{id}							Groups.allGroupsByRunId
 POST		/youtube/									Groups.addYoutubeLink
 PUT			/ytvideosbyid/{id}							Groups.updateYtBoxPos
 GET  		/ytvideosbyid?								Groups.showYTVidoByGroup
+
+# Routes for Facebook Comments
+GET  		/fbcomments?									Groups.showfbComments
 								
 
 #Group Operation routs

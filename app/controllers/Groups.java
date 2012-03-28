@@ -266,7 +266,16 @@ public class Groups extends Controller {
 		renderJSON(modelSerializer.serialize(tgroup));
 	}
 	
-	
+	/********************* show fb comment **********************************/
+	public static void showfbComments() {
+		Long comment_id = params.get("comment_id", Long.class);
+		Comment comment = Comment.findById(comment_id);
+		
+		List<FbComment> fbcomments = comment.fbComments;
+		JSONSerializer modelSerializer = new JSONSerializer().include("id","fbComment").exclude(
+				"*");
+		renderJSON(modelSerializer.serialize(fbcomments));
+	}
 	/********************* add fb comment **********************************/
 	public static void addFbComment(Long id) throws IOException {
 		String json = IOUtils.toString(request.body);
