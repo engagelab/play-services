@@ -58,11 +58,6 @@ public class Groups extends Controller {
 		JSONSerializer modelSerializer = new JSONSerializer().include("name",
 				"id", "run_id", "members.user.name").exclude("*");
 		renderJSON(modelSerializer.serialize(groups));
-		// by using import com.cedarsoftware.util.io.JsonWriter;
-		// String json = JsonWriter.toJson(groups).toString();
-		// renderText(json);
-		// by template
-		// renderTemplate("Groups/list.json", groups);
 	}
 
 	public static void allGroupsByRunId(Long id) {
@@ -93,6 +88,10 @@ public class Groups extends Controller {
 		Task task = Task.findById(task_id);
 		Comment comment = myGroup.postComment(project, run_id, task, content,
 				xpos, ypos);
+		//Set postion of Postit notes 
+		comment.wxpos = (int)((comment.id *40) % 800);
+		comment.save();
+		System.out.println(comment.toString());
 		renderTemplate("Comments/comment.json", comment);
 	}
 
