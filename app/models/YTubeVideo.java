@@ -28,7 +28,7 @@ public class YTubeVideo extends Model {
 		postedAt = new Date();
 		wxpos = 0;
 		//startup position of you-tube box on web
-		wypos = 300;
+		wypos = 200;
 	}
 	
 	public YTubeVideo(String yt_url, MyGroup myGroup, Task task) {
