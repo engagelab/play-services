@@ -8,14 +8,14 @@ Backbone.View.prototype.close = function() {
 var AppRouter = Backbone.Router.extend({
 
 	initialize : function() {
-		$('#header').html(new HeaderView('null').render().el);
+		//$('#header').html(new HeaderView('null').render().el);
 	},
 	
 	routes : {
 		"" : "def",
 		"/groups" : "listGroups",
 		"/resources" : "listResources",
-		"/commentsbyid/:id" : "listComments"
+		"/groupcontent/:id/:nam" : "listComments"
 	},
 	
 	def : function() {
@@ -27,6 +27,7 @@ var AppRouter = Backbone.Router.extend({
 	},
 	
 	listGroups : function() {
+		$('#header').html(new HeaderView('null').render().el);
 		$('#stage').html('');
 		this.selectedGroupName = '';
 		this.groupList = new GroupCollection();
@@ -37,8 +38,8 @@ var AppRouter = Backbone.Router.extend({
 		});
 	},
 	
-	listComments : function(id) {
-		$('#header').html(new HeaderView(this.selectedGroupName).render().el);
+	listComments : function(id, nam) {
+		$('#header').html(new HeaderView(nam).render().el);
 		$('#stage').html('');
 		
 		this.commentList = new CommentCollection();

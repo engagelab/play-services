@@ -30,7 +30,7 @@ window.GroupListItemView = Backbone.View.extend({
 
 	getCommentsByGroup : function(event) {
 		app.selectedGroupName = this.model.attributes.name;
-		app.navigate("/#/commentsbyid/"+this.model.attributes.id, true);
+		app.navigate("/#/groupcontent/"+this.model.attributes.id+"/"+this.model.attributes.name, true);
 		//app.navigate("/#/contents/"+this.model.attributes.id, true);
 	},
 	
