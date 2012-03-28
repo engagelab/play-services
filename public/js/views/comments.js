@@ -45,7 +45,7 @@ window.CommentItemView = Backbone.View.extend({
 		var key = event.keyCode;
 		if(key==13 && event.currentTarget.value!='') {
 			var fbc = new FBComment();
-			fbc.attributes.fbComment = event.currentTarget.value;
+			fbc.attributes.fbcontent = event.currentTarget.value;
 			fbc.attributes.comment_id = this.model.id;
 			this.fbmodel.add(fbc);
 			fbc.save();
