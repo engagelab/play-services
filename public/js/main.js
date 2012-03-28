@@ -15,8 +15,7 @@ var AppRouter = Backbone.Router.extend({
 		"" : "def",
 		"/groups" : "listGroups",
 		"/resources" : "listResources",
-		"/commentsbyid/:id" : "listComments",
-		"/contents/:id" : "listContents"
+		"/commentsbyid/:id" : "listComments"
 	},
 	
 	def : function() {
@@ -39,20 +38,20 @@ var AppRouter = Backbone.Router.extend({
 	},
 	
 	listComments : function(id) {
+		$('#stage').html('');
+		
 		this.commentList = new CommentCollection();
 		this.commentList.fetch({ data: $.param({ grpid: id}),
 			success : function(event) {
-				app.showView('#stage', new CommentView({model : app.commentList}));
+				$('#stage').append(new CommentView({model : app.commentList}).render().el);
 			},
 			wait: true
 		});
-	},
-	
-	listContents : function(id) {
-		this.contentList = new ContentCollection();
-		this.contentList.fetch({ data: $.param({ grpid: id}),
+		
+		this.ytvideoList = new YTVideoCollection();
+		this.ytvideoList.fetch({ data: $.param({ grpid: id}),
 			success : function(event) {
-				app.showView('#stage', new ContentView({model : app.contentList}));
+				$('#stage').append(new YTVideoView({model : app.ytvideoList}).render().el);
 			},
 			wait: true
 		});
@@ -69,7 +68,7 @@ var AppRouter = Backbone.Router.extend({
 });
 
 //loading html templates
-tpl.loadTemplates(['header_tpl', 'groups_tpl', 'members_tpl', 'comment_tpl', 'content_tpl', 'resource_tpl', 'ytvideo_tpl'], function() {
+tpl.loadTemplates(['header_tpl', 'groups_tpl', 'members_tpl', 'comment_tpl', 'resource_tpl', 'ytvideo_tpl'], function() {
 	app = new AppRouter();
 	Backbone.history.start();
 });

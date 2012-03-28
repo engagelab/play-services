@@ -12,9 +12,9 @@ window.CommentCollection = Backbone.Collection.extend({
 	url : "/commentsbyid"
 });
 
-window.Content = Backbone.Model.extend({});
+window.YTVideo = Backbone.Model.extend({});
 
-window.ContentCollection = Backbone.Collection.extend({
-	model : Content,
-	url : "/contents"
+window.YTVideoCollection = Backbone.Collection.extend({
+	model : YTVideo,
+	url : "/ytvideosbyid"
 });

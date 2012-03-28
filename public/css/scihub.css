@@ -107,8 +107,14 @@ footer {
 
 
 /*  comment */
+.commentsContainer {
+	position: absolute;
+	top: 40px;
+	left: 0;
+}
+
 .comment-ui {
-	float: left;
+	position: absolute;
 	border: 1px solid #333333;
 	background: #9DC43F;
 	min-width: 200px;
@@ -152,8 +158,15 @@ footer {
  	left:10px;
 }
 
+.ytvideoContainer {
+	position: absolute;
+	top: 40px;
+	left: 0;
+}
+
+
 .ytvideo-ui {
-	float: left;
+	position: absolute;
 	border: 1px solid #333333;
 	background: #9DC43F;
 	width: 280px;
