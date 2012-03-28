@@ -159,8 +159,6 @@ public class Groups extends Controller {
 		String json = IOUtils.toString(request.body);
 		System.out.println(json);
 		Datum_request req = new Gson().fromJson(json, Datum_request.class);
-		// Serialize request
-
 		Long data_id = Long.parseLong(req.data_id);
 		String data = req.data;
 		TaskData existing_var = TaskData.findById(data_id);
@@ -190,7 +188,6 @@ public class Groups extends Controller {
 		yt_url = yt_url.substring(25);
 		MyGroup tgroup = MyGroup.find("byName", group_name).first();
 		YTubeVideo yt = tgroup.addYTlink(task_name, yt_url);
-
 		// Set postion of Youtube box automatically
 		yt.wxpos = (int) ((yt.id * 40) % 800);
 		yt.save();
@@ -207,7 +204,6 @@ public class Groups extends Controller {
 		String json = IOUtils.toString(request.body);
 		YT_request req = new Gson().fromJson(json, YT_request.class);
 		System.out.println(json);
-		// String content = req.content
 		int wxpos = req.wxpos;
 		int wypos = req.wypos;
 		YTubeVideo ytv = YTubeVideo.findById(id);
@@ -223,7 +219,6 @@ public class Groups extends Controller {
 		Long group_id = params.get("grpid", Long.class);
 		MyGroup group = MyGroup.findById(group_id);
 		List<YTubeVideo> ytlist = group.ytVideos;
-
 		JSONSerializer modelSerializer = new JSONSerializer().include("id",
 				"yt_url", "wxpos", "wypos").exclude("*");
 		renderJSON(modelSerializer.serialize(ytlist));
@@ -274,7 +269,6 @@ public class Groups extends Controller {
 		JSONSerializer modelSerializer = new JSONSerializer().include("id",
 				"fbcontent").exclude("*");
 		renderJSON(modelSerializer.serialize(fbcomment));
-
 	}
 }
 
