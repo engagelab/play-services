@@ -96,7 +96,7 @@ public class Groups extends Controller {
 		renderTemplate("Comments/comment.json", comment);
 	}
 
-	/********************* Update the Comment **********************************/
+	/********************* Update the Comment on flash**********************************/
 	public static void updateComment(Long id) throws IOException {
 		String json = IOUtils.toString(request.body);
 		System.out.println("PUT comments/id:" + json);
@@ -114,6 +114,22 @@ public class Groups extends Controller {
 		comment.rawcontent = req.content;
 		comment.xpos = xpos;
 		comment.ypos = ypos;
+		comment.save();
+		renderTemplate("Comments/comment.json", comment);
+	}
+	
+	/********************* Update the Comment on web **********************************/
+	public static void updateCommentPos(Long id) throws IOException {
+		String json = IOUtils.toString(request.body);
+		System.out.println("PUT comments/id:" + json);
+		Comment_request req = new Gson().fromJson(json, Comment_request.class);
+		System.out.println(json);
+
+		int wxpos = req.wxpos;
+		int wypos = req.wypos;
+		Comment comment = Comment.findById(id);
+		comment.wxpos = wxpos;
+		comment.wypos = wypos;
 		comment.save();
 		renderTemplate("Comments/comment.json", comment);
 	}
@@ -200,7 +216,7 @@ public class Groups extends Controller {
 	 * SciWorks Services
 	 **********************************************************************/
 	/********************* Update the YTbox **********************************/
-	public static void updateYtBoxPos() throws IOException {
+	public static void updateYtBoxPos(Long id) throws IOException {
 		String json = IOUtils.toString(request.body);
 		YT_request req = new Gson().fromJson(json, YT_request.class);
 		System.out.println(json);
@@ -208,8 +224,8 @@ public class Groups extends Controller {
 		// String content = req.content
 		int wxpos = req.wxpos;
 		int wypos = req.wypos;
-		Long yt_id = req.yt_id;
-		YTubeVideo  ytv = YTubeVideo.findById(yt_id);
+
+		YTubeVideo  ytv = YTubeVideo.findById(id);
 
 		ytv.wxpos = wxpos;
 		ytv.wypos = wypos;

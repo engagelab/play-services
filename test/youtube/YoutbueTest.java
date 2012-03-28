@@ -8,7 +8,7 @@ import play.test.FunctionalTest;
 
 public class YoutbueTest extends FunctionalTest{
 	
-	@Test
+	@Ignore
 	public void postLink() {
 		for(int it = 0; it<20;it++)
 		{
@@ -19,9 +19,9 @@ public class YoutbueTest extends FunctionalTest{
 	}
 
 	//{wxpos:50,wypos:25}
-	@Ignore
+	@Test
 	public void updatePos() {
-        Response response = PUT ("/youtube/","application/json","{ \"yt_id\": \"1\", \"wxpos\": \"20\",  \"wypos\": \"40\"}"); 
+        Response response = PUT ("/ytvideosbyid/2","application/json","{ \"yt_id\": \"2\", \"wxpos\": \"20\",  \"wypos\": \"40\"}"); 
 	    assertIsOk(response);
 	}
 	

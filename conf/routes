@@ -39,14 +39,17 @@ GET  		/comments/?									Groups.showCommentbyGT
 POST  		/comments/									Groups.postComment
 PUT  		/comments/{id}								Groups.updateComment
 DELETE  	/comments/{id}								Groups.deleteComment
+
 GET  		/commentsbyid?								Groups.showCommentbyG
+PUT  		/commentsbyid/{id}							Groups.updateCommentPos
+
 GET  		/showBBCommentbyG/{name}					Comments.index
 
 # Routes for Youtue
 GET  		/contents?									Groups.showGroupContents
 GET  		/groupnames/{id}							Groups.allGroupsByRunId
 POST		/youtube/									Groups.addYoutubeLink
-PUT			/youtube/									Groups.updateYtBoxPos
+PUT			/ytvideosbyid/{id}							Groups.updateYtBoxPos
 GET  		/ytvideosbyid?								Groups.showYTVidoByGroup
 								
 

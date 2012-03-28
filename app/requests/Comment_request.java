@@ -9,4 +9,6 @@ public class Comment_request {
 	public String content;
 	public float xpos;
 	public float ypos; 
+	public int wxpos;
+	public int wypos;
 }
