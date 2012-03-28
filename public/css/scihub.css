@@ -180,3 +180,22 @@ footer {
 	float: right;
 	vertical-align: middle;
 }
+
+.fbcomment-ui {
+	width: 100%;
+	background: #529F2E;
+	color: #FFFFFF;
+	margin: 0 auto;
+}
+
+.fbcomment-txt {
+	padding-right: 5px;
+	display: block;
+	text-align: right;
+}
+
+.newFBInput {
+	margin-top: 10px;
+	left: 0;
+	right: 0;
+}

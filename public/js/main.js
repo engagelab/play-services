@@ -70,7 +70,7 @@ var AppRouter = Backbone.Router.extend({
 });
 
 //loading html templates
-tpl.loadTemplates(['header_tpl', 'groups_tpl', 'members_tpl', 'comment_tpl', 'resource_tpl', 'ytvideo_tpl'], function() {
+tpl.loadTemplates(['header_tpl', 'groups_tpl', 'members_tpl', 'comment_tpl', 'resource_tpl', 'ytvideo_tpl', 'fbcomment_tpl', 'newfbcomment_tpl'], function() {
 	app = new AppRouter();
 	Backbone.history.start();
 });
