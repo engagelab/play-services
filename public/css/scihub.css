@@ -23,6 +23,7 @@ body > div#content {
 	-moz-box-shadow: 0px 2px 5px gray;
 	box-shadow: 0px 2px 5px gray;
 	text-align: left;
+	vertical-align: middle;
 }
 
 footer {
@@ -172,5 +173,10 @@ footer {
 	width: 280px;
 	height: 235px;
 	margin: 5px;
+	vertical-align: middle;
+}
+
+#navToResources {
+	float: right;
 	vertical-align: middle;
 }

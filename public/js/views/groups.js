@@ -8,7 +8,6 @@ window.GroupListView = Backbone.View.extend({
 	},
 	
 	render : function(eventName) {
-		$(this.el).html('');
 		_.each(this.model.models, function(group) {
 			$(this.el).append(new GroupListItemView({model : group}).render().el);
 		}, this);

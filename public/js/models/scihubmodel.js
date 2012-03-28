@@ -18,3 +18,10 @@ window.YTVideoCollection = Backbone.Collection.extend({
 	model : YTVideo,
 	url : "/ytvideosbyid"
 });
+
+window.FBComment = Backbone.Model.extend({});
+
+window.FBCommentCollection = Backbone.Collection.extend({
+	model : FBComment,
+	url : "/fbcomments"
+});

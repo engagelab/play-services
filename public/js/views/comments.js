@@ -43,6 +43,14 @@ window.CommentItemView = Backbone.View.extend({
 	render : function(eventName) {
 		$(this.el).attr('style', 'left:' + this.model.attributes.wxpos + 'px;top:' + this.model.attributes.wypos + 'px');
 		$(this.el).html(this.template(this.model.toJSON()));
+		this.fbcList = new FBCommentCollection();
+		this.fbcList.fetch({ data: $.param({ comment_id: this.model.id}),
+			success : function(event) {
+				$(this.el).append('<p>shit</p>');
+			},
+			wait: true
+		});
+		
 		$(this.el).draggable({
 			//handle : '.toolbar',
 			stack: "div",

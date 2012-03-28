@@ -23,12 +23,12 @@ var AppRouter = Backbone.Router.extend({
 	},
 	
 	listResources : function() {
+		$('#header').html(new HeaderView('null').render().el);
 		app.showView('#stage', new ResourceView());
 	},
 	
 	listGroups : function() {
 		$('#header').html(new HeaderView('null').render().el);
-		$('#stage').html('');
 		this.selectedGroupName = '';
 		this.groupList = new GroupCollection();
 		this.groupList.fetch({success:function () {
