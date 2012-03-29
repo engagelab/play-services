@@ -15,11 +15,17 @@ var AppRouter = Backbone.Router.extend({
 		"" : "def",
 		"/groups" : "listGroups",
 		"/resources" : "listResources",
-		"/groupcontent/:id/:nam" : "listComments"
+		"/groupcontent/:id/:nam" : "listComments",
+		"/simulations" : "showSimulations"
 	},
 	
 	def : function() {
 		app.navigate("/#/groups", true);
+	},
+	
+	showSimulations : function() {
+		$('#header').html(new HeaderView('null').render().el);
+		app.showView('#stage', new SimulationView());
 	},
 	
 	listResources : function() {
@@ -70,7 +76,17 @@ var AppRouter = Backbone.Router.extend({
 });
 
 //loading html templates
-tpl.loadTemplates(['header_tpl', 'groups_tpl', 'members_tpl', 'comment_tpl', 'resource_tpl', 'ytvideo_tpl', 'fbcomment_tpl', 'newfbcomment_tpl'], function() {
+tpl.loadTemplates([
+	'header_tpl',
+	'groups_tpl',
+	'members_tpl',
+	'comment_tpl',
+	'resource_tpl',
+	'ytvideo_tpl',
+	'fbcomment_tpl',
+	'newfbcomment_tpl',
+	'simulations_tpl'
+	], function() {
 	app = new AppRouter();
 	Backbone.history.start();
 });

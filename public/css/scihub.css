@@ -199,3 +199,24 @@ footer {
 	left: 0;
 	right: 0;
 }
+
+.resCol {
+	float: left;
+	vertical-align: middle;
+	border: 1px solid #333333;
+	background: #999999;
+	margin: 5px;
+}
+
+.resColTitle {
+	padding: 10px;
+	background: #666666;
+	color: #FFFFFF
+}
+
+.resColRow {
+	min-height: 40px;
+	border: 1px solid #777777;
+	padding: 10px;
+	vertical-align: middle;
+}
