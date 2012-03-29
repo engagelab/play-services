@@ -95,7 +95,7 @@ footer {
 	background: #666666;
 	color: #FFFFFF;
 	width: 200px;
-	height: 120px;
+	min-height: 120px;
 	margin: 5px;
 	padding: 5px;
 	vertical-align: middle;
@@ -104,7 +104,6 @@ footer {
 .group-ui:hover {
 	background-color: #9DC43F;
 }
-
 
 /*  comment */
 .commentsContainer {
