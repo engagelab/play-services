@@ -103,7 +103,6 @@ footer {
 
 .group-ui:hover {
 	background-color: #9DC43F;
-	color: #333333;
 }
 
 
@@ -184,12 +183,13 @@ footer {
 .fbcomment-ui {
 	border-top: 1px solid #333333;
 	width: 100%;
-	background: #529F2E;
-	color: #FFFFFF;
+	background: #a4e26f;
+	color: #333333;
 	min-height: 25px;
 	vertical-align: middle;
 	display: block;
 	text-align: right;
+	font-size: 12px;
 }
 
 /*.fbcomment-txt {
@@ -235,6 +235,19 @@ footer {
 	padding: 5px;
 }
 
+.groupHeader:hover {
+	color: #FFFFFF;
+	padding: 5px;
+}
+
 .member-ui {
 	padding: 3px;
+}
+
+.newFBInput {
+     width: 100%; 
+     box-sizing: border-box;
+     -webkit-box-sizing:border-box;
+     -moz-box-sizing: border-box;
+     margin-top: 0;
 }
