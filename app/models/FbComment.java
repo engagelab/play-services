@@ -18,7 +18,7 @@ import play.db.jpa.Model;
 @Entity
 public class FbComment extends Model{
 	
-	private String fbcontent;
+	public String fbcontent;
 	public Date postedAt;
 	
 	@ManyToOne

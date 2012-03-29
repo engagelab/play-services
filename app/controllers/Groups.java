@@ -266,6 +266,7 @@ public class Groups extends Controller {
 		String fbcontent = req.fbcontent;
 		Comment comment = Comment.findById(comment_id);
 		FbComment fbcomment = comment.addFbComment(fbcontent);
+
 		JSONSerializer modelSerializer = new JSONSerializer().include("id",
 				"fbcontent").exclude("*");
 		renderJSON(modelSerializer.serialize(fbcomment));
