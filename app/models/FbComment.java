@@ -33,20 +33,4 @@ public class FbComment extends Model{
 	public void prePersist(){
 		postedAt = new Date();
 	}
-
-	/**
-	 * @return the fbComment
-	 */
-	public String getFbComment() {
-		return fbcontent;
-	}
-
-	/**
-	 * @param fbComment the fbComment to set
-	 */
-	public void setFbComment(String fbComment) {
-		this.fbcontent = fbComment;
-	}
-	
-
 }

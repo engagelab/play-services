@@ -228,9 +228,9 @@ public class Groups extends Controller {
 		Long group_id = params.get("grpid", Long.class);
 		MyGroup group = MyGroup.findById(group_id);
 		MyGroup tgroup = new MyGroup();
-		// Assign contents to tgroup
 		List<YTubeVideo> ytlist = group.ytVideos;
 		List<Comment> comments = group.comments;
+		// Assign contents to tgroup
 		tgroup.ytVideos = ytlist;
 		tgroup.comments = comments;
 		tgroup.id = group.id;
@@ -258,7 +258,6 @@ public class Groups extends Controller {
 	/********************* add fb comment /post *****************************/
 	public static void addFbComment() throws IOException {
 		String json = IOUtils.toString(request.body);
-		System.out.println("PUT comments/id:" + json);
 		FBComment_request req = new Gson().fromJson(json,
 				FBComment_request.class);
 		System.out.println(json);
