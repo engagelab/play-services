@@ -182,17 +182,21 @@ footer {
 }
 
 .fbcomment-ui {
+	border-top: 1px solid #333333;
 	width: 100%;
 	background: #529F2E;
 	color: #FFFFFF;
-	margin: 0 auto;
-}
-
-.fbcomment-txt {
-	padding-right: 5px;
+	min-height: 25px;
+	vertical-align: middle;
 	display: block;
 	text-align: right;
 }
+
+/*.fbcomment-txt {
+	padding-right: 5px;
+	display: block;
+	text-align: right;
+}*/
 
 .newFBInput {
 	margin-top: 10px;
