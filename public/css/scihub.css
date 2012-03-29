@@ -220,3 +220,17 @@ footer {
 	padding: 10px;
 	vertical-align: middle;
 }
+
+#simuFrame {
+	position:relative; 
+	margin: 0 auto;
+}
+
+.groupHeader {
+	background: #333333;
+	padding: 5px;
+}
+
+.member-ui {
+	padding: 3px;
+}

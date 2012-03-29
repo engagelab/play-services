@@ -10,10 +10,15 @@ window.HeaderView = Backbone.View.extend({
     },
 
     events:{
-    	"click #navToResources": "displayResources"
+    	"click #navToResources": "displayResources",
+    	"click #headerTitle" : "goHome"
     },
     
     displayResources:function(event) {
     	app.navigate("/#/resources");
+    },
+    
+    goHome:function(event) {
+    	app.navigate("/#/groups");
     }
 });
