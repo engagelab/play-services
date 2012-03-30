@@ -45,7 +45,7 @@ window.YTVideoItemView = Backbone.View.extend({
 			$(this.el).draggable({
 				//handle : '.toolbar',
 				stack: "div",
-				containment: 'acCont' 
+				containment: 'acCont'
 			});
 		}
 		else {

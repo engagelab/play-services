@@ -86,7 +86,7 @@ window.CommentItemView = Backbone.View.extend({
 				//handle : '.toolbar',
 				stack: "div",
 				containment: 'acCont'
-			}); 
+			});
 		}
 		else {
 			$(this.el).addClass('comment-ui-tl');

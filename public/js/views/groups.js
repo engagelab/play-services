@@ -24,7 +24,7 @@ window.GroupListItemView = Backbone.View.extend({
 	},
 	
 	events : {
-		"click" : "getCommentsByGroup" 
+		"click" : "getCommentsByGroup"
 	},
 
 	getCommentsByGroup : function(event) {

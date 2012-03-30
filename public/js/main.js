@@ -54,7 +54,7 @@ var AppRouter = Backbone.Router.extend({
 		}
 		else if(tab==2) {
 			$('#timeline').addClass("tabselected");
-		}
+		} 
 		
 		this.commentList = new CommentCollection();
 		this.commentList.fetch({ data: $.param({ grpid: id}),

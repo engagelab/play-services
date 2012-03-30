@@ -17,7 +17,7 @@ window.ActivityView = Backbone.View.extend({
 	},
 	
 	showTimeline: function(event) {
-		app.navigate("/#/groupcontent/1/group1/2");
+		app.navigate("/#/groupcontent/1/group1/2"); 
 	},
 	
 	render : function(eventName) {
