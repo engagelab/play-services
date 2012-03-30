@@ -1,10 +1,7 @@
 /eclipse
 /tmp
 
-
 .DS_Store
-
-test-result/TEST-postit.PostitServiceTest.xml
 
 test-result/application.log
 
@@ -13,23 +10,3 @@ conf/application.conf
 bin/
 
 .classpath
-
-conf/application.conf
-
-conf/application.conf
-
-conf/application.conf
-
-public/.project
-
-public/fahied/js/main.js
-
-app/views/fahTest/index.html
-
-public/fahied/css/styles.css
-
-public/fahied/js/jquery-1.7.1.min.js
-
-public/fahied/js/backbone-min.js
-
-.gitignore
