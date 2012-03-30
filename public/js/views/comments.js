@@ -9,15 +9,13 @@ window.CommentView = Backbone.View.extend({
 	
 	render : function(eventName) {
 		_.each(this.model.models, function(comment) {
-			$(this.el).append(new CommentItemView({model : comment}).render().el);
+			$(this.el).append(new CommentItemView({model : comment, mmode:this.options.mmode}).render().el);
 		}, this);
 		return this;
 	}
 });
 
 window.CommentItemView = Backbone.View.extend({
-	
-	className : 'comment-ui',
 	
 	initialize : function() {
 		_.bindAll(this, "createFBComments");
@@ -70,7 +68,10 @@ window.CommentItemView = Backbone.View.extend({
 	},
 
 	render : function(eventName) {
-		$(this.el).attr('style', 'left:' + this.model.attributes.wxpos + 'px;top:' + this.model.attributes.wypos + 'px');
+		if(this.options.mmode == 1) {
+			$(this.el).attr('style', 'left:' + this.model.attributes.wxpos + 'px;top:' + this.model.attributes.wypos + 'px');
+		}
+		
 		$(this.el).html(this.template(this.model.toJSON()));
 		
 		this.fbcList = new FBCommentCollection();
@@ -79,11 +80,17 @@ window.CommentItemView = Backbone.View.extend({
 			wait: true
 		});
 		
-		$(this.el).draggable({
-			//handle : '.toolbar',
-			stack: "div",
-			containment: 'commentsContainer'
-		});
+		if(this.options.mmode == 1) {
+			$(this.el).addClass('comment-ui');
+			$(this.el).draggable({
+				//handle : '.toolbar',
+				stack: "div",
+				containment: 'acCont'
+			}); 
+		}
+		else {
+			$(this.el).addClass('comment-ui-tl');
+		}
 		return this;
 	}
 });

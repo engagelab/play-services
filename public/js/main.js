@@ -15,7 +15,7 @@ var AppRouter = Backbone.Router.extend({
 		"" : "def",
 		"/groups" : "listGroups",
 		"/resources" : "listResources",
-		"/groupcontent/:id/:nam" : "listComments",
+		"/groupcontent/:id/:nam/:tab" : "listComments",
 		"/simulations" : "showSimulations"
 	},
 	
@@ -25,12 +25,12 @@ var AppRouter = Backbone.Router.extend({
 	
 	showSimulations : function() {
 		$('#header').html(new HeaderView('null').render().el);
-		app.showView('#stage', new SimulationView());
+		app.showView('#resources', new SimulationView());
 	},
 	
 	listResources : function() {
 		$('#header').html(new HeaderView('null').render().el);
-		app.showView('#stage', new ResourceView());
+		app.showView('#resources', new ResourceView());
 	},
 	
 	listGroups : function() {
@@ -38,20 +38,28 @@ var AppRouter = Backbone.Router.extend({
 		this.selectedGroupName = '';
 		this.groupList = new GroupCollection();
 		this.groupList.fetch({success:function () {
-				app.showView('#stage', new GroupListView({model : app.groupList}));
+				app.showView('#groups', new GroupListView({model : app.groupList}));
 			},
 			wait: true
 		});
 	},
 	
-	listComments : function(id, nam) {
+	listComments : function(id, nam, tab) {
 		$('#header').html(new HeaderView(nam).render().el);
-		$('#stage').html('');
+		app.showView('#stage', new ActivityView());
+		this.activityMode = tab;
+		
+		if(tab==1) {
+			$('#fuzzy').addClass("tabselected");
+		}
+		else if(tab==2) {
+			$('#timeline').addClass("tabselected");
+		}
 		
 		this.commentList = new CommentCollection();
 		this.commentList.fetch({ data: $.param({ grpid: id}),
 			success : function(event) {
-				$('#stage').append(new CommentView({model : app.commentList}).render().el);
+				$('#acCont').append(new CommentView({model : app.commentList, mmode: app.activityMode}).render().el);
 			},
 			wait: true
 		});
@@ -59,9 +67,9 @@ var AppRouter = Backbone.Router.extend({
 		this.ytvideoList = new YTVideoCollection();
 		this.ytvideoList.fetch({ data: $.param({ grpid: id}),
 			success : function(event) {
-				$('#stage').append(new YTVideoView({model : app.ytvideoList}).render().el);
+				$('#acCont').append(new YTVideoView({model : app.ytvideoList, mmode: app.activityMode}).render().el);
 			},
-			wait: true
+			wait: true 
 		});
 	},
 	
@@ -85,7 +93,8 @@ tpl.loadTemplates([
 	'ytvideo_tpl',
 	'fbcomment_tpl',
 	'newfbcomment_tpl',
-	'simulations_tpl'
+	'simulations_tpl',
+	'activity_tpl'
 	], function() {
 	app = new AppRouter();
 	Backbone.history.start();

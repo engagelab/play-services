@@ -9,15 +9,13 @@ window.YTVideoView = Backbone.View.extend({
 	
 	render : function(eventName) {
 		_.each(this.model.models, function(content) {
-			$(this.el).append(new YTVideoItemView({model : content}).render().el);
+			$(this.el).append(new YTVideoItemView({model : content, mmode:this.options.mmode}).render().el);
 		}, this);
 		return this;
 	}
 });
 
 window.YTVideoItemView = Backbone.View.extend({
-	
-	className : 'ytvideo-ui',
 	
 	initialize : function() {
 		this.template = _.template(tpl.get('ytvideo_tpl'));
@@ -37,13 +35,22 @@ window.YTVideoItemView = Backbone.View.extend({
 	},
 
 	render : function(eventName) {
-		$(this.el).attr('style', 'left:' + this.model.attributes.wxpos + 'px;top:' + this.model.attributes.wypos + 'px');
+		if(this.options.mmode == 1) {
+			$(this.el).attr('style', 'left:' + this.model.attributes.wxpos + 'px;top:' + this.model.attributes.wypos + 'px');
+		}
 		$(this.el).html(this.template(this.model.toJSON()));
-		$(this.el).draggable({
-			//handle : '.toolbar',
-			stack: "div",
-			containment: 'ytvideoContainer'
-		});
+		
+		if(this.options.mmode == 1) {
+			$(this.el).addClass('ytvideo-ui');
+			$(this.el).draggable({
+				//handle : '.toolbar',
+				stack: "div",
+				containment: 'acCont' 
+			});
+		}
+		else {
+			$(this.el).addClass('ytvideo-ui-tl');
+		}
 		return this;
 	}
 });

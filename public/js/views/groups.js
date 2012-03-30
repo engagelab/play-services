@@ -24,12 +24,12 @@ window.GroupListItemView = Backbone.View.extend({
 	},
 	
 	events : {
-		"click" : "getCommentsByGroup"
+		"click" : "getCommentsByGroup" 
 	},
 
 	getCommentsByGroup : function(event) {
 		app.selectedGroupName = this.model.attributes.name;
-		app.navigate("/#/groupcontent/"+this.model.attributes.id+"/"+this.model.attributes.name, true);
+		app.navigate("/#/groupcontent/"+this.model.attributes.id+"/"+this.model.attributes.name+"/1", true);
 		//app.navigate("/#/contents/"+this.model.attributes.id, true);
 	},
 	
