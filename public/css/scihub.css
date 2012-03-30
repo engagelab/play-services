@@ -295,6 +295,8 @@ footer {
 	float: left;
 	border: 1px solid #333333;
 	min-width: 100px;
+	padding-left: 10px;
+	padding-right: 10px;
 	height: 2em;
 	line-height: 2em;
 	margin: 0 auto;
