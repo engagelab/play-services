@@ -33,4 +33,9 @@ public class FbComment extends Model{
 	public void prePersist(){
 		postedAt = new Date();
 	}
+
+	public static void deletefbComments(Long id) {
+		Comment comment = Comment.findById(id);
+		FbComment.delete("from FbComment f where f.comment=?", comment);
+	}
 }
