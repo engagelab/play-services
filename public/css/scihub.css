@@ -6,13 +6,12 @@ body {
 	background: #c0c0c0;
 	margin: 0 auto;
 	height: 100%;
-	min-height: 768px;
-	min-width: 1024px;
+	/*min-height: 768px;
+	min-width: 1024px;*/
 }
 
 body > div#content {
-	height: auto;
-	min-height: 100%;
+	height: 100%;
 }
 
 #header {
@@ -25,13 +24,13 @@ body > div#content {
 	text-align: left;
 	vertical-align: middle;
 }
-
+/*
 footer {
 	display: block;
 	height: 30px;
 	margin-top: -30px;
 	background-image: url(../images/banner.jpg); background-repeat: repeat-x;
-}
+}*/
 
 #content {
  	height: 100%;
@@ -80,6 +79,15 @@ footer {
 
 #stage {
 	margin: 0 auto;
+	height: 100%;
+}
+
+#resources {
+	margin: 0 auto;
+}
+
+#groups {
+	margin: 0 auto;
 }
 
 /* group */
@@ -105,15 +113,18 @@ footer {
 	background-color: #9DC43F;
 }
 
-/*  comment */
-.commentsContainer {
-	position: absolute;
-	top: 40px;
-	left: 0;
-}
-
 .comment-ui {
 	position: absolute;
+	border: 1px solid #333333;
+	background: #9DC43F;
+	min-width: 200px;
+	/*height: 50px;*/
+	margin: 5px;
+	vertical-align: middle;
+}
+
+.comment-ui-tl {
+	float: left;
 	border: 1px solid #333333;
 	background: #9DC43F;
 	min-width: 200px;
@@ -159,13 +170,23 @@ footer {
 
 .ytvideoContainer {
 	position: absolute;
-	top: 40px;
+	top: 350px; 
 	left: 0;
 }
 
 
 .ytvideo-ui {
 	position: absolute;
+	border: 1px solid #333333;
+	background: #9DC43F;
+	width: 280px;
+	height: 235px;
+	margin: 5px;
+	vertical-align: middle;
+}
+
+.ytvideo-ui-tl {
+	float: left;
 	border: 1px solid #333333;
 	background: #9DC43F;
 	width: 280px;
@@ -249,4 +270,59 @@ footer {
      -webkit-box-sizing:border-box;
      -moz-box-sizing: border-box;
      margin-top: 0;
+}
+
+.activityContainer {
+	height: 100%;
+}
+
+.ui-widget-content, .ui-tabs .ui-tabs-panel {
+	background: #FFFFFF; !important;
+}
+
+#acCont {
+	top: 40px;
+	width: 100%;
+	background: #FFFFFF;
+}
+
+.commentsContainer {
+	position: absolute;
+	top: 100px;
+}
+
+.tabb div {
+	float: left;
+	border: 1px solid #333333;
+	min-width: 100px;
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 2em;
+	line-height: 2em;
+	margin: 0 auto;
+	text-align: center;
+	bottom: 0;
+}
+
+.tabb div:hover {
+	background: #BBBBBB;
+	color: #333333;
+}
+
+.tabb {
+	position:absolute;
+	bottom: 0;
+}
+
+.tabbZone {
+	background: #999999;
+	height: 3em;
+	width: 100%;
+	position: relative;
+	border-bottom: 1px solid #333333;
+}
+
+.tabselected {
+	background: #FFFFFF;
+	color: #333333;
 }
