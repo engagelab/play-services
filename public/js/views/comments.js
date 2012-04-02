@@ -9,8 +9,7 @@ window.CommentView = Backbone.View.extend({
 	
 	render : function(eventName) {
 		_.each(this.model.models, function(comment) {
-			//$(this.el).append(new CommentItemView({model : comment, mmode:this.options.mmode}).render().el);
-			$('#acCont').append(new CommentItemView({model : comment, mmode:this.options.mmode}).render().el);
+			$(this.el).append(new CommentItemView({model : comment, mmode:this.options.mmode}).render().el);
 		}, this);
 		return this;
 	}
@@ -85,7 +84,7 @@ window.CommentItemView = Backbone.View.extend({
 			$(this.el).addClass('comment-ui');
 			$(this.el).draggable({
 				//handle : '.toolbar',
-				stack: "div",
+				stack: "acCont",
 				containment: 'acCont'
 			});
 		}

@@ -9,8 +9,7 @@ window.YTVideoView = Backbone.View.extend({
 	
 	render : function(eventName) {
 		_.each(this.model.models, function(content) {
-			//$(this.el).append(new YTVideoItemView({model : content, mmode:this.options.mmode}).render().el);
-			$('#acCont').append(new YTVideoItemView({model : content, mmode:this.options.mmode}).render().el);
+			$(this.el).append(new YTVideoItemView({model : content, mmode:this.options.mmode}).render().el);
 		}, this);
 		return this;
 	}
@@ -45,7 +44,7 @@ window.YTVideoItemView = Backbone.View.extend({
 			$(this.el).addClass('ytvideo-ui');
 			$(this.el).draggable({
 				//handle : '.toolbar',
-				stack: "div",
+				stack: "acCont",
 				containment: 'acCont'
 			});
 		}
