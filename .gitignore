@@ -10,3 +10,19 @@ conf/application.conf
 bin/
 
 .classpath
+
+public/demo.htm
+
+public/do-nothing.htm
+
+public/upload/Australia.gif
+
+public/upload/Belgium.gif
+
+public/upload/Brazil.gif
+
+public/upload/Cameroon.gif
+
+public/upload/Chile.gif
+
+public/upload/Jupiter.gif
