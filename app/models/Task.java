@@ -24,6 +24,8 @@ public class Task extends Model{
 	 
 	 @OneToMany(mappedBy="task", cascade=CascadeType.ALL)
 	    public List<YTubeVideo> ytVideos;
+	 @OneToMany(mappedBy="task", cascade=CascadeType.ALL)
+	    public List<TPicture> tPictures;
 	 
 	 @ManyToOne
 	 @Required

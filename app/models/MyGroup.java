@@ -19,6 +19,9 @@ public class MyGroup extends Model{
     public List<YTubeVideo> ytVideos;
 	
 	@OneToMany(mappedBy="myGroup", cascade=CascadeType.ALL)
+    public List<TPicture> tPictures;
+	
+	@OneToMany(mappedBy="myGroup", cascade=CascadeType.ALL)
     public List<Comment> comments;
 	
 	@OneToMany(mappedBy="myGroup", cascade=CascadeType.ALL)
@@ -29,6 +32,7 @@ public class MyGroup extends Model{
 		this.comments = new ArrayList<Comment>();
 		this.taskdatum = new ArrayList<TaskData>();
 		this.ytVideos = new ArrayList<YTubeVideo>();
+		this.tPictures = new ArrayList<TPicture>();
 		this.name = name;
 		this.run_id = run_id;
 	}
