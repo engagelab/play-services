@@ -11,14 +11,29 @@ bin/
 
 .classpath
 
+<<<<<<< HEAD
+=======
+public/demo.htm
+
+public/do-nothing.htm
+
+>>>>>>> master
 public/upload/Australia.gif
 
 public/upload/Belgium.gif
 
+<<<<<<< HEAD
+=======
+public/upload/Brazil.gif
+
+>>>>>>> master
 public/upload/Cameroon.gif
 
 public/upload/Chile.gif
 
 public/upload/Jupiter.gif
+<<<<<<< HEAD
 
 public/upload/Brazil.gif
+=======
+>>>>>>> master
