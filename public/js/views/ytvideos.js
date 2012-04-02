@@ -1,15 +1,13 @@
 window.YTVideoView = Backbone.View.extend({
-	tagName : "div",
-	className : "ytvideoContainer",
-	
-    initialize : function() {
+	initialize : function() {
 		this.model.bind("reset", this.render, this);
 		this.model.bind("add", this.render, this);
 	},
 	
 	render : function(eventName) {
 		_.each(this.model.models, function(content) {
-			$(this.el).append(new YTVideoItemView({model : content, mmode:this.options.mmode}).render().el);
+			//$(this.el).append(new YTVideoItemView({model : content, mmode:this.options.mmode}).render().el);
+			$('#acCont').append(new YTVideoItemView({model : content, mmode:this.options.mmode}).render().el);
 		}, this);
 		return this;
 	}

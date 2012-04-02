@@ -37,7 +37,7 @@ footer {
 }
 
 #board {
-	position:absolute;
+	position:absolute !important;
  	top:0;
  	left:0;
  	background-color: #FF0000;
@@ -58,7 +58,7 @@ footer {
 
 /*  scene */
 .scene-picker-ui {
-	position:relative; 
+	position:relative !important; 
 	margin: 0 auto;
 	width: 150px;
 	height: 150px;
@@ -92,7 +92,7 @@ footer {
 
 /* group */
 .groupContainer {
-	position:relative; 
+	position:relative !important; 
 	margin: 0 auto;
 	width: 800px;
 }
@@ -114,10 +114,10 @@ footer {
 }
 
 .comment-ui {
-	position: absolute;
+	position: absolute !important;
 	border: 1px solid #333333;
 	background: #9DC43F;
-	min-width: 200px;
+	width: 200px;
 	/*height: 50px;*/
 	margin: 5px;
 	vertical-align: middle;
@@ -163,20 +163,20 @@ footer {
 }
 
 .res {
-	position:absolute;
+	position:absolute !important;
  	top:50px;
  	left:10px;
 }
 
 .ytvideoContainer {
-	position: absolute;
-	top: 350px; 
-	left: 0;
+	position: absolute !important;
+	width: 100%;
+	height: 100%;
 }
 
 
 .ytvideo-ui {
-	position: absolute;
+	position: absolute !important;
 	border: 1px solid #333333;
 	background: #9DC43F;
 	width: 280px;
@@ -246,7 +246,7 @@ footer {
 }
 
 #simuFrame {
-	position:relative; 
+	position:relative !important; 
 	margin: 0 auto;
 }
 
@@ -287,7 +287,7 @@ footer {
 }
 
 .commentsContainer {
-	position: absolute;
+	position: absolute !important;
 	top: 100px;
 }
 
@@ -310,7 +310,7 @@ footer {
 }
 
 .tabb {
-	position:absolute;
+	position:absolute !important;
 	bottom: 0;
 }
 
@@ -318,7 +318,7 @@ footer {
 	background: #999999;
 	height: 3em;
 	width: 100%;
-	position: relative;
+	position: relative !important;
 	border-bottom: 1px solid #333333;
 }
 
