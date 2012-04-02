@@ -1,13 +1,20 @@
 window.CommentView = Backbone.View.extend({
-	initialize : function() {
+	tagName : "div",
+	className : "commentsContainer",
+	
+    initialize : function() {
 		this.model.bind("reset", this.render, this);
 		this.model.bind("add", this.render, this);
 	},
 	
 	render : function(eventName) {
 		_.each(this.model.models, function(comment) {
-			//$(this.el).append(new CommentItemView({model : comment, mmode:this.options.mmode}).render().el);
-			$('#acCont').append(new CommentItemView({model : comment, mmode:this.options.mmode}).render().el);
+			if(this.options.mmode == 2) {
+				$(this.el).append(new CommentItemView({model : comment, mmode:this.options.mmode}).render().el);
+			}
+			else if(this.options.mmode == 1) {
+				$('#acCont').append(new CommentItemView({model : comment, mmode:this.options.mmode}).render().el);
+			}
 		}, this);
 		return this;
 	}
