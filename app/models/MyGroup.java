@@ -37,7 +37,7 @@ public class MyGroup extends Model{
 		
 	}
 
-	public Comment postComment(Project project, Long run_id, Task task, String content, float xpos, float ypos ) {
+	public Comment postComment(Project project, Long run_id, Task task, String content, int xpos, int ypos ) {
 		Comment newComment = new Comment(project, run_id, this, task, content, xpos, ypos);
 		this.comments.add(newComment);
 		this.save();

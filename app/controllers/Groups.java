@@ -68,8 +68,8 @@ public class Groups extends Controller {
 		Long run_id = req.run_id;
 		Long group_id = req.group_id;
 		Long task_id = req.task_id;
-		float xpos = req.xpos;
-		float ypos = req.ypos;
+		int xpos = req.xpos;
+		int ypos = req.ypos;
 		String content = req.content;
 
 		MyGroup myGroup = MyGroup.findById(group_id);
@@ -95,8 +95,8 @@ public class Groups extends Controller {
 		UnicodeString us = new UnicodeString();
 		String content = us.convert(req.content);
 		// String content = req.content
-		float xpos = req.xpos;
-		float ypos = req.ypos;
+		int xpos = req.xpos;
+		int ypos = req.ypos;
 		Comment comment = Comment.findById(id);
 		comment.content = content;
 		comment.rawcontent = req.content;

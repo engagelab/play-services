@@ -38,8 +38,8 @@ public class Comment extends Model {
 	
 	public Long run_id;
 	
-	public float xpos;
-	public float ypos;
+	public int xpos;
+	public int ypos;
 	
 	public int wxpos;
 	public int wypos;
@@ -59,7 +59,7 @@ public class Comment extends Model {
 		wypos = 0;
 	}
 	
-	public Comment(Project project, Long run_id, MyGroup myGroup, Task task, String content, float xpos, float ypos) {
+	public Comment(Project project, Long run_id, MyGroup myGroup, Task task, String content, int xpos, int ypos) {
 		this.project = project;
 		this.run_id = run_id;
 		this.myGroup = myGroup;
