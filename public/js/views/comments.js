@@ -26,7 +26,7 @@ window.CommentItemView = Backbone.View.extend({
 	updatePosition : function(event) {
 		var pleft = this.el.style.left;
 		var ptop = this.el.style.top;
-		this.model.attributes.wxpos = pleft.substring(0, pleft.length-2);;
+		this.model.attributes.wxpos = pleft.substring(0, pleft.length-2);
 		this.model.attributes.wypos = ptop.substring(0, ptop.length-2);
 		this.model.save();
 	},
@@ -60,11 +60,22 @@ window.CommentItemView = Backbone.View.extend({
 	
 	createFBComments: function(m, response) {
 		this.fbmodel = m;
-		this.fbmodel.bind("add", this.render, this);
+		this.fbmodel.bind("add", this.refreshFBComments, this);
 		_.each(this.fbmodel.models, function(fbcomment) {
-			$(this.el).append(new FBCommentItemView({model : fbcomment}).render().el);
+			//$(this.el).append(new FBCommentItemView({model : fbcomment}).render().el);
+			$('#fbcomms').append(new FBCommentItemView({model : fbcomment}).render().el);
 		}, this);
-		$(this.el).append(tpl.get('newfbcomment_tpl'));
+		//$(this.el).append(tpl.get('newfbcomment_tpl'));
+	},
+	
+	refreshFBComments : function() {
+		$('#fbcomms').html('');
+		this.fbcList = new FBCommentCollection();
+		this.fbcList.fetch({ data: $.param({ comment_id: this.model.id}),
+			success : this.createFBComments,
+			wait: true
+		});
+		$('#newFBInputId').val('Write a comment...');
 	},
 
 	render : function(eventName) {
@@ -74,11 +85,7 @@ window.CommentItemView = Backbone.View.extend({
 		
 		$(this.el).html(this.template(this.model.toJSON()));
 		
-		this.fbcList = new FBCommentCollection();
-		this.fbcList.fetch({ data: $.param({ comment_id: this.model.id}),
-			success : this.createFBComments,
-			wait: true
-		});
+		this.refreshFBComments();
 		
 		if(this.options.mmode == 1) {
 			$(this.el).addClass('comment-ui');
