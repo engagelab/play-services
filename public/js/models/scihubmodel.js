@@ -20,6 +20,7 @@ window.YTVideoCollection = Backbone.Collection.extend({
 });
 
 window.FBComment = Backbone.Model.extend({
+	urlRoot:"/fbcomments",
 	defaults:{
         "fbcontent":"",
         "comment_id":""

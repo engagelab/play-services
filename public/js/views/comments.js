@@ -50,8 +50,8 @@ window.CommentItemView = Backbone.View.extend({
 			var fbc = new FBComment();
 			fbc.attributes.fbcontent = event.currentTarget.value;
 			fbc.attributes.comment_id = this.model.id;
-			this.fbmodel.add(fbc);
 			fbc.save();
+			this.fbmodel.add(fbc);
 		}
 	},
 	
@@ -81,6 +81,7 @@ window.CommentItemView = Backbone.View.extend({
 			wait: true
 		});
 		$('#newFBInputId').val('Write a comment...');
+		$('#newFBInputId').blur();
 	},
 
 	render : function(eventName) {
