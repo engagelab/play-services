@@ -60,8 +60,8 @@ window.CommentItemView = Backbone.View.extend({
 	
 	createFBComments: function(m, response) {
 		this.fbmodel = m;
-		//this.fbmodel.bind("add", this.render, this);
-		_.each(m.models, function(fbcomment) {
+		this.fbmodel.bind("add", this.render, this);
+		_.each(this.fbmodel.models, function(fbcomment) {
 			$(this.el).append(new FBCommentItemView({model : fbcomment}).render().el);
 		}, this);
 		$(this.el).append(tpl.get('newfbcomment_tpl'));
@@ -84,7 +84,7 @@ window.CommentItemView = Backbone.View.extend({
 			$(this.el).addClass('comment-ui');
 			$(this.el).draggable({
 				//handle : '.toolbar',
-				stack: "div",
+				stack: "acCont",
 				containment: 'acCont'
 			});
 		}
