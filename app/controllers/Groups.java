@@ -121,7 +121,7 @@ public class Groups extends Controller {
 
 	/********************* Delete the Comment **********************************/
 	public static void deleteComment(Long id) {
-
+		FbComment.deletefbComments(id);
 		Comment.delete("from Comment c where c.id=?", id);
 	}
 
