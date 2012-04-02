@@ -46,15 +46,8 @@ var AppRouter = Backbone.Router.extend({
 	
 	listComments : function(id, nam, tab) {
 		$('#header').html(new HeaderView(nam).render().el);
-		app.showView('#stage', new ActivityView());
+		app.showView('#stage', new ActivityView({grpid:id,grpname:nam}));
 		this.activityMode = tab;
-		
-		if(tab==1) {
-			$('#fuzzy').addClass("tabselected");
-		}
-		else if(tab==2) {
-			$('#timeline').addClass("tabselected");
-		} 
 		
 		this.commentList = new CommentCollection();
 		this.commentList.fetch({ data: $.param({ grpid: id}),
@@ -71,6 +64,13 @@ var AppRouter = Backbone.Router.extend({
 			},
 			wait: true 
 		});
+
+		if(tab==1) {
+			$('#fuzzy').addClass("tabselected");
+		}
+		else if(tab==2) {
+			$('#timeline').addClass("tabselected");
+		} 
 	},
 	
 	showView : function(selector, view) {

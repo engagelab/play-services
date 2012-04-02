@@ -13,11 +13,11 @@ window.ActivityView = Backbone.View.extend({
 	},
 	
 	showFuzzy: function(event) {
-		app.navigate("/#/groupcontent/1/group1/1");
+		app.navigate("/#/groupcontent/"+this.options.grpid+"/"+this.options.grpname+"/1");
 	},
 	
 	showTimeline: function(event) {
-		app.navigate("/#/groupcontent/1/group1/2"); 
+		app.navigate("/#/groupcontent/"+this.options.grpid+"/"+this.options.grpname+"/2"); 
 	},
 	
 	render : function(eventName) {
