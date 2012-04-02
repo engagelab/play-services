@@ -10,3 +10,15 @@ conf/application.conf
 bin/
 
 .classpath
+
+public/upload/Australia.gif
+
+public/upload/Belgium.gif
+
+public/upload/Cameroon.gif
+
+public/upload/Chile.gif
+
+public/upload/Jupiter.gif
+
+public/upload/Brazil.gif
