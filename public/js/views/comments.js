@@ -50,7 +50,7 @@ window.CommentItemView = Backbone.View.extend({
 			var fbc = new FBComment();
 			fbc.attributes.fbcontent = event.currentTarget.value;
 			fbc.attributes.comment_id = this.model.id;
-			fbc.save();
+			fbc.save({wait: true});
 			this.fbmodel.add(fbc);
 		}
 	},
