@@ -47,5 +47,8 @@ public class TPicture extends Model{
 		this.wxpos = wxpos;
 		this.wypos = wypos;
 	}
+	
+	//Queries
+	
 
 }
