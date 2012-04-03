@@ -24,6 +24,7 @@ public class TPictures extends Controller {
 
 	public static void upload(String qqfile) {
 		Long group_id = params.get("grpid", Long.class);
+		Long task_id = params.get("task_id", Long.class);
 		if (request.isNew) {
 			filename = request.headers.get("x-file-name").value();
 			File file;
