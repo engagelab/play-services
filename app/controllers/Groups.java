@@ -129,7 +129,6 @@ public class Groups extends Controller {
 	public static void showAllComments() {
 		List<Comment> comments = Comment.findAll();
 		renderTemplate("Comments/list.json", comments);
-
 	}
 	/********************* Show Comments by Group **********************/
 	public static void showCommentbyG() {
@@ -269,6 +268,21 @@ public class Groups extends Controller {
 		JSONSerializer modelSerializer = new JSONSerializer().include("id",
 				"fbcontent").exclude("*");
 		renderJSON(modelSerializer.serialize(fbcomment));
+	}
+	
+	/***********************************************************************
+	 * Upload Picture Services
+	 **********************************************************************/
+	/********************* Get Pictures url by Groups **********************************/
+	public static void GetPicturesURlbyG() {
+		Long group_id = params.get("grpid", Long.class);
+		List<TPicture> pictures = TPicture.find(
+				"SELECT p from TPicture p Where myGroup_id =?", group_id)
+				.fetch();
+		JSONSerializer modelSerializer = new JSONSerializer().include("id", "myGroup.id",
+				"task.id", "filename", "FILE_PATH","wxpos", "wypos").exclude(
+				"*");
+		renderJSON(modelSerializer.serialize(pictures));
 	}
 }
 

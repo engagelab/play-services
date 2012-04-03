@@ -23,37 +23,25 @@ public class TPictures extends Controller {
 	}
 
 	public static void upload(String qqfile) {
+		Long group_id = params.get("grpid", Long.class);
 		if (request.isNew) {
 			filename = request.headers.get("x-file-name").value();
 			File file;
-			// Logger.info("Absolute on where to send %s",
-			// Play.getFile("").getAbsolutePath() + File.separator + "uploads" +
-			// File.separator);
 			try {
 				file = new File(FILE_PATH + filename);
 				InputStream data = request.body;
 				OutputStream out = new FileOutputStream(file, true); // appending output stream
-
-//				moveTo = new FileOutputStream(new File(Play.getFile("")
-//						.getAbsolutePath())
-//						+ File.separator
-//						+ "uploads"
-//						+ File.separator + filename);
-					
 				IOUtils.copy(data, out);
 				      IOUtils.closeQuietly(data);
 				      IOUtils.closeQuietly(out);
 			} 
 			catch (Exception ex) {
-
 				// catch file exception
 				// catch IO Exception later on
 				renderJSON("{success: false}");
 			}
-
 		}
 //		TPicture newPic = new TPicture(FILE_PATH,filename);
 		renderJSON("{success: true}");
 	}
-
 }
