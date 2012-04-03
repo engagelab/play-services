@@ -63,4 +63,11 @@ public class MyGroup extends Model{
 		this.save();
 		return nLink;
 	}
+
+	public TPicture addNewPicture(MyGroup group, String filename) {
+		TPicture npicture = new TPicture(group, filename);
+		this.tPictures.add(npicture);
+		this.save();
+		return npicture;
+	}
 }

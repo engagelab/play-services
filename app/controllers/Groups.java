@@ -280,7 +280,7 @@ public class Groups extends Controller {
 				"SELECT p from TPicture p Where myGroup_id =?", group_id)
 				.fetch();
 		JSONSerializer modelSerializer = new JSONSerializer().include("id", "myGroup.id",
-				"task.id", "filename", "FILE_PATH","wxpos", "wypos").exclude(
+				 "filename", "filepath","wxpos", "wypos").exclude(
 				"*");
 		renderJSON(modelSerializer.serialize(pictures));
 	}

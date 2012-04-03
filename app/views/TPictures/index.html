@@ -12,37 +12,6 @@ body {
 	margin: 100px auto;
 }
 </style>
-
-<script type="text/javascript">
-
-	var g ="No group selected";
-    var t ="No task selected";
-    
-   function group()
-   {
-      for (i=0; i<document.groups.groups.length; i++) 
-      {
-          if (document.groups.groups[i].checked==true)
-          {
-            g = document.groups.groups[i].value
-          }
-       }
-      document.getElementById("txt").value=g
-   }
-   
-   function task()
-   {
-      for (i=0; i<document.tasks.tasks.length; i++) 
-      {
-          if (document.tasks.tasks[i].checked==true)
-          {
-             t = document.tasks.tasks[i].value
-          }
-       }
-      document.getElementById("txt").value=t
-   }
-   </script>
-
 </head>
 <body>
 
@@ -50,28 +19,28 @@ body {
 	<p>To upload a file, click on the button below. Only 'jpg', 'jpeg', 'png', 'gif' format are allowed</p>
 <div id="selection">
 	<div id="select-group">
-		<form name = "groups">
+		<form name = "select-group">
 			<h2> What is your group?</h2>
-				<input type="radio" name="groups" onclick="group()" value="1" />SORT<br /> 
-				<input type="radio" name="groups" onclick="group()" value="2" />LILLA<br /> 
-				<input type="radio" name="groups" onclick="group()" value="3" />GUL<br />
-				<input type="radio" name="groups" onclick="group()" value="4" />BLÅ<br />
-				<input type="radio" name="groups" onclick="group()" value="5" />ORANGE<br />
-				<input type="radio" name="groups" onclick="group()"value="6" />ROSA
+				<input type="radio" name="groups" onclick="createUploader(this.value)" value="1" />SORT<br /> 
+				<input type="radio" name="groups" onclick="createUploader(this.value)" value="2" />LILLA<br /> 
+				<input type="radio" name="groups" onclick="createUploader(this.value)" value="3" />GUL<br />
+				<input type="radio" name="groups" onclick="createUploader(this.value)" value="4" />BLÅ<br />
+				<input type="radio" name="groups" onclick="createUploader(this.value)" value="5" />ORANGE<br />
+				<input type="radio" name="groups" onclick="createUploader(this.value)" value="6" />ROSA
 		</form>
 		</div>
 		
 		<div id="select-group">
-			<form name = "tasks">
+			<form name = "select-task">
 				<h2> Select a task?</h2>
-					<input type="radio" name="tasks" onclick="task()" value="1" />Sykkelpumpe<br /> 
-					<input type="radio" name="tasks" onclick="task()" value="2" />Sprayflaske<br /> 
-					<input type="radio" name="tasks" onclick="task()" value="3" />Varmepumpe<br />
-					<input type="radio" name="tasks" onclick="task()" value="4" />Energioverføring<br />
-					<input type="radio" name="tasks" onclick="task()" value="5" />Bærekrafting utvikling<br /><br />
+					<input type="radio" name="tasks" onclick="createUploader(this.value)" value="1" />Sykkelpumpe<br /> 
+					<input type="radio" name="tasks" onclick="createUploader(this.value)" value="2" />Sprayflaske<br /> 
+					<input type="radio" name="tasks" onclick="createUploader(this.value)" value="3" />Varmepumpe<br />
+					<input type="radio" name="tasks" onclick="createUploader(this.value)" value="4" />Energioverføring<br />
+					<input type="radio" name="tasks" onclick="createUploader(this.value)" value="5" />Bærekrafting utvikling<br /><br />
 			</form>
 		</div>
-				<input type="text" id="txt" />
+		
 		</div>
 	<div id="file-uploader">
 		<noscript>
@@ -83,13 +52,13 @@ body {
 	<script src="/public/js/fileuploader.js" type="text/javascript"></script>
 	<script>
 
-		function createUploader() {
+		function createUploader(groups) {
 			//var group_id = groups;
+			var group_id = groups
 			var uploader = new qq.FileUploader({
 				element : document.getElementById('file-uploader'),
 				params : {
-					  grpid : window.g,
-					task_id	: window.t
+					  grpid : group_id,
 				},
 				allowedExtensions : [ 'jpg', 'jpeg', 'png', 'gif' ],
 				action : '/upload',

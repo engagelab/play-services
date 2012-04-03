@@ -72,6 +72,7 @@ PUT  		/taskdata/									Groups.updateTaskData
 # Routes for Pictures uploading
 POST    /upload                                 		TPictures.upload
 GET	    /upload                                 		TPictures.index
+GET		/pictures?										Groups.GetPicturesURlbyG
 
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
