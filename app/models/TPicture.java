@@ -28,7 +28,7 @@ public class TPicture extends Model{
 	@PrePersist
 	public void prePersist(){
 		postedAt = new Date();
-		FILE_PATH = "./public/upload/";
+		FILE_PATH = "./upload/";
 		wxpos = 0;
 		//startup position of you-tube box on web
 		wypos = 200;
