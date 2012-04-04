@@ -70,7 +70,7 @@ GET  		/taskdata/?									Projects.getTaskIdByTitle
 PUT  		/taskdata/									Groups.updateTaskData
 
 # Routes for Pictures uploading
-POST    /upload                                 		TPictures.upload
+POST    /upload?                                 		TPictures.upload
 GET	    /upload                                 		TPictures.index
 GET		/pictures?										Groups.GetPicturesURlbyG
 
