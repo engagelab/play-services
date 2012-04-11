@@ -1,5 +1,4 @@
 <span id="headerTitle">
 <img src="/public/images/icon.png" height="15px" align="top" /> 
-<span>
-SciWork<img class="headerGroupColor" src="/public/images/<%= name %>.png"><% if (name != 'null') { print(name); } %></span></span>
+<span>SciWork<% if (name != 'null') { print('<img class=headerGroupColor src=/public/images/'+name+'.png>'); } %><% if (name != 'null') { print(name); } %></span></span>
 <button id="navToResources">Resources</button>
