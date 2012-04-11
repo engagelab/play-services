@@ -284,6 +284,21 @@ public class Groups extends Controller {
 				"*");
 		renderJSON(modelSerializer.serialize(pictures));
 	}
+	
+	/********************* Update the Picturebox **********************************/
+	public static void updatePicBoxPos(Long id) throws IOException {
+		String json = IOUtils.toString(request.body);
+		YT_request req = new Gson().fromJson(json, YT_request.class);
+		System.out.println(json);
+		int wxpos = req.wxpos;
+		int wypos = req.wypos;
+		TPicture pic = TPicture.findById(id);
+		pic.wxpos = wxpos;
+		pic.wypos = wypos;
+		pic.save();
+		JSONSerializer modelSerializer = new JSONSerializer().include("id","wxpos", "wypos").exclude("*");
+		renderJSON(modelSerializer.serialize(pic));
+	}
 }
 
 // /********************* Establish Connection with RollCall ******************/
