@@ -16,7 +16,7 @@ import play.mvc.Controller;
 
 public class TPictures extends Controller {
 	
-	public static String filepath = "./upload/";
+	public static String filepath = "./public/upload/";
 	public static String filename = "";
 
 	public static void index() {

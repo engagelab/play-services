@@ -37,7 +37,6 @@ public class Comment extends Model {
 	 public Task task;
 	
 	public Long run_id;
-	
 	public int xpos;
 	public int ypos;
 	
