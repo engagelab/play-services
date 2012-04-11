@@ -228,9 +228,46 @@ body > div#content {
 	cursor: default !important;
 }
 
+.picContainer {
+	position: absolute !important;
+	top: 250px;
+}
+
+.pic-ui {
+	position: absolute !important;
+	background: #9DC43F;
+	-webkit-box-shadow: 0px 2px 5px gray;
+	-moz-box-shadow: 0px 2px 5px gray;
+	box-shadow: 0px 2px 5px gray;
+	width: 200px;
+	height: 178px;
+	margin: 5px;
+	vertical-align: middle;
+}
+
+.pic-ui:hover {
+	background-color: #AFD651;
+	color: #FFFFFF;
+	border: solid;
+	-webkit-box-shadow: 0px 2px 5px gray;
+	-moz-box-shadow: 0px 2px 5px gray;
+	box-shadow: 0px 2px 15px gray;
+}
+
+.pic-ui-tl {
+	float: left;
+	background: #9DC43F;
+	width: 200px;
+	height: 178px;
+	margin: 5px;
+	vertical-align: middle;
+	-webkit-box-shadow: 0px 2px 5px gray;
+	-moz-box-shadow: 0px 2px 5px gray;
+	box-shadow: 0px 2px 5px gray;
+}
+
 .ytvideoContainer {
 	position: absolute !important;
-	width: 200 px;
 }
 
 .ytvideo-ui {
@@ -268,7 +305,7 @@ body > div#content {
 
 .commentsContainer {
 	position: absolute !important;
-	top: 320px;
+	top: 450px;
 }
 
 .commentContent {
