@@ -49,6 +49,14 @@ var AppRouter = Backbone.Router.extend({
 		app.showView('#stage', new ActivityView({grpid:id,grpname:nam}));
 		this.activityMode = tab;
 		
+		this.ytvideoList = new YTVideoCollection();
+		this.ytvideoList.fetch({ data: $.param({ grpid: id}),
+			success : function(event) {
+				$('#acCont').append(new YTVideoView({model : app.ytvideoList, mmode: app.activityMode}).render().el);
+			},
+			wait: true 
+		});
+		
 		this.commentList = new CommentCollection();
 		this.commentList.fetch({ data: $.param({ grpid: id}),
 			success : function(event) {
@@ -57,14 +65,6 @@ var AppRouter = Backbone.Router.extend({
 			wait: true
 		});
 		
-		this.ytvideoList = new YTVideoCollection();
-		this.ytvideoList.fetch({ data: $.param({ grpid: id}),
-			success : function(event) {
-				$('#acCont').append(new YTVideoView({model : app.ytvideoList, mmode: app.activityMode}).render().el);
-			},
-			wait: true 
-		});
-
 		if(tab==1) {
 			$('#fuzzy').addClass("tabselected");
 		}

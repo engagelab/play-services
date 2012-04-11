@@ -217,7 +217,10 @@ footer {
 }
 
 .ytvideoContainer {
-	position: absolute !important;
+	/*position: absolute !important;*/
+	float: left;
+	display: block;
+	margin: 0 auto;
 }
 
 .ytvideo-ui {
@@ -346,8 +349,9 @@ footer {
 }
 
 .commentsContainer {
-	position: absolute !important;
-	top: 320px;
+	/*position: absolute !important;
+	top: 320px;*/
+	display: block;
 }
 
 .tabb div {
