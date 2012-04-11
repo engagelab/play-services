@@ -54,6 +54,13 @@ body > div#content {
 	vertical-align: middle;
 	margin: 5px 10px;
 }
+
+.headerGroupColor {
+	padding-right:5px;
+	padding-left:5px;		
+}
+
+
 /****** end Header ***********/
 
 
