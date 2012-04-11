@@ -15,7 +15,7 @@ import play.Play;
 import play.mvc.Controller;
 
 public class TPictures extends Controller {
-	
+
 	public static String filepath = "./public/upload/";
 	public static String filename = "";
 
@@ -24,28 +24,62 @@ public class TPictures extends Controller {
 	}
 
 	public static void upload(String qqfile) {
+		
+		FileOutputStream moveTo = null;
+		String appendedFileName ="";
+		
 		Long group_id = params.get("grpid", Long.class);
 		MyGroup group = MyGroup.findById(group_id);
+		
 		if (request.isNew) {
 			filename = request.headers.get("x-file-name").value();
 			filename = filename.replaceAll("%20", "_");
-			File file;
+			filename = filename.replaceAll(" ", "_");
+			appendedFileName = group.name + "_" + filename;
 			try {
-				file = new File(filepath +group.name+"_"+ filename);
 				InputStream data = request.body;
-				OutputStream out = new FileOutputStream(file, true); // appending output stream
-				IOUtils.copy(data, out);
-				      IOUtils.closeQuietly(data);
-				      IOUtils.closeQuietly(out);
-			} 
+				moveTo = new FileOutputStream(filepath + appendedFileName);
+				IOUtils.copy(data, moveTo);
+			}
 			catch (Exception ex) {
 				// catch file exception
 				// catch IO Exception later on
 				renderJSON("{success: false}");
 			}
 		}
-		String appendedName = group.name + "_"+filename;
-		group.addNewPicture(group,appendedName);
+		
+		group.addNewPicture(group, appendedFileName);
+		renderJSON("{success: true}");
+	}
+
+	public static void rupload(String qqfile) {
+
+		if (request.isNew) {
+
+			FileOutputStream moveTo = null;
+
+			// Logger.info("Name of the file %s", qqfile);
+			// Another way I used to grab the name of the file
+			String filename = request.headers.get("x-file-name").value();
+
+			// Logger.info("Absolute on where to send %s",
+			// Play.getFile("").getAbsolutePath() + File.separator + "uploads" +
+			// File.separator);
+			try {
+
+				InputStream data = request.body;
+				moveTo = new FileOutputStream("./public/upload/" + filename);
+				IOUtils.copy(data, moveTo);
+
+			} catch (Exception ex) {
+
+				// catch file exception
+				// catch IO Exception later on
+				renderJSON("{success: false}");
+			}
+
+		}
+
 		renderJSON("{success: true}");
 	}
 }
