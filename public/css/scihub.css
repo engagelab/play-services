@@ -1,28 +1,20 @@
-
-* {
-	margin: 0;
-	padding: 0;
-}
-
-/* must declare 0 margins on everything, also for main layout components use padding, not 
-vertical margins (top and bottom) to add spacing, else those margins get added to total height 
-and your footer gets pushed down a bit more, creating vertical scroll bars in the browser */
-html,body {
+html {
 	height: 100%;
 }
 
-
-
-body { /*background: #c0c0c0;*/
+body {
+	/*background: #c0c0c0;*/
 	background: #transperent;
 	margin: 0 auto;
 	height: 100%;
 	min-height: 768px;
 	min-width: 1024px;
+	
 }
 
-body>div#content {
+body > div#content {
 	height: 80%;
+	
 }
 
 #header {
@@ -32,46 +24,56 @@ body>div#content {
 	-webkit-box-shadow: 0px 2px 5px gray;
 	box-shadow: 0px 2px 5px gray;
 	text-align: left;
-	vertical-align: middle;
+	vertical-align: baseline;
+
+
+
 }
 
 #headline1 {
-	background-image: url(../images/icon.png);
-	background-repeat: no-repeat;
-	group background-position: left top;
-	padding-top: 0px;
-	margin-bottom: 0px;
-}
+      background-image: url(../images/icon.png);
+      background-repeat: no-repeat;group
+      background-position: left top;
+      padding-top:0px;
+      margin-bottom:0px;
+	 
+   }
+
 
 footer {
 	display: block;
 	position: absolute;
 	bottom: 0;
-	height: 30px;
-	width: 100%;
-	background-image: url(../images/banner.jpg);
-	background-repeat: repeat-x;
-	text-align: center;
-	vertical-align: middle;
+	height:30px;
+	width:100%;
+	background-image: url(../images/banner.jpg); 
+	text-align: left;
+	vertical-align: middle;		
 }
 
+
+
+
+
+
 #content {
-	width: 100%;
+ 	width: 100%;
+	
 }
 
 #board {
-	position: absolute !important;
-	top: 0;
-	left: 0;
-	background-color: #FF0000;
+	position:absolute !important;
+ 	top:0;
+ 	left:0;
+ 	background-color: #FF0000;
 }
 
 #headerTitle {
 	float: left;
 	font-family: arial, sans-serif;
-	font-weight: bold;
+	font-weight:bold;
 	color: #FFFFFF;
-	padding-top: 7px;
+	padding-top: 5px;
 	padding-left: 25px;
 }
 
@@ -83,7 +85,7 @@ footer {
 
 /*  scene */
 .scene-picker-ui {
-	position: relative !important;
+	position:relative !important; 
 	margin: 0 auto;
 	width: 150px;
 	height: 150px;
@@ -101,6 +103,7 @@ footer {
 	color: #FFFFFF;
 }
 
+
 #stage {
 	margin: 0 auto;
 	height: 100%;
@@ -116,10 +119,10 @@ footer {
 
 /* group */
 .groupContainer {
-	position: relative !important;
+	position:relative !important; 
 	margin: 0 auto;
 	width: 700px;
-	padding: 80px 0px 0px 0px;
+	padding:80px 0px 0px 0px;
 }
 
 .group-ui {
@@ -141,20 +144,22 @@ footer {
 
 .group-ui:hover {
 	background-color: #F8F8F8;
+	border:#FFF;
 	-webkit-box-shadow: 0px 2px 5px gray;
 	-moz-box-shadow: 0px 2px 5px gray;
 	box-shadow: 0px 2px 10px gray;
 }
 
+
 .comment-ui {
 	position: absolute !important;
 	background: #9DC43F;
-	border-bottom-right-radius: 4% 4%;
-	border-bottom-left-radius: 4% 4%;
+	border-bottom-right-radius: 5% 4%;
+	border-bottom-left-radius: 5% 4%;
 	width: 200px;
 	-webkit-box-shadow: 0px 2px 5px gray;
 	-moz-box-shadow: 0px 2px 5px gray;
-	box-shadow: 0px 2px 10px gray;
+	box-shadow: 0px 2px 5px gray;
 	color: #888888;
 	/*height: 50px;*/
 	margin: 5px;
@@ -163,9 +168,13 @@ footer {
 
 .comment-ui-tl {
 	float: left;
-	border: 1px solid #333333;
 	background: #9DC43F;
 	min-width: 200px;
+	border-bottom-right-radius: 5% 4%;
+	border-bottom-left-radius: 5% 4%;
+	-webkit-box-shadow: 0px 2px 5px gray;
+	-moz-box-shadow: 0px 2px 5px gray;
+	 box-shadow: 0px 2px 5px gray;
 	/*height: 50px;*/
 	margin: 5px;
 	vertical-align: middle;
@@ -174,9 +183,10 @@ footer {
 .comment-ui:hover {
 	background-color: #AFD651;
 	color: #FFFFFF;
+	border:solid 3px;
 	-webkit-box-shadow: 0px 2px 5px gray;
 	-moz-box-shadow: 0px 2px 5px gray;
-	box-shadow: 0px 2px 15px gray;
+	 box-shadow: 0px 2px 15px gray;
 }
 
 .commId {
@@ -191,13 +201,14 @@ footer {
 	background: #AFD651;
 }
 
-.commentContent { /*width: 100%;*/
+.commentContent {
+	/*width: 100%;*/
 	margin: 5px;
-	padding: 5px !important;
+	padding: 5px!important;
 	text-align: left;
 	font-family: arial, sans-serif;
 	color: #000000;
-	font-size: 10px
+	font-size:10px
 }
 
 .comGrpName {
@@ -214,33 +225,49 @@ footer {
 	-webkit-box-shadow: 0px 2px 5px gray;
 	-moz-box-shadow: 0px 2px 5px gray;
 	box-shadow: 0px 2px 15px gray;
+	 
+	 
+	
 }
 
 .ytvideoContainer {
-	/*position: absolute !important;*/
-	float: left;
-	display: block;
-	margin: 0 auto;
+	position: absolute !important;
+	width: 200 px;
 }
+
 
 .ytvideo-ui {
 	position: absolute !important;
-	border: 1px solid #333333;
 	background: #9DC43F;
-	width: 280px;
-	height: 235px;
+	-webkit-box-shadow: 0px 2px 5px gray;
+	-moz-box-shadow: 0px 2px 5px gray;
+	 box-shadow: 0px 2px 5px gray;
+	width: 200px;
+	height: 178px;
 	margin: 5px;
 	vertical-align: middle;
 }
 
+.ytvideo-ui:hover {
+	background-color: #AFD651;
+	color: #FFFFFF;
+	border:solid;
+	-webkit-box-shadow: 0px 2px 5px gray;
+	-moz-box-shadow: 0px 2px 5px gray;
+	 box-shadow: 0px 2px 15px gray;
+	}
+
+
 .ytvideo-ui-tl {
 	float: left;
-	border: 1px solid #333333;
 	background: #9DC43F;
-	width: 280px;
-	height: 235px;
+	width: 200px;
+	height: 178px;
 	margin: 5px;
 	vertical-align: middle;
+	-webkit-box-shadow: 0px 2px 5px gray;
+	-moz-box-shadow: 0px 2px 5px gray;
+	 box-shadow: 0px 2px 5px gray;
 }
 
 #navToResources {
@@ -259,6 +286,9 @@ footer {
 	display: block;
 	text-align: left;
 	font-size: 12px;
+	
+	
+	
 }
 
 /*.fbcomment-txt {
@@ -266,6 +296,7 @@ footer {
 	display: block;
 	text-align: right;
 }*/
+
 .newFBInput {
 	margin-top: 10px;
 	left: 0;
@@ -278,7 +309,7 @@ footer {
 	background: #FFFFFF;
 	margin: 30px;
 	padding: 100 px;
-	max-width: 300px;
+	max-width: 290px;
 }
 
 .resColTitle {
@@ -303,7 +334,7 @@ footer {
 }
 
 #simuFrame {
-	position: relative !important;
+	position:relative !important; 
 	margin: 0 auto;
 }
 
@@ -311,9 +342,23 @@ footer {
 	background: #F8F8F8;
 	font-family: arial, sans-serif;
 	font-size: 14px;
-	font-weight: bold;
+	font-weight:bold;
 	padding: 5px;
 }
+
+.groupHeader 2{
+	background: #000000;
+	font-family: arial, sans-serif;
+	font-size: 14px;
+	font-weight:bold;
+	padding: 5px;
+}
+
+
+
+
+
+
 
 .groupHeader:hover {
 	color: #FFFFFF;
@@ -325,21 +370,19 @@ footer {
 }
 
 .newFBInput {
-	width: 100%;
-	box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	margin-top: 0;
+     width: 100%; 
+     box-sizing: border-box;
+     -webkit-box-sizing:border-box;
+     -moz-box-sizing: border-box;
+     margin-top: 0;
 }
 
 .activityContainer {
 	height: 100%;
 }
 
-.ui-widget-content,.ui-tabs .ui-tabs-panel {
-	background: #FFFFFF;
-	!
-	important;
+.ui-widget-content, .ui-tabs .ui-tabs-panel {
+	background: #FFFFFF; !important;
 }
 
 #acCont {
@@ -349,22 +392,21 @@ footer {
 }
 
 .commentsContainer {
-	/*position: absolute !important;
-	top: 320px;*/
-	display: block;
+	position: absolute !important;
+	top: 320px;
 }
 
 .tabb div {
 	float: left;
-	border-right: 1px solid #333333;
+	border-right:1px solid #333333;
 	min-width: 100px;
 	padding-left: 20px;
 	padding-right: 20px;
 	height: 2em;
 	line-height: 2em;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	font-weight: bold;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:bold;
 	margin: 0 auto;
 	text-align: center;
 	bottom: 0;
@@ -373,17 +415,17 @@ footer {
 .tabb div:hover {
 	background: #FFFFFF;
 	color: #333333;
-	cursor: pointer;
+	cursor:pointer;
 }
 
 .tabb {
-	position: absolute !important;
+	position:absolute !important;
 	bottom: 0;
 }
 
 .tabbZone {
 	background: #EDEDED;
-	height: 24px;
+	height:24px;
 	width: 100%;
 	position: relative !important;
 	margin: 50 px;
@@ -392,8 +434,5 @@ footer {
 .tabselected {
 	background: #FFFFFF;
 	color: #333333;
-	onmouseover
-	="this.style.cursor
-	=
-	'hand'
+	onmouseover="this.style.cursor = 'hand'
 }
