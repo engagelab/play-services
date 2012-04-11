@@ -28,6 +28,7 @@ public class TPictures extends Controller {
 		MyGroup group = MyGroup.findById(group_id);
 		if (request.isNew) {
 			filename = request.headers.get("x-file-name").value();
+			filename = filename.replaceAll("%20", "_");
 			File file;
 			try {
 				file = new File(filepath +group.name+"_"+ filename);

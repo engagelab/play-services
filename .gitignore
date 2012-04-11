@@ -10,7 +10,7 @@ conf/application.conf
 bin/
 
 .classpath
-/upload
+/public/upload
 
 
 
