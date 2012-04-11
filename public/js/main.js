@@ -49,6 +49,14 @@ var AppRouter = Backbone.Router.extend({
 		app.showView('#stage', new ActivityView({grpid:id,grpname:nam}));
 		this.activityMode = tab;
 		
+		this.picList = new PicCollection();
+		this.picList.fetch({ data: $.param({ grpid: id}),
+			success : function(event) {
+				$('#acCont').append(new PicView({model : app.picList, mmode: app.activityMode}).render().el);
+			},
+			wait: true 
+		});
+		
 		this.ytvideoList = new YTVideoCollection();
 		this.ytvideoList.fetch({ data: $.param({ grpid: id}),
 			success : function(event) {
@@ -94,7 +102,8 @@ tpl.loadTemplates([
 	'fbcomment_tpl',
 	'newfbcomment_tpl',
 	'simulations_tpl',
-	'activity_tpl'
+	'activity_tpl',
+	'pic_tpl'
 	], function() {
 	app = new AppRouter();
 	Backbone.history.start();

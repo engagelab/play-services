@@ -31,3 +31,10 @@ window.FBCommentCollection = Backbone.Collection.extend({
 	model : FBComment,
 	url : "/fbcomments"
 });
+
+window.Pic = Backbone.Model.extend({});
+
+window.PicCollection = Backbone.Collection.extend({
+	model : YTVideo,
+	url : "/pictures"
+});
