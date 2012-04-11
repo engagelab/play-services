@@ -69,15 +69,10 @@ GET	    	/run/{title}								Groups.getRunIdByTitle
 GET  		/taskdata/?									Projects.getTaskIdByTitle
 PUT  		/taskdata/									Groups.updateTaskData
 
-#tesing
-
-
-
-
-
-
-
-#I am Jermey
+# Routes for Pictures uploading
+POST    /upload?                                 		TPictures.upload
+GET	    /upload                                 		TPictures.index
+GET		/pictures?										Groups.GetPicturesURlbyG
 
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public

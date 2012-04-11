@@ -1,0 +1,42 @@
+<html>
+<head>
+<script type="text/javascript">
+function getRadios() {
+var d = document;
+// since radio buttons are grouped by their
+// shared name attribute, use getElementsByName
+// to fetch the collection
+var radios = d.getElementsByName( 'myRadio' );
+alert( 'there are ' + radios.length +
+' radio buttons named "myRadio"');
+// individual radio buttons with UNIQUE id
+// attributes can be fetched with getElementById
+var radio1 = d.getElementById( 'radio1' );
+alert( 'radio1 is ' +
+(( radio1.checked ) ? '':'not ') +'checked' );
+// Note that .checked = true sets the values -
+// .checked == true tests is it, but is needlessly
+// verbose, since .checked is already Boolean.
+// In general, when comparing a constant to a variable
+// using ==, put the constant on the left of the
+// comparison - that way, if you omit the second equal
+// sign of the logical operator, the interpreter will
+// detect the mistake, since the single = will be
+// interpreted as an attempt to assign a variable to a
+// constant, and that's illegal - put the interpreter
+// to work FOR you.
+
+// finally, set radio2.checked
+d.getElementById( 'radio2' ).checked = true;
+}
+</script>
+</head>
+<body>
+<form>
+<input id = "radio1" name = "myRadio" type = "radio" value = "first" />radio1
+<input id = "radio2" name = "myRadio" type = "radio" value = "second" />radio2
+<input id = "radio3" name = "myRadio" type = "radio" value = "third" />radio3
+<input type = "button" onclick = "getRadios()" value = "report radio buttons" />
+<form>
+</body>
+</html>

@@ -68,8 +68,8 @@ public class Groups extends Controller {
 		Long run_id = req.run_id;
 		Long group_id = req.group_id;
 		Long task_id = req.task_id;
-		float xpos = req.xpos;
-		float ypos = req.ypos;
+		int xpos = req.xpos;
+		int ypos = req.ypos;
 		String content = req.content;
 
 		MyGroup myGroup = MyGroup.findById(group_id);
@@ -95,8 +95,8 @@ public class Groups extends Controller {
 		UnicodeString us = new UnicodeString();
 		String content = us.convert(req.content);
 		// String content = req.content
-		float xpos = req.xpos;
-		float ypos = req.ypos;
+		int xpos = req.xpos;
+		int ypos = req.ypos;
 		Comment comment = Comment.findById(id);
 		comment.content = content;
 		comment.rawcontent = req.content;
@@ -121,7 +121,7 @@ public class Groups extends Controller {
 
 	/********************* Delete the Comment **********************************/
 	public static void deleteComment(Long id) {
-
+		FbComment.deletefbComments(id);
 		Comment.delete("from Comment c where c.id=?", id);
 	}
 
@@ -129,7 +129,6 @@ public class Groups extends Controller {
 	public static void showAllComments() {
 		List<Comment> comments = Comment.findAll();
 		renderTemplate("Comments/list.json", comments);
-
 	}
 	/********************* Show Comments by Group **********************/
 	public static void showCommentbyG() {
@@ -269,6 +268,21 @@ public class Groups extends Controller {
 		JSONSerializer modelSerializer = new JSONSerializer().include("id",
 				"fbcontent").exclude("*");
 		renderJSON(modelSerializer.serialize(fbcomment));
+	}
+	
+	/***********************************************************************
+	 * Upload Picture Services
+	 **********************************************************************/
+	/********************* Get Pictures url by Groups **********************************/
+	public static void GetPicturesURlbyG() {
+		Long group_id = params.get("grpid", Long.class);
+		List<TPicture> pictures = TPicture.find(
+				"SELECT p from TPicture p Where myGroup_id =?", group_id)
+				.fetch();
+		JSONSerializer modelSerializer = new JSONSerializer().include("id", "myGroup.id",
+				 "filename", "filepath","wxpos", "wypos").exclude(
+				"*");
+		renderJSON(modelSerializer.serialize(pictures));
 	}
 }
 

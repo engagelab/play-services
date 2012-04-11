@@ -19,6 +19,9 @@ public class MyGroup extends Model{
     public List<YTubeVideo> ytVideos;
 	
 	@OneToMany(mappedBy="myGroup", cascade=CascadeType.ALL)
+    public List<TPicture> tPictures;
+	
+	@OneToMany(mappedBy="myGroup", cascade=CascadeType.ALL)
     public List<Comment> comments;
 	
 	@OneToMany(mappedBy="myGroup", cascade=CascadeType.ALL)
@@ -29,6 +32,7 @@ public class MyGroup extends Model{
 		this.comments = new ArrayList<Comment>();
 		this.taskdatum = new ArrayList<TaskData>();
 		this.ytVideos = new ArrayList<YTubeVideo>();
+		this.tPictures = new ArrayList<TPicture>();
 		this.name = name;
 		this.run_id = run_id;
 	}
@@ -37,7 +41,7 @@ public class MyGroup extends Model{
 		
 	}
 
-	public Comment postComment(Project project, Long run_id, Task task, String content, float xpos, float ypos ) {
+	public Comment postComment(Project project, Long run_id, Task task, String content, int xpos, int ypos ) {
 		Comment newComment = new Comment(project, run_id, this, task, content, xpos, ypos);
 		this.comments.add(newComment);
 		this.save();
@@ -58,5 +62,12 @@ public class MyGroup extends Model{
 		this.ytVideos.add(nLink);
 		this.save();
 		return nLink;
+	}
+
+	public TPicture addNewPicture(MyGroup group, String filename) {
+		TPicture npicture = new TPicture(group, filename);
+		this.tPictures.add(npicture);
+		this.save();
+		return npicture;
 	}
 }
