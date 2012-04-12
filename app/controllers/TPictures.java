@@ -16,51 +16,19 @@ import play.mvc.Controller;
 
 public class TPictures extends Controller {
 
-	public static String filepath = "./public/upload/";
-	public static String filename = "";
-
 	public static void index() {
 		render();
 	}
 
 	public static void upload(String qqfile) {
-		
-		FileOutputStream moveTo = null;
-		String appendedFileName ="";
-		
-		Long group_id = params.get("grpid", Long.class);
-		MyGroup group = MyGroup.findById(group_id);
-		
-		//if (request.isNew) {
-			filename = request.headers.get("x-file-name").value();
-			filename = filename.replaceAll("%20", "_");
-			filename = filename.replaceAll(" ", "_");
-			appendedFileName = group.name + "_" + filename;
-			try {
-				InputStream data = request.body;
-				moveTo = new FileOutputStream(filepath + appendedFileName);
-				IOUtils.copy(data, moveTo);
-			}
-			catch (Exception ex) {
-				// catch file exception
-				// catch IO Exception later on
-				renderJSON("{success: false}");
-			}
-	//	}
-		
-		group.addNewPicture(group, appendedFileName);
-		renderJSON("{success: true}");
-	}
-
-	public static void rupload(String qqfile) {
-
+		String filename = "";
 		if (request.isNew) {
 
 			FileOutputStream moveTo = null;
 
 			// Logger.info("Name of the file %s", qqfile);
 			// Another way I used to grab the name of the file
-			String filename = request.headers.get("x-file-name").value();
+			filename = request.headers.get("x-file-name").value();
 
 			// Logger.info("Absolute on where to send %s",
 			// Play.getFile("").getAbsolutePath() + File.separator + "uploads" +
@@ -68,7 +36,7 @@ public class TPictures extends Controller {
 			try {
 
 				InputStream data = request.body;
-				moveTo = new FileOutputStream("./public/upload/" + filename);
+				moveTo = new FileOutputStream("./public/upload/"+ filename);
 				IOUtils.copy(data, moveTo);
 
 			} catch (Exception ex) {
@@ -77,9 +45,12 @@ public class TPictures extends Controller {
 				// catch IO Exception later on
 				renderJSON("{success: false}");
 			}
-
 		}
-
+		Long group_id = params.get("grpid", Long.class);
+		MyGroup grp = MyGroup.findById(group_id);
+		filename = filename.replaceAll("%20", "_");
+		String appendedFileName = grp.name + "_" + filename;
+		grp.addNewPicture(grp, appendedFileName);
 		renderJSON("{success: true}");
 	}
 }
