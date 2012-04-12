@@ -38,3 +38,16 @@ window.PicCollection = Backbone.Collection.extend({
 	model : YTVideo,
 	url : "/pictures"
 });
+
+window.FBVideoComment = Backbone.Model.extend({
+	urlRoot:"/fbonvid",
+	defaults:{
+        "fbcontent":"",
+        "vid_id":""
+    }
+});
+
+window.FBVideoCommentCollection = Backbone.Collection.extend({
+	model : FBVideoComment,
+	url : "/fbonvid"
+});

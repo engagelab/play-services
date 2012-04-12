@@ -23,7 +23,9 @@ window.YTVideoView = Backbone.View.extend({
 window.YTVideoItemView = Backbone.View.extend({
 	
 	initialize : function() {
+		_.bindAll(this, "createFBVideoComments");
 		this.template = _.template(tpl.get('ytvideo_tpl'));
+		this.model.bind("change", this.render, this);
 	},
 	
 	updatePosition : function(event) {
@@ -36,13 +38,55 @@ window.YTVideoItemView = Backbone.View.extend({
 	
 	
 	events : {
-		"dragstop" : "updatePosition"
+		"dragstop" : "updatePosition",
+		"keypress .newFBInput" : "handleKeyPress",
+		"click .newFBInput" : "handleOnfocus",
+		"focusout .newFBInput" : "handleOnfocusout"
+	},
+	
+	handleKeyPress:function(event) {
+		var key = event.keyCode;
+		if(key==13 && event.currentTarget.value!='') {
+			var fbvc = new FBVideoComment();
+			fbvc.attributes.fbcontent = event.currentTarget.value;
+			fbvc.attributes.vid_id = this.model.id;
+			fbvc.save({wait: true});
+			this.fbmodel.add(fbvc);
+		}
+	},
+	
+	handleOnfocus:function(event) {
+		event.currentTarget.value = '';
+	},
+	
+	handleOnfocusout:function(event) {
+		event.currentTarget.value = 'Write a comment...';
+	},
+	
+	createFBVideoComments: function(m, response) {
+		this.fbmodel = m;
+		this.fbmodel.bind("add", this.refreshFBComments, this);
+		_.each(this.fbmodel.models, function(fbcomment) {
+			$('#vidcomms').append(new FBCommentItemView({model : fbcomment}).render().el);
+		}, this);
+	},
+	
+	refreshFBComments : function() {
+		$('#vidcomms').html('');
+		this.fbvcList = new FBVideoCommentCollection();
+		this.fbvcList.fetch({ data: $.param({ vid_id: this.model.id}),
+			success : this.createFBVideoComments,
+			wait: true
+		});
+		$('#newFBInputId').val('Write a comment...');
+		$('#newFBInputId').blur();
 	},
 
 	render : function(eventName) {
 		if(this.options.mmode == 1) {
 			$(this.el).attr('style', 'left:' + this.model.attributes.wxpos + 'px;top:' + this.model.attributes.wypos + 'px');
 		}
+		
 		$(this.el).html(this.template(this.model.toJSON()));
 		
 		if(this.options.mmode == 1) {
