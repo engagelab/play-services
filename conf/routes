@@ -55,25 +55,10 @@ GET  		/ytvideosbyid?								Groups.showYTVidoByGroup
 # Routes for Facebook Comments
 GET  		/fbcomments?								Groups.showfbComments
 POST  		/fbcomments									Groups.addFbComment
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 40a67e81273f480fde459cf9980c34dee6bf48f5
 GET  		/fbonpic?									Groups.showFbCommentOnPic
 POST  		/fbonpic									Groups.addFbCommentOnPic
 GET  		/fbonvid?									Groups.showFbCommentOnVid
 POST  		/fbonvid									Groups.addFbCommentOnVid
-
-								
-<<<<<<< HEAD
-=======
-GET          /fbonpic?                                    Groups.showFbCommentOnPic
-POST          /fbonpic                                    Groups.addFbCommentOnPic
-GET          /fbonvid?                                    Groups.showFbCommentOnVid			
-POST          /fbonvid                                    Groups.addFbCommentOnVid								
->>>>>>> a210e0558d6be75dcd0382881106f5d23a2fc082
-=======
->>>>>>> 40a67e81273f480fde459cf9980c34dee6bf48f5
 
 #Group Operation routs
 GET	    	/groups										Groups.all
