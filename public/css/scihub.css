@@ -400,4 +400,9 @@ body > div#content {
 
 
 /****** Footer ***********/
+#footer { 
+	height: 50px;
+	color: #FFFFFF;
+	background: #333333;	
+}
 /****** end Footer ***********/
