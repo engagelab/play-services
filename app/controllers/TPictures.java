@@ -5,13 +5,10 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import models.MyGroup;
-import models.TPicture;
+import models.*;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
-
-import play.Play;
 import play.mvc.Controller;
 
 public class TPictures extends Controller {
