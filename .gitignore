@@ -1,17 +1,8 @@
 /eclipse
 /tmp
-
 .DS_Store
-
 test-result/application.log
-
 conf/application.conf
-
 bin/
-
 .classpath
-/public/upload
-
-
-
 public/.project
