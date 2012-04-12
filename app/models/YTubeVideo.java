@@ -1,9 +1,12 @@
 package models;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 
 import play.db.jpa.Model;
@@ -13,6 +16,9 @@ public class YTubeVideo extends Model {
 	
 	@ManyToOne
     public MyGroup myGroup;
+	
+	@OneToMany(mappedBy="vid", cascade=CascadeType.ALL)
+    public List<FbComment> fbComments;
 	
 	@ManyToOne
     public Task task;
@@ -43,6 +49,15 @@ public class YTubeVideo extends Model {
 		this.task = task;
 		this.wxpos = wxpos;
 		this.wypos = wypos;
+	}
+
+	public FbComment addFbComment(String fbcontent) {
+		
+		FbComment newfbComment = new FbComment(this,fbcontent);
+		this.fbComments.add(newfbComment);
+		this.save();
+		return newfbComment;
+		
 	}
 
 

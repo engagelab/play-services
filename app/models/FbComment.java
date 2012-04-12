@@ -24,8 +24,25 @@ public class FbComment extends Model{
 	@ManyToOne
     public Comment comment;
 	
+	@ManyToOne
+    public TPicture pic;
+	
+	@ManyToOne
+    public YTubeVideo vid;
+	
+	
 	public FbComment(Comment comment, String fbcontent) {
 		this.comment = comment;
+		this.fbcontent = fbcontent;
+	}
+
+	public FbComment(TPicture tPicture, String fbcontent) {
+		this.pic = tPicture;
+		this.fbcontent = fbcontent;
+	}
+
+	public FbComment(YTubeVideo yTubeVideo, String fbcontent) {
+		this.vid = yTubeVideo;
 		this.fbcontent = fbcontent;
 	}
 

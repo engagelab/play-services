@@ -270,6 +270,39 @@ public class Groups extends Controller {
 		renderJSON(modelSerializer.serialize(fbcomment));
 	}
 	
+	/********************* add fb comment on Picture *****************************/
+	public static void addFbCommentOnPic() throws IOException {
+		String json = IOUtils.toString(request.body);
+		FBComment_request req = new Gson().fromJson(json,
+				FBComment_request.class);
+		System.out.println(json);
+		Long pic_id = req.pic_id;
+		String fbcontent = req.fbcontent;
+		TPicture pic = TPicture.findById(pic_id);
+		FbComment fbcomment = pic.addFbComment(fbcontent);
+
+		JSONSerializer modelSerializer = new JSONSerializer().include("id",
+				"fbcontent").exclude("*");
+		renderJSON(modelSerializer.serialize(fbcomment));
+	}
+	
+	/********************* add fb comment on Picture *****************************/
+	public static void addFbCommentOnVid() throws IOException {
+		String json = IOUtils.toString(request.body);
+		FBComment_request req = new Gson().fromJson(json,
+				FBComment_request.class);
+		System.out.println(json);
+		Long vid_id = req.vid_id;
+		String fbcontent = req.fbcontent;
+		YTubeVideo vid = YTubeVideo.findById(vid_id);
+		FbComment fbcomment = vid.addFbComment(fbcontent);
+
+		JSONSerializer modelSerializer = new JSONSerializer().include("id",
+				"fbcontent").exclude("*");
+		renderJSON(modelSerializer.serialize(fbcomment));
+	}
+	
+	
 	/***********************************************************************
 	 * Upload Picture Services
 	 **********************************************************************/
