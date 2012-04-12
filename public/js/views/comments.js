@@ -121,6 +121,3 @@ window.FBCommentItemView = Backbone.View.extend({
 		return this;
 	}
 });	
-
-/******* fixes the blue frame flicking in chrome when dragging objects *****/
-document.onselectstart = function () { return false; };

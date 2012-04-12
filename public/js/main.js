@@ -108,3 +108,7 @@ tpl.loadTemplates([
 	app = new AppRouter();
 	Backbone.history.start();
 });
+
+
+/******* fixes the blue frame flicking in chrome when dragging objects (http://forum.jquery.com/topic/chrome-text-select-cursor-on-drag) *****/
+document.onselectstart = function () { return false; };
