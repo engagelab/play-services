@@ -1,6 +1,6 @@
 package controllers;
 
-import java.io.File;
+
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -58,7 +58,7 @@ public class TPictures extends Controller {
 		renderJSON("{success: true}");
 	}
 	
-	
+	//Get extension of file
 	public static String getFileExtension(String filePath){  
 		  StringTokenizer stk=new StringTokenizer(filePath,".");  
 		  String FileExt="";  
