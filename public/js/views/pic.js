@@ -49,7 +49,7 @@ window.PicItemView = Backbone.View.extend({
 		if(key==13 && event.currentTarget.value!='') {
 			var fbpc = new FBPicComment();
 			fbpc.attributes.fbcontent = event.currentTarget.value;
-			fbpc.attributes.vid_id = this.model.id;
+			fbpc.attributes.pic_id = this.model.id;
 			fbpc.save({wait: true});
 			this.fbmodel.add(fbpc);
 		}
@@ -67,12 +67,12 @@ window.PicItemView = Backbone.View.extend({
 		this.fbmodel = m;
 		this.fbmodel.bind("add", this.refreshFBComments, this);
 		_.each(this.fbmodel.models, function(fbcomment) {
-			$('#piccomms').append(new FBCommentItemView({model : fbcomment}).render().el);
+			$('#piccomms'+this.model.id).append(new FBCommentItemView({model : fbcomment}).render().el);
 		}, this);
 	},
 	
 	refreshFBComments : function() {
-		$('#piccomms').html('');
+		$('#piccomms'+this.model.id).html('');
 		this.fbpcList = new FBPicCommentCollection();
 		this.fbpcList.fetch({ data: $.param({ pic_id: this.model.id}),
 			success : this.createFBPicComments,
@@ -88,6 +88,8 @@ window.PicItemView = Backbone.View.extend({
 		}
 		
 		$(this.el).html(this.template(this.model.toJSON()));
+		
+		this.refreshFBComments();
 		
 		if(this.options.mmode == 1) {
 			$(this.el).addClass('pic-ui');

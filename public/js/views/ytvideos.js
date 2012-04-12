@@ -67,12 +67,12 @@ window.YTVideoItemView = Backbone.View.extend({
 		this.fbmodel = m;
 		this.fbmodel.bind("add", this.refreshFBComments, this);
 		_.each(this.fbmodel.models, function(fbcomment) {
-			$('#vidcomms').append(new FBCommentItemView({model : fbcomment}).render().el);
+			$('#vidcomms'+this.model.id).append(new FBCommentItemView({model : fbcomment}).render().el);
 		}, this);
 	},
 	
 	refreshFBComments : function() {
-		$('#vidcomms').html('');
+		$('#vidcomms'+this.model.id).html('');
 		this.fbvcList = new FBVideoCommentCollection();
 		this.fbvcList.fetch({ data: $.param({ vid_id: this.model.id}),
 			success : this.createFBVideoComments,
@@ -88,6 +88,8 @@ window.YTVideoItemView = Backbone.View.extend({
 		}
 		
 		$(this.el).html(this.template(this.model.toJSON()));
+		
+		this.refreshFBComments();
 		
 		if(this.options.mmode == 1) {
 			$(this.el).addClass('ytvideo-ui');
