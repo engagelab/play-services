@@ -286,7 +286,6 @@ public class Groups extends Controller {
 		renderJSON(modelSerializer.serialize(fbcomment));
 	}
 	
-	/********************* add fb comment on Picture *****************************/
 	public static void addFbCommentOnVid() throws IOException {
 		String json = IOUtils.toString(request.body);
 		FBComment_request req = new Gson().fromJson(json,
