@@ -132,6 +132,12 @@ body > div#content {
 	margin: 0 auto;
 }
 
+.grpres {
+	width: 178px;
+	padding-top: 80px;
+	margin: 0 auto;
+}
+
 .resources {
 	position: absolute !important;
 	padding: 5px;

@@ -16,7 +16,8 @@ var AppRouter = Backbone.Router.extend({
 		"/groups" : "listGroups",
 		"/resources" : "listResources",
 		"/groupcontent/:id/:nam/:tab" : "listComments",
-		"/simulations" : "showSimulations"
+		"/simulations" : "showSimulations",
+		"/grpresources" : "listGrpResources"
 	},
 	
 	def : function() {
@@ -31,6 +32,11 @@ var AppRouter = Backbone.Router.extend({
 	listResources : function() {
 		$('#header').html(new HeaderView('null').render().el);
 		app.showView('#resources', new ResourceView());
+	},
+	
+	listGrpResources : function() {
+		$('#header').html(new HeaderView('null').render().el);
+		app.showView('#resources', new GrpResourceView());
 	},
 	
 	listGroups : function() {
@@ -103,7 +109,8 @@ tpl.loadTemplates([
 	'newfbcomment_tpl',
 	'simulations_tpl',
 	'activity_tpl',
-	'pic_tpl'
+	'pic_tpl',
+	'grpresource_tpl'
 	], function() {
 	app = new AppRouter();
 	Backbone.history.start();
