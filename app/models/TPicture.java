@@ -17,7 +17,6 @@ public class TPicture extends Model{
 
 	public String filepath;
 	public String filename;
-	public String ufilename;
 	
 	@ManyToOne
     public MyGroup myGroup;
@@ -43,10 +42,6 @@ public class TPicture extends Model{
 	}
 	
 	public TPicture(MyGroup group, String filename) {
-		// Unicode conversion
-		UnicodeString us = new UnicodeString();
-		String ufilename = us.convert(filename);
-		this.ufilename = ufilename;
 		this.myGroup = group;
 		this.filename =filename;
 	}
