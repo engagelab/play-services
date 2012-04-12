@@ -31,7 +31,7 @@ public class TPictures extends Controller {
 		Long group_id = params.get("grpid", Long.class);
 		MyGroup group = MyGroup.findById(group_id);
 		
-		if (request.isNew) {
+		//if (request.isNew) {
 			filename = request.headers.get("x-file-name").value();
 			filename = filename.replaceAll("%20", "_");
 			filename = filename.replaceAll(" ", "_");
@@ -46,7 +46,7 @@ public class TPictures extends Controller {
 				// catch IO Exception later on
 				renderJSON("{success: false}");
 			}
-		}
+	//	}
 		
 		group.addNewPicture(group, appendedFileName);
 		renderJSON("{success: true}");
