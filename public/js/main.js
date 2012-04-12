@@ -9,6 +9,7 @@ var AppRouter = Backbone.Router.extend({
 
 	initialize : function() {
 		$('#header').html(new HeaderView('null').render().el);
+		$('#footer').html(new FooterView().render().el);
 	},
 	
 	routes : {
@@ -110,7 +111,8 @@ tpl.loadTemplates([
 	'simulations_tpl',
 	'activity_tpl',
 	'pic_tpl',
-	'grpresource_tpl'
+	'grpresource_tpl',
+	'footer_tpl'
 	], function() {
 	app = new AppRouter();
 	Backbone.history.start();
@@ -119,3 +121,11 @@ tpl.loadTemplates([
 
 /******* fixes the blue frame flicking in chrome when dragging objects (http://forum.jquery.com/topic/chrome-text-select-cursor-on-drag) *****/
 document.onselectstart = function () { return false; };
+
+$(document).ready(function() {
+    $("#footer").pinFooter();
+});
+
+$(window).resize(function() {
+    $("#footer").pinFooter();
+});

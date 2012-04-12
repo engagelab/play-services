@@ -270,6 +270,7 @@ public class Groups extends Controller {
 		renderJSON(modelSerializer.serialize(fbcomment));
 	}
 	
+
 	/********************* show fb comments by Picture id ******************/
 	public static void showFbCommentOnPic() {
 		Long pic_id = params.get("pic_id", Long.class);
@@ -296,6 +297,7 @@ public class Groups extends Controller {
 		renderJSON(modelSerializer.serialize(fbcomment));
 	}
 	
+<<<<<<< HEAD
 	/********************* show fb comments by Video id ******************/
 	public static void showFbCommentOnVid() {
 		Long vid_id = params.get("vid_id", Long.class);
@@ -307,6 +309,9 @@ public class Groups extends Controller {
 	}
 	
 	/********************* add fb comment on Video *****************************/
+=======
+	/********************* add fb comment on Picture *****************************/
+>>>>>>> a210e0558d6be75dcd0382881106f5d23a2fc082
 	public static void addFbCommentOnVid() throws IOException {
 		String json = IOUtils.toString(request.body);
 		FBComment_request req = new Gson().fromJson(json,

@@ -23,7 +23,9 @@ window.PicView = Backbone.View.extend({
 window.PicItemView = Backbone.View.extend({
 	
 	initialize : function() {
+		_.bindAll(this, "createFBPicComments");
 		this.template = _.template(tpl.get('pic_tpl'));
+		this.model.bind("change", this.render, this);
 	},
 	
 	updatePosition : function(event) {
@@ -36,13 +38,55 @@ window.PicItemView = Backbone.View.extend({
 	
 	
 	events : {
-		"dragstop" : "updatePosition"
+		"dragstop" : "updatePosition",
+		"keypress .newFBInput" : "handleKeyPress",
+		"click .newFBInput" : "handleOnfocus",
+		"focusout .newFBInput" : "handleOnfocusout"
+	},
+	
+	handleKeyPress:function(event) {
+		var key = event.keyCode;
+		if(key==13 && event.currentTarget.value!='') {
+			var fbpc = new FBPicComment();
+			fbpc.attributes.fbcontent = event.currentTarget.value;
+			fbpc.attributes.vid_id = this.model.id;
+			fbpc.save({wait: true});
+			this.fbmodel.add(fbpc);
+		}
+	},
+	
+	handleOnfocus:function(event) {
+		event.currentTarget.value = '';
+	},
+	
+	handleOnfocusout:function(event) {
+		event.currentTarget.value = 'Write a comment...';
+	},
+	
+	createFBPicComments: function(m, response) {
+		this.fbmodel = m;
+		this.fbmodel.bind("add", this.refreshFBComments, this);
+		_.each(this.fbmodel.models, function(fbcomment) {
+			$('#piccomms').append(new FBCommentItemView({model : fbcomment}).render().el);
+		}, this);
+	},
+	
+	refreshFBComments : function() {
+		$('#piccomms').html('');
+		this.fbpcList = new FBPicCommentCollection();
+		this.fbpcList.fetch({ data: $.param({ pic_id: this.model.id}),
+			success : this.createFBPicComments,
+			wait: true
+		});
+		$('#newFBInputId').val('Write a comment...');
+		$('#newFBInputId').blur();
 	},
 
 	render : function(eventName) {
 		if(this.options.mmode == 1) {
 			$(this.el).attr('style', 'left:' + this.model.attributes.wxpos + 'px;top:' + this.model.attributes.wypos + 'px');
 		}
+		
 		$(this.el).html(this.template(this.model.toJSON()));
 		
 		if(this.options.mmode == 1) {

@@ -38,3 +38,29 @@ window.PicCollection = Backbone.Collection.extend({
 	model : YTVideo,
 	url : "/pictures"
 });
+
+window.FBVideoComment = Backbone.Model.extend({
+	urlRoot:"/fbonvid",
+	defaults:{
+        "fbcontent":"",
+        "vid_id":""
+    }
+});
+
+window.FBVideoCommentCollection = Backbone.Collection.extend({
+	model : FBVideoComment,
+	url : "/fbonvid"
+});
+
+window.FBPicComment = Backbone.Model.extend({
+	urlRoot:"/fbonpic",
+	defaults:{
+        "fbcontent":"",
+        "pic_id":""
+    }
+});
+
+window.FBPicCommentCollection = Backbone.Collection.extend({
+	model : FBPicComment,
+	url : "/fbonpic"
+});

@@ -67,11 +67,8 @@ window.CommentItemView = Backbone.View.extend({
 		this.fbmodel = m;
 		this.fbmodel.bind("add", this.refreshFBComments, this);
 		_.each(this.fbmodel.models, function(fbcomment) {
-			//$(this.el).append(new FBCommentItemView({model : fbcomment}).render().el);
 			$('#fbcomms').append(new FBCommentItemView({model : fbcomment}).render().el);
-			//$('#piccomms').append(new FBCommentItemView({model : fbcomment}).render().el);
 		}, this);
-		//$(this.el).append(tpl.get('newfbcomment_tpl'));
 	},
 	
 	refreshFBComments : function() {
