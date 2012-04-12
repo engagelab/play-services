@@ -69,6 +69,7 @@ window.CommentItemView = Backbone.View.extend({
 		_.each(this.fbmodel.models, function(fbcomment) {
 			//$(this.el).append(new FBCommentItemView({model : fbcomment}).render().el);
 			$('#fbcomms').append(new FBCommentItemView({model : fbcomment}).render().el);
+			//$('#piccomms').append(new FBCommentItemView({model : fbcomment}).render().el);
 		}, this);
 		//$(this.el).append(tpl.get('newfbcomment_tpl'));
 	},
@@ -120,3 +121,6 @@ window.FBCommentItemView = Backbone.View.extend({
 		return this;
 	}
 });	
+
+/******* fixes the blue frame flicking in chrome when dragging objects *****/
+document.onselectstart = function () { return false; };
