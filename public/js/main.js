@@ -1,3 +1,4 @@
+//init backone function
 Backbone.View.prototype.close = function() {
 	if(this.beforeClose) {
 		this.beforeClose();
@@ -5,9 +6,12 @@ Backbone.View.prototype.close = function() {
 	this.remove();
 	this.unbind();
 };
+
+//backbone routes handler
 var AppRouter = Backbone.Router.extend({
 
 	initialize : function() {
+		//static header and footer
 		$('#header').html(new HeaderView('null').render().el);
 		$('#footer').html(new FooterView().render().el);
 	},
@@ -52,34 +56,41 @@ var AppRouter = Backbone.Router.extend({
 	},
 	
 	listComments : function(id, nam, tab) {
+		//update the header with chosen group
 		$('#header').html(new HeaderView(nam).render().el);
-		app.showView('#stage', new ActivityView({grpid:id,grpname:nam}));
+		
+		//show the tabs
+		app.showView('#stage', new ActivityView({ grpid:id, grpname:nam }));
 		this.activityMode = tab;
 		
+		//fetch the pictures for selected group
 		this.picList = new PicCollection();
-		this.picList.fetch({ data: $.param({ grpid: id}),
+		this.picList.fetch({ data: $.param({ grpid: id }),
 			success : function(event) {
-				$('#acCont').append(new PicView({model : app.picList, mmode: app.activityMode}).render().el);
+				$('#acCont').append(new PicView({ model:app.picList, mmode:app.activityMode }).render().el);
 			},
 			wait: true 
 		});
 		
+		//fetch the videos for selected group
 		this.ytvideoList = new YTVideoCollection();
-		this.ytvideoList.fetch({ data: $.param({ grpid: id}),
+		this.ytvideoList.fetch({ data: $.param({ grpid: id }),
 			success : function(event) {
-				$('#acCont').append(new YTVideoView({model : app.ytvideoList, mmode: app.activityMode}).render().el);
+				$('#acCont').append(new YTVideoView({ model:app.ytvideoList, mmode:app.activityMode }).render().el);
 			},
 			wait: true 
 		});
 		
+		//fetch the post-its for selected group
 		this.commentList = new CommentCollection();
-		this.commentList.fetch({ data: $.param({ grpid: id}),
+		this.commentList.fetch({ data: $.param({ grpid: id }),
 			success : function(event) {
-				$('#acCont').append(new CommentView({model : app.commentList, mmode: app.activityMode}).render().el);
+				$('#acCont').append(new CommentView({ model:app.commentList, mmode:app.activityMode }).render().el);
 			},
 			wait: true
 		});
 		
+		//select the clicked tab
 		if(tab==1) {
 			$('#fuzzy').addClass("tabselected");
 		}
@@ -88,6 +99,7 @@ var AppRouter = Backbone.Router.extend({
 		} 
 	},
 	
+	//switches between backbone views, closing the currently opened one
 	showView : function(selector, view) {
 		if(this.currentView) {
 			this.currentView.close();

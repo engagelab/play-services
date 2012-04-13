@@ -1,3 +1,4 @@
+/* view that handles the activity tabs */
 window.ActivityView = Backbone.View.extend({
 	tagName : "div",
 	className : "activityContainer",

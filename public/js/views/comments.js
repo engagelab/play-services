@@ -1,3 +1,4 @@
+/* view that handles the comments tabs */
 window.CommentView = Backbone.View.extend({
 	tagName : "div",
 	className : "commentsContainer",
@@ -9,6 +10,7 @@ window.CommentView = Backbone.View.extend({
 	
 	render : function(eventName) {
 		_.each(this.model.models, function(comment) {
+			/* test whether the comments should be displayed ordered or fuzzy */
 			if(this.options.mmode == 2) {
 				$(this.el).append(new CommentItemView({model : comment, mmode:this.options.mmode}).render().el);
 			}
@@ -35,7 +37,6 @@ window.CommentItemView = Backbone.View.extend({
 		this.model.attributes.wypos = ptop.substring(0, ptop.length-2);
 		this.model.save();
 	},
-	
 	
 	events : {
 		"dragstop" : "updatePosition",

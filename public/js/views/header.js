@@ -1,3 +1,4 @@
+//handles header view and related events
 window.HeaderView = Backbone.View.extend({
 
     initialize:function () {
@@ -5,7 +6,7 @@ window.HeaderView = Backbone.View.extend({
     },
 
     render:function (eventName) {
-        $(this.el).html(this.template({ name: this.options}));
+        $(this.el).html(this.template({ name: this.options }));
         return this;
     },
 
