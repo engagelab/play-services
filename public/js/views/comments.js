@@ -1,4 +1,4 @@
-/* view that handles the comments tabs */
+// view that handles the comments tabs
 window.CommentView = Backbone.View.extend({
 	tagName : "div",
 	className : "commentsContainer",
