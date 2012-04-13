@@ -1,8 +1,7 @@
 // view that handles the activity tabs
 window.ActivityView = Backbone.View.extend({
 	tagName : "div",
-	className : "activityContainer",
-	id : "acCont",
+	id : "activityContainer",
 	
     initialize : function() {
     	this.template = _.template(tpl.get('activity_tpl'));

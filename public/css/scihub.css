@@ -190,7 +190,7 @@ body > div#content {
 	background: #FFFFFF;
 }
 
-.activityContainer {
+#activityContainer {
 	height: 100%;
 }
 
@@ -235,7 +235,7 @@ body > div#content {
 	cursor: default !important;
 }
 
-.picContainer {
+.pictureContainer {
 	position: absolute !important;
 	top: 250px;
 }
@@ -265,7 +265,7 @@ body > div#content {
 	float: left;
 	background: #9DC43F;
 	width: 200px;
-	height: 178px;
+	min-height: 200px;
 	margin: 5px;
 	vertical-align: middle;
 	-webkit-box-shadow: 0px 2px 5px gray;
@@ -273,11 +273,11 @@ body > div#content {
 	box-shadow: 0px 2px 5px gray;
 }
 
-.ytvideoContainer {
+.videoContainer {
 	position: absolute !important;
 }
 
-.ytvideo-ui {
+.video-ui {
 	position: absolute !important;
 	background: #9DC43F;
 	-webkit-box-shadow: 0px 2px 5px gray;
@@ -289,7 +289,7 @@ body > div#content {
 	vertical-align: middle;
 }
 
-.ytvideo-ui:hover {
+.video-ui:hover {
 	background-color: #AFD651;
 	color: #FFFFFF;
 	border: solid;
@@ -298,11 +298,11 @@ body > div#content {
 	box-shadow: 0px 2px 15px gray;
 }
 
-.ytvideo-ui-tl {
+.video-ui-tl {
 	float: left;
 	background: #9DC43F;
 	width: 200px;
-	height: 178px;
+	min-height: 200px;
 	margin: 5px;
 	vertical-align: middle;
 	-webkit-box-shadow: 0px 2px 5px gray;
@@ -310,12 +310,12 @@ body > div#content {
 	box-shadow: 0px 2px 5px gray;
 }
 
-.commentsContainer {
+.postitsContainer {
 	position: absolute !important;
 	top: 450px;
 }
 
-.commentContent {
+.postitContent {
 	margin: 5px;
 	padding: 5px !important;
 	text-align: left;
@@ -329,12 +329,12 @@ body > div#content {
 	padding: 5px !important;
 }
 
-.picContent {
+.pictureContent {
 	margin: 5px;
 	padding: 5px !important;
 }
 
-.comment-ui {
+.postit-ui {
 	position: absolute !important;
 	background: #9DC43F;
 	border-bottom-right-radius: 5% 4%;
@@ -349,7 +349,7 @@ body > div#content {
 	vertical-align: middle;
 }
 
-.comment-ui-tl {
+.postit-ui-tl {
 	float: left;
 	background: #9DC43F;
 	min-width: 200px;
@@ -363,7 +363,7 @@ body > div#content {
 	vertical-align: middle;
 }
 
-.comment-ui:hover {
+.postit-ui:hover {
 	background-color: #AFD651;
 	color: #FFFFFF;
 	border: solid 3px;
@@ -372,7 +372,7 @@ body > div#content {
 	box-shadow: 0px 2px 15px gray;
 }
 
-.fbcomment-ui {
+.comment-ui {
 	border-top: 1px solid #111111;
 	width: 100%;
 	background: #a4e26f;
@@ -385,13 +385,8 @@ body > div#content {
 	font-size: 11px;
 }
 
-.newFBInput {
+.commentInput {
 	margin-top: 10px;
-	left: 0;
-	right: 0;
-}
-
-.newFBInput {
 	width: 100%;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;

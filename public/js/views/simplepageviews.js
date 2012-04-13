@@ -30,3 +30,16 @@ window.SimulationView = Backbone.View.extend({
 		return this;
 	}
 });
+
+window.CommentItemView = Backbone.View.extend({
+	className : 'comment-ui',
+	
+	initialize : function() {
+		this.template = _.template(tpl.get('comment_tpl'));
+	},
+	
+	render : function(eventName) {
+		$(this.el).html(this.template(this.model.toJSON()));
+		return this;
+	}
+});	

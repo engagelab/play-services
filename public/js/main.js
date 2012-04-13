@@ -64,28 +64,28 @@ var AppRouter = Backbone.Router.extend({
 		this.activityMode = tab;
 		
 		//fetch the pictures for selected group
-		this.picList = new PicCollection();
-		this.picList.fetch({ data: $.param({ grpid: id }),
+		this.pictureList = new PictureCollection();
+		this.pictureList.fetch({ data: $.param({ grpid: id }),
 			success : function(event) {
-				$('#acCont').append(new PicView({ model:app.picList, mmode:app.activityMode }).render().el);
+				$('#activityContainer').append(new PictureView({ model:app.pictureList, activityMode:app.activityMode }).render().el);
 			},
 			wait: true 
 		});
 		
 		//fetch the videos for selected group
-		this.ytvideoList = new YTVideoCollection();
-		this.ytvideoList.fetch({ data: $.param({ grpid: id }),
+		this.videoList = new VideoCollection();
+		this.videoList.fetch({ data: $.param({ grpid: id }),
 			success : function(event) {
-				$('#acCont').append(new YTVideoView({ model:app.ytvideoList, mmode:app.activityMode }).render().el);
+				$('#activityContainer').append(new VideoView({ model:app.videoList, activityMode:app.activityMode }).render().el);
 			},
 			wait: true 
 		});
 		
 		//fetch the post-its for selected group
-		this.commentList = new CommentCollection();
-		this.commentList.fetch({ data: $.param({ grpid: id }),
+		this.postitList = new PostitCollection();
+		this.postitList.fetch({ data: $.param({ grpid: id }),
 			success : function(event) {
-				$('#acCont').append(new CommentView({ model:app.commentList, mmode:app.activityMode }).render().el);
+				$('#activityContainer').append(new PostitView({ model:app.postitList, activityMode:app.activityMode }).render().el);
 			},
 			wait: true
 		});
@@ -115,14 +115,13 @@ tpl.loadTemplates([
 	'header_tpl',
 	'groups_tpl',
 	'members_tpl',
-	'comment_tpl',
+	'postit_tpl',
 	'resource_tpl',
-	'ytvideo_tpl',
-	'fbcomment_tpl',
-	'newfbcomment_tpl',
+	'video_tpl',
+	'comment_tpl',
 	'simulations_tpl',
 	'activity_tpl',
-	'pic_tpl',
+	'picture_tpl',
 	'grpresource_tpl',
 	'footer_tpl'
 	], function() {

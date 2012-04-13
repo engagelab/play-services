@@ -5,62 +5,59 @@ window.GroupCollection = Backbone.Collection.extend({
 	url : "/groups"
 });
 
-/* Comment service section */
-window.Comment = Backbone.Model.extend({});
-window.CommentCollection = Backbone.Collection.extend({
-	model : Comment,
+
+/* Postit service section */
+window.Postit = Backbone.Model.extend({});
+window.PostitCollection = Backbone.Collection.extend({
+	model : Postit,
 	url : "/commentsbyid"
 });
-
-/* Youtube video service section */
-window.YTVideo = Backbone.Model.extend({});
-window.YTVideoCollection = Backbone.Collection.extend({
-	model : YTVideo,
-	url : "/ytvideosbyid"
-});
-
-/* Facebook-like service for comments section */
-window.FBComment = Backbone.Model.extend({
+window.PostitComment = Backbone.Model.extend({
 	urlRoot:"/fbcomments",
 	defaults:{
         "fbcontent":"",
         "comment_id":""
     }
 });
-window.FBCommentCollection = Backbone.Collection.extend({
-	model : FBComment,
+window.PostitCommentCollection = Backbone.Collection.extend({
+	model : PostitComment,
 	url : "/fbcomments"
 });
 
-/* Picture service section */
-window.Pic = Backbone.Model.extend({});
-window.PicCollection = Backbone.Collection.extend({
-	model : YTVideo,
-	url : "/pictures"
-});
 
-/* Facebook-like service for videos section */
-window.FBVideoComment = Backbone.Model.extend({
+/* Youtube video service section */
+window.Video = Backbone.Model.extend({});
+window.VideoCollection = Backbone.Collection.extend({
+	model : Video,
+	url : "/ytvideosbyid"
+});
+window.VideoComment = Backbone.Model.extend({
 	urlRoot:"/fbonvid",
 	defaults:{
         "fbcontent":"",
         "vid_id":""
     }
 });
-window.FBVideoCommentCollection = Backbone.Collection.extend({
-	model : FBVideoComment,
+window.VideoCommentCollection = Backbone.Collection.extend({
+	model : VideoComment,
 	url : "/fbonvid"
 });
 
-/* Facebook-like service for pictures section */
-window.FBPicComment = Backbone.Model.extend({
+
+/* Picture service section */
+window.Picture = Backbone.Model.extend({});
+window.PictureCollection = Backbone.Collection.extend({
+	model : Picture,
+	url : "/pictures"
+});
+window.PictureComment = Backbone.Model.extend({
 	urlRoot:"/fbonpic",
 	defaults:{
         "fbcontent":"",
         "pic_id":""
     }
 });
-window.FBPicCommentCollection = Backbone.Collection.extend({
-	model : FBPicComment,
+window.PictureCommentCollection = Backbone.Collection.extend({
+	model : PictureComment,
 	url : "/fbonpic"
 });
