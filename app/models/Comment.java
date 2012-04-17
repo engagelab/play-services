@@ -1,101 +1,60 @@
-//you can use private members with getter and setter
-
+/**
+ * 
+ */
 package models;
 
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 
-import play.data.validation.MaxSize;
-import play.data.validation.Required;
 import play.db.jpa.Model;
 
-import play.libs.Codec;
-import play.mvc.Controller;
-
-
+/**
+ * Face-book like Comment entity managed by JPA
+ */
 @Entity
-public class Comment extends Model {
+public class Comment extends Model{
 	
-	@OneToMany(mappedBy="comment", cascade=CascadeType.ALL)
-    public List<FbComment> fbComments;
-	
-	@ManyToOne
-    public MyGroup myGroup;
-	
-	@ManyToOne
-	//@Required  to avoid the project id
-	 public Project project;
-	
-	@ManyToOne
-	 public Task task;
-	
-	public Long run_id;
-	public int xpos;
-	public int ypos;
-	
-	public int wxpos;
-	public int wypos;
-	
-	@Lob
-    public String content;
-	
-	@Lob
-    public String rawcontent;
-	
+	public String content;
 	public Date postedAt;
+	
+	@ManyToOne
+    public Postit postit;
+	
+	@ManyToOne
+    public Image image;
+	
+	@ManyToOne
+    public VideoClip vid;
 
 	@PrePersist
 	public void prePersist(){
 		postedAt = new Date();
-		wxpos = 0;
-		wypos = 0;
 	}
 	
-	public Comment(Project project, Long run_id, MyGroup myGroup, Task task, String content, int xpos, int ypos) {
-		this.project = project;
-		this.run_id = run_id;
-		this.myGroup = myGroup;
-		this.task = task;
+	public Comment(Postit postit, String content) {
+		this.postit = postit;
 		this.content = content;
-		this.xpos  = xpos;
-		this.ypos = ypos;
-		}
-
-	public static List<Comment> findByTask(Long id) {
-		Task task = Task.findById(id);
-		List<Comment> comments = task.comments;
-		return comments;
 	}
 
-	public FbComment addFbComment(String fbcontent) {
-		FbComment newfbComment = new FbComment(this,fbcontent);
-		this.fbComments.add(newfbComment);
-		this.save();
-		return newfbComment;
+	public Comment(Image image, String content) {
+		this.image = image;
+		this.content = content;
+	}
+
+	public Comment(VideoClip videoClip, String content) {
+		this.vid = videoClip;
+		this.content = content;
 	}
 	
+	/*
+	 * JPA Queries
+	 */
 	
-//	public static List<Comment> findByUser(Long id) {
-//		User user = User.findById(id);
-//		List<Comment> comments = user.comments;
-//		return comments;
-//	}
-
-	
-//	public static void deleteComment(Long id) {
-//		Comment.delete("from Comment c where c.id=?", id);
-//	}
-//
-//	
-//	public static Comment updateComment(Long id, String title, String message) {
-//		Comment myComment = Comment.findById(id);
-//		return myComment;
-//	}
+	public static void deleteCommentsOnPostit(Long id) {
+		Postit postit = Postit.findById(id);
+		Comment.delete("from Comment c where c.postit=?", postit);
+	}
 }

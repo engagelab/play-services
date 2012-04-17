@@ -17,12 +17,22 @@ import models.*;
 
 public class Projects extends Controller{
 	
-    public static void getAllProjects() {
+	/********************* Retrieve the runid by title **********************/
+	public static void fetchRunIdByTitle(String title) {
+		String res = "Null";
+		// if(title == "miracle1")
+		{
+			res = "{ \"run_id\": \"2\"}";
+		}
+		renderJSON(res);
+	}
+	
+    public static void fetchAllProjects() {
         List <Project> projects = Project.findAll();
         renderTemplate("Projects/list.json", projects);
     }
     
-    public static void getProject(Long id) {
+    public static void fetchProject(Long id) {
         Project project = Project.findById(id);
         renderTemplate("Projects/project.json", project);
         //We can not use renderJSON() function be it does not support OneToMany Relation maping
@@ -30,24 +40,24 @@ public class Projects extends Controller{
         //renderJSON(project);
     }
     
-    public static void getActsByProject(Long id) {
-        List <Act> acts = Act.findByProject(id);
+    public static void fetchActsByProject(Long id) {
+        List <Act> acts = Act.fetchActsByProject(id);
         renderTemplate("Acts/list.json", acts);
     }
     
-    public static void getScenesByAct(Long id) {
+    public static void fetchScenesByAct(Long id) {
         List <Scene> scenes = Scene.findByAct(id);
         renderTemplate("Scenes/list.json", scenes);
     }
     
-    public static void getTasksByScene(Long id) {
+    public static void fetchTasksByScene(Long id) {
         List <Task> tasks = Task.findByScene(id);
         renderTemplate("Tasks/list.json", tasks);
     }
     
     /////////////////////////////////////////////////////////////////////////
     
-    public static void getProjectIdByTitle(String title) {
+    public static void fetchProjectIdByTitle(String title) {
     	//String title = params.get("title");
         Project project = Project.find("byTitle",title).first();
         if(project == null)
@@ -55,21 +65,21 @@ public class Projects extends Controller{
         renderTemplate("Projects/project.json", project);
     }
     
-    public static void getActIdByTitle(String title) {
+    public static void fetchActIdByTitle(String title) {
         Act act = Act.find("byTitle",title).first();
         if(act == null)
             renderTemplate("/null.json");
             renderTemplate("Acts/act.json", act);
     }
     
-    public static void getSceneIdByTitle(String title) {
+    public static void fetchSceneIdByTitle(String title) {
         Scene scene = Scene.find("byTitle",title).first();
         if(scene == null)
             renderTemplate("/null.json");
             renderTemplate("Scenes/scene.json", scene);
     }
     
-    public static void getTaskIdByTitle() {
+    public static void fetchTaskIdByTitle() {
     	String title = params.get("title");
     	Long project_id = params.get("project_id", Long.class);
     	Long run_id = params.get("run_id", Long.class);
@@ -78,13 +88,13 @@ public class Projects extends Controller{
     	Long task_id = task.id;
     	
     	//find or create Taskdata object as group goes to specific task
-    	TaskData taskdata = TaskData.find("SELECT td  from TaskData td Where td.project.id=? and td.myGroup.id =? and td.task.id=? "
+    	TaskData taskdata = TaskData.find("SELECT td  from TaskData td Where td.project.id=? and td.groupp.id =? and td.task.id=? "
 				,project_id, myGroup_id, task_id).first();
     	if(taskdata == null)
     	{
-    		MyGroup group = MyGroup.findById(myGroup_id);
+    		Groupp group = Groupp.findById(myGroup_id);
     		Project project = Project.findById(project_id);
-    		taskdata = group.createTaskData(project, run_id, task);
+    		taskdata = group.updateTaskData(project, run_id, task);
     		taskdata.save();
     	}
     	renderTemplate("TaskDatum/taskdata.json", taskdata, task_id);

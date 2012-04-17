@@ -8,6 +8,9 @@ import play.data.binding.*;
 import play.data.validation.*;
 import play.db.jpa.Model;
 
+/**
+ * Scene entity managed by JPA
+ */
 @Entity
 public class Scene extends Model{
 
