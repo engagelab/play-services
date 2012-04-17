@@ -102,7 +102,7 @@ public class Groups extends Controller {
 	
 	/********************* fetch Postits by Group **********************/
 	public static void fetchPostitsbyG() {
-		Long group_id = params.get("grpid", Long.class);
+		Long group_id = params.get("group_id", Long.class);
 		List<Postit> postits = Postit.find(
 				"SELECT p from Postit p Where groupp_id =?", group_id)
 				.fetch();
@@ -370,7 +370,7 @@ public class Groups extends Controller {
 	 * /
 	/********************* Get Pictures by Group id **********************************/
 	public static void fetchImagesbyG() {
-		Long group_id = params.get("grpid", Long.class);
+		Long group_id = params.get("group_id", Long.class);
 		List<Image> pictures = Image.find(
 				"SELECT i from Image i Where i.groupp.id =?", group_id)
 				.fetch();

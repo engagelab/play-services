@@ -49,8 +49,8 @@ window.PostitItemView = Backbone.View.extend({
 		var key = event.keyCode;
 		if(key==13 && event.currentTarget.value!='') {
 			var pc = new PostitComment();
-			pc.attributes.fbcontent = event.currentTarget.value;
-			pc.attributes.comment_id = this.model.id;
+			pc.attributes.content = event.currentTarget.value;
+			pc.attributes.postit_id = this.model.id;
 			pc.save({ wait: true });
 			this.commentModel.add(pc);
 		}
@@ -75,7 +75,7 @@ window.PostitItemView = Backbone.View.extend({
 	refreshPostitComments : function() {
 		$('#postitComment-'+this.model.id).html('');
 		this.postitCommentList = new PostitCommentCollection();
-		this.postitCommentList.fetch({ data: $.param({ comment_id: this.model.id}),
+		this.postitCommentList.fetch({ data: $.param({ postit_id: this.model.id}),
 			success : this.createPostitComments,
 			wait: true
 		});

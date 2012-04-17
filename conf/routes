@@ -33,6 +33,9 @@ GET  		/postits									Groups.fetchAllPostits
 #GET 		/commentsbyid? 								Groups.showCommentbyG
 GET  		/group/postits?								Groups.fetchPostitsbyG
 
+#PUT 		/commentsbyid/{id} 							Groups.updateCommentPos
+PUT  		/group/postits/{id}							Groups.updatePostitPos
+
 #GET  		/comments/?									Groups.showCommentbyGT
 GET  		/group/task/postits?						Groups.fetchPostitsbyGT
 
@@ -45,8 +48,6 @@ PUT  		/group/task/postits/{id}					Groups.updatePostit
 #DELETE 	/comments/{id} 								Groups.deleteComment
 DELETE  	/group/task/postits/{id}					Groups.deletePostit
 
-#PUT 		/commentsbyid/{id} 							Groups.updateCommentPos
-PUT  		/postit/pos/{id}							Groups.updatePostitPos
 
 ####### Routes for Facebook like Comments
 #GET 		/fbcomments? 								Groups.showfbComments

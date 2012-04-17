@@ -60,12 +60,12 @@ var AppRouter = Backbone.Router.extend({
 		$('#header').html(new HeaderView(nam).render().el);
 		
 		//show the tabs
-		app.showView('#stage', new ActivityView({ grpid:id, grpname:nam }));
+		app.showView('#stage', new ActivityView({ group_id:id, group_name:nam }));
 		this.activityMode = tab;
 		
 		//fetch the pictures for selected group
 		this.pictureList = new PictureCollection();
-		this.pictureList.fetch({ data: $.param({ grpid: id }),
+		this.pictureList.fetch({ data: $.param({ group_id: id }),
 			success : function(event) {
 				$('#activityContainer').append(new PictureView({ model:app.pictureList, activityMode:app.activityMode }).render().el);
 			},
@@ -74,7 +74,7 @@ var AppRouter = Backbone.Router.extend({
 		
 		//fetch the videos for selected group
 		this.videoList = new VideoCollection();
-		this.videoList.fetch({ data: $.param({ grpid: id }),
+		this.videoList.fetch({ data: $.param({ group_id: id }),
 			success : function(event) {
 				$('#activityContainer').append(new VideoView({ model:app.videoList, activityMode:app.activityMode }).render().el);
 			},
@@ -83,7 +83,7 @@ var AppRouter = Backbone.Router.extend({
 		
 		//fetch the post-its for selected group
 		this.postitList = new PostitCollection();
-		this.postitList.fetch({ data: $.param({ grpid: id }),
+		this.postitList.fetch({ data: $.param({ group_id: id }),
 			success : function(event) {
 				$('#activityContainer').append(new PostitView({ model:app.postitList, activityMode:app.activityMode }).render().el);
 			},
@@ -134,9 +134,5 @@ tpl.loadTemplates([
 document.onselectstart = function () { return false; };
 
 $(document).ready(function() {
-    $("#footer").pinFooter();
-});
-
-$(window).resize(function() {
     $("#footer").pinFooter();
 });

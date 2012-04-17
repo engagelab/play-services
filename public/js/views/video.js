@@ -48,8 +48,8 @@ window.VideoItemView = Backbone.View.extend({
 		var key = event.keyCode;
 		if(key==13 && event.currentTarget.value!='') {
 			var vc = new VideoComment();
-			vc.attributes.fbcontent = event.currentTarget.value;
-			vc.attributes.vid_id = this.model.id;
+			vc.attributes.content = event.currentTarget.value;
+			vc.attributes.video_id = this.model.id;
 			vc.save({wait: true});
 			this.commentModel.add(vc);
 		}
@@ -74,7 +74,7 @@ window.VideoItemView = Backbone.View.extend({
 	refreshVideoComments : function() {
 		$('#videoComment-'+this.model.id).html('');
 		this.videoCommentList = new VideoCommentCollection();
-		this.videoCommentList.fetch({ data: $.param({ vid_id: this.model.id }),
+		this.videoCommentList.fetch({ data: $.param({ video_id: this.model.id }),
 			success : this.createVideoComments,
 			wait: true
 		});

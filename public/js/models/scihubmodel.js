@@ -10,18 +10,18 @@ window.GroupCollection = Backbone.Collection.extend({
 window.Postit = Backbone.Model.extend({});
 window.PostitCollection = Backbone.Collection.extend({
 	model : Postit,
-	url : "/commentsbyid"
+	url : "/group/postits"
 });
 window.PostitComment = Backbone.Model.extend({
-	urlRoot:"/fbcomments",
+	urlRoot:"/postit/comments",
 	defaults:{
-        "fbcontent":"",
-        "comment_id":""
+        "content":"",
+        "postit_id":""
     }
 });
 window.PostitCommentCollection = Backbone.Collection.extend({
 	model : PostitComment,
-	url : "/fbcomments"
+	url : "/postit/comments"
 });
 
 
@@ -29,18 +29,18 @@ window.PostitCommentCollection = Backbone.Collection.extend({
 window.Video = Backbone.Model.extend({});
 window.VideoCollection = Backbone.Collection.extend({
 	model : Video,
-	url : "/ytvideosbyid"
+	url : "/group/videos"
 });
 window.VideoComment = Backbone.Model.extend({
-	urlRoot:"/fbonvid",
+	urlRoot:"/video/comments",
 	defaults:{
-        "fbcontent":"",
-        "vid_id":""
+        "content":"",
+        "video_id":""
     }
 });
 window.VideoCommentCollection = Backbone.Collection.extend({
 	model : VideoComment,
-	url : "/fbonvid"
+	url : "/video/comments"
 });
 
 
@@ -48,16 +48,16 @@ window.VideoCommentCollection = Backbone.Collection.extend({
 window.Picture = Backbone.Model.extend({});
 window.PictureCollection = Backbone.Collection.extend({
 	model : Picture,
-	url : "/pictures"
+	url : "/group/images"
 });
 window.PictureComment = Backbone.Model.extend({
-	urlRoot:"/fbonpic",
+	urlRoot:"/image/comments",
 	defaults:{
-        "fbcontent":"",
-        "pic_id":""
+        "content":"",
+        "image_id":""
     }
 });
 window.PictureCommentCollection = Backbone.Collection.extend({
 	model : PictureComment,
-	url : "/fbonpic"
+	url : "/image/comments"
 });

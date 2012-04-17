@@ -48,8 +48,8 @@ window.PicItemView = Backbone.View.extend({
 		var key = event.keyCode;
 		if(key==13 && event.currentTarget.value!='') {
 			var pc = new PictureComment();
-			pc.attributes.fbcontent = event.currentTarget.value;
-			pc.attributes.pic_id = this.model.id;
+			pc.attributes.content = event.currentTarget.value;
+			pc.attributes.image_id = this.model.id;
 			pc.save({ wait: true });
 			this.commentModel.add(pc);
 		}
@@ -74,7 +74,7 @@ window.PicItemView = Backbone.View.extend({
 	refreshPictureComments : function() {
 		$('#pictureComment-'+this.model.id).html('');
 		this.fbpcList = new PictureCommentCollection();
-		this.fbpcList.fetch({ data: $.param({ pic_id: this.model.id}),
+		this.fbpcList.fetch({ data: $.param({ image_id: this.model.id}),
 			success : this.createPictureComments,
 			wait: true
 		});
