@@ -1,9 +1,9 @@
 package requests;
 
-import models.MyGroup;
+import models.Groupp;
 
 public class GroupResponse {
-	public MyGroup group;
+	public Groupp group;
 }
 
 

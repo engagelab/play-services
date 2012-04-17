@@ -9,16 +9,20 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 
 import play.data.validation.MaxSize;
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
+/**
+ * TaskData entity managed by JPA
+ */
 @Entity
 public class TaskData extends Model{
 	
 	@ManyToOne
-    public MyGroup myGroup;
+    public Groupp groupp;
 	
 	@ManyToOne
-	//@Required  to avoid the project id
+	@Required
 	 public Project project;
 	
 	@ManyToOne
@@ -33,28 +37,12 @@ public class TaskData extends Model{
 		taskdata = "1000";
 	}
 	
-	public TaskData(Project project, Long run_id, MyGroup myGroup, Task task) {
+	public TaskData(Project project, Long run_id, Groupp groupp, Task task) {
 		this.project = project;
 		this.run_id = run_id;
-		this.myGroup = myGroup;
+		this.groupp = groupp;
 		this.task = task;
 		}
 }
-
-//	public static TaskData findByTaskAndGroup(Task task, MyGroup group) {
-//		TaskData data = TaskData.find("byTaskandMyGroup",task,group);
-//		return data;
-//	}
-
-	
-//	public static void deleteComment(Long id) {
-//		Comment.delete("from Comment c where c.id=?", id);
-//	}
-//
-//	
-//	public static Comment updateComment(Long id, String title, String message) {
-//		Comment myComment = Comment.findById(id);
-//		return myComment;
-//	}
 
 

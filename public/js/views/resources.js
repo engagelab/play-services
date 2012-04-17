@@ -10,3 +10,17 @@ window.ResourceView = Backbone.View.extend({
 		return this;
 	}
 });
+
+window.GrpResourceView = Backbone.View.extend({
+	tagName : "div",
+	className : "grpres",
+	
+    initialize : function() {
+	},
+	
+	render : function(eventName) {
+		$(this.el).html(tpl.get('grpresource_tpl'));
+		return this;
+	}
+});
+

@@ -11,21 +11,25 @@ import javax.persistence.OneToMany;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
+/**
+ * Task entity managed by JPA
+ */
 @Entity
 public class Task extends Model{
 	 public String title;
 	 public String data;
 	 
 	 @OneToMany(mappedBy="task", cascade=CascadeType.ALL)
-	 public List<Comment> comments;
+	 public List<Postit> postits;
 	 
 	 @OneToMany(mappedBy="task", cascade=CascadeType.ALL)
 	 public List<TaskData> taskdata;
 	 
 	 @OneToMany(mappedBy="task", cascade=CascadeType.ALL)
-	    public List<YTubeVideo> ytVideos;
+	    public List<VideoClip> vclips;
+	 
 	 @OneToMany(mappedBy="task", cascade=CascadeType.ALL)
-	    public List<TPicture> tPictures;
+	    public List<Image> images;
 	 
 	 @ManyToOne
 	 @Required
@@ -42,7 +46,6 @@ public class Task extends Model{
 		return tasks;
 	}
 	
-
 }
 
 

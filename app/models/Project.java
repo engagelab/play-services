@@ -15,22 +15,23 @@ import javax.persistence.OneToMany;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
+/**
+ * Project entity managed by JPA
+ */
 @Entity
 public class Project extends Model{
 
 	@Required
 	String title;
 	
-	
 	//@ManyToMany(mappedBy="followedProjects") 
     //public Set<User> followsByUsers = new HashSet<User>(); 
-	
 	
 	@OneToMany(mappedBy="project", cascade=CascadeType.ALL)
     public List<Act> acts;
 	
 	@OneToMany(mappedBy="project", cascade=CascadeType.ALL)
-    public List<Comment> comments;
+    public List<Postit> postits;
 	
 	@OneToMany(mappedBy="project", cascade=CascadeType.ALL)
 	public List<TaskData> taskdatum;
