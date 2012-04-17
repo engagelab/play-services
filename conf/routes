@@ -4,10 +4,95 @@
 
 # Home page
 
-GET     /                                     	Groups.index
-GET		/sgroups/								Application.index
+GET     /                                     			Groups.index
+
+####### Group Operation routs
+#GET	    	/groups									Groups.all
+GET	    	/groups										Groups.fetchAllGroups
+
+#GET	    /groups/{id}								Groups.getById
+GET  		/groups/run/{id}							Groups.fetchGroupsByRunId
+
+#new
+GET	    	/groups/{id}								Groups.fetchGroupById
+
+#GET  		/contents?									Groups.showGroupContents
+GET  		/group/contents?							Groups.fetchGroupContents
+
+####### Get IDs for resources
+GET			/run/id/{title}								Projects.fetchRunIdByTitle
+GET			/project/id/{title}							Projects.fetchProjectIdByTitle
+GET			/act/id/{title}								Projects.fetchActIdByTitle
+GET			/scene/id/{title}							Projects.fetchSceneIdByTitle
+GET			/task/?										Projects.fetchTaskIdByTitle
+
+####### Routes for Postit
+#GET 		/comments 									Groups.showAllComments
+GET  		/postits									Groups.fetchAllPostits
+
+#GET 		/commentsbyid? 								Groups.showCommentbyG
+GET  		/group/postits?								Groups.fetchPostitsbyG
+
+#GET  		/comments/?									Groups.showCommentbyGT
+GET  		/group/task/postits?						Groups.fetchPostitsbyGT
+
+#POST 		/comments/ 									Groups.postComment
+POST  		/group/task/postits?						Groups.createPostit
+
+#PUT 		/comments/{id} 								Groups.updateComment
+PUT  		/group/task/postits/{id}					Groups.updatePostit
+
+#DELETE 	/comments/{id} 								Groups.deleteComment
+DELETE  	/group/task/postits/{id}					Groups.deletePostit
+
+#PUT 		/commentsbyid/{id} 							Groups.updateCommentPos
+PUT  		/postit/pos/{id}							Groups.updatePostitPos
+
+####### Routes for Facebook like Comments
+#GET 		/fbcomments? 								Groups.showfbComments
+GET  		/postit/comments?							Groups.fetchCommentsByPostit
+
+#POST 		/fbcomments 								Groups.addFbComment
+POST  		/postit/comments							Groups.postCommentOnPostit
+
+#GET 		/fbonpic? 									Groups.showFbCommentOnPic
+GET  		/image/comments?							Groups.fetchCommentsByImage
+
+#POST 		/fbonpic 									Groups.addFbCommentOnPic
+POST  		/image/comments								Groups.postCommentOnImage
+
+#GET 		/fbonvid? 									Groups.showFbCommentOnVid
+GET  		/video/comments?							Groups.fetchCommentsByVideo
+
+#POST 		/fbonvid 									Groups.addFbCommentOnVid
+POST  		/video/comments								Groups.postCommentOnVideo
+
+####### Routes for Youtue Videos
+#GET 		/ytvideosbyid? 								Groups.showYTVidoByGroup
+GET  		/group/videos?								Groups.fetchVideosByGroup
+
+#POST 		/youtube/ 									Groups.addYoutubeLink
+POST		/group/videos								Groups.storeVideo
+
+#PUT 		/ytvideosbyid/{id} 							Groups.updateYtBoxPos
+PUT			/group/videos/{id}							Groups.updateVideoBoxPos
 
 
+####### Flash Simmulation Energy Slider route
+GET  		/taskdata/?									Projects.getTaskIdByTitle
+PUT			/taskdata/{id}								Groups.updateTaskData
+
+####### Routes for Pictures uploading
+GET	    	/upload                                 	Images.index
+POST    	/upload?                                 	Images.upload
+
+#GET 		/pictures? 									Groups.GetPicturesURlbyG
+GET			/group/images?								Groups.fetchImagesByG
+
+#PUT 		/pictures/{id} 								Groups.updatePicBoxPos
+PUT			/group/images/{id}							Groups.updateImageBoxPos
+
+####### Routes for User
 #GET     /                                      Users.index
 GET		/user/{<\d+>id}/?						Users.show
 GET     /user/{<\d+>id}/image/?                 Users.image
@@ -16,67 +101,5 @@ PUT     /user/{<\d+>id}/?      					Users.update
 DELETE  /user/{<\d+>id}/?      					Users.delete
 
 
-# Routes for Project Controller 
-GET   		/project	                				Projects.getAllProjects
-GET   		/project/{id}                				Projects.getProject
-GET   		/acts/project/{id}							Projects.getActsByProject
-GET   		/scenes/act/{id}							Projects.getScenesByAct
-GET   		/tasks/scene/{id}							Projects.getTasksByScene
-
-# Get IDs for resources
-GET			/run/id/{title}								Groups.getRunIdByTitle
-GET			/project/id/{title}							Projects.getProjectIdByTitle
-GET			/act/id/{title}								Projects.getActIdByTitle
-GET			/scene/id/{title}							Projects.getSceneIdByTitle
-GET			/task/?										Projects.getTaskIdByTitle
-PUT			/taskdata/?									Groups.updateTaskData
-
-
-# Routes for Group Controller 
-
-GET  		/comments									Groups.showAllComments
-GET  		/comments/?									Groups.showCommentbyGT
-POST  		/comments/									Groups.postComment
-PUT  		/comments/{id}								Groups.updateComment
-DELETE  	/comments/{id}								Groups.deleteComment
-
-GET  		/commentsbyid?								Groups.showCommentbyG
-PUT  		/commentsbyid/{id}							Groups.updateCommentPos
-
-GET  		/showBBCommentbyG/{name}					Comments.index
-
-# Routes for Youtue
-GET  		/contents?									Groups.showGroupContents
-GET  		/groupnames/{id}							Groups.allGroupsByRunId
-POST		/youtube/									Groups.addYoutubeLink
-PUT			/ytvideosbyid/{id}							Groups.updateYtBoxPos
-GET  		/ytvideosbyid?								Groups.showYTVidoByGroup
-
-# Routes for Facebook Comments
-GET  		/fbcomments?								Groups.showfbComments
-POST  		/fbcomments									Groups.addFbComment
-GET  		/fbonpic?									Groups.showFbCommentOnPic
-POST  		/fbonpic									Groups.addFbCommentOnPic
-GET  		/fbonvid?									Groups.showFbCommentOnVid
-POST  		/fbonvid									Groups.addFbCommentOnVid
-
-#Group Operation routs
-GET	    	/groups										Groups.all
-GET	    	/groups/{id}								Groups.getById
-DELETE	    /groups/{id}								Groups.deleteGroup
-
-GET	    	/run/{title}								Groups.getRunIdByTitle
-
-
-# Routes for Task Datum									
-GET  		/taskdata/?									Projects.getTaskIdByTitle
-PUT  		/taskdata/									Groups.updateTaskData
-
-# Routes for Pictures uploading
-POST    /upload?                                 		TPictures.upload
-GET	    /upload                                 		TPictures.index
-GET		/pictures?										Groups.GetPicturesURlbyG
-PUT		/pictures/{id}									Groups.updatePicBoxPos
-
-# Map static resources from the /app/public folder to the /public path
+####### Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public

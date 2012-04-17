@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -15,6 +14,10 @@ import play.data.validation.Required;
 import play.db.jpa.Blob;
 import play.db.jpa.Model;
 
+
+/**
+ * User entity managed by JPA
+ */
 @Entity
 public class User extends Model {
 	
@@ -29,7 +32,6 @@ public class User extends Model {
 	
 	//User Constructor
 	public User(String name,String email, int age, Blob image){
-		//this.comments = new ArrayList<Comment>();
 		this.name = name;
 		this.email = email;
 		this.age = age;
@@ -38,9 +40,5 @@ public class User extends Model {
 
     public static User connect(String email, String password) {
         return find("byEmailAndPassword", email, password).first();
-    }
-    
-    public String toString() {
-        return email;
     }
 }

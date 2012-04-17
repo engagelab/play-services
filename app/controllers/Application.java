@@ -42,15 +42,15 @@ public class Application extends Controller {
 //		JsonArray array = json.getAsJsonArray();
 //		Iterator iterator = array.iterator();
 //
-//		List<MyGroup> groups = new ArrayList<MyGroup>();
+//		List<Groupp> groups = new ArrayList<Groupp>();
 //		while (iterator.hasNext()) {
 //			JsonElement json2 = (JsonElement) iterator.next();
 //			Gson gson = new Gson();
 //			GroupResponse gr = gson.fromJson(json2, GroupResponse.class);
-//			MyGroup newGroup = new MyGroup();
+//			Groupp newGroup = new Groupp();
 //// Check if new group found add to local group list			
-//			MyGroup check = MyGroup.find(
-//					"SELECT g  from MyGroup g Where g.name=? and g.run_id =? ",
+//			Groupp check = Groupp.find(
+//					"SELECT g  from Groupp g Where g.name=? and g.run_id =? ",
 //					gr.group.name, gr.group.run_id).first();
 //			if (check == null) {
 //				newGroup.name = gr.group.name;
