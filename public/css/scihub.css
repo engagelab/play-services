@@ -352,7 +352,7 @@ body > div#content {
 .postit-ui-tl {
 	float: left;
 	background: #9DC43F;
-	min-width: 200px;
+	width: 200px;
 	border-bottom-right-radius: 5% 4%;
 	border-bottom-left-radius: 5% 4%;
 	-webkit-box-shadow: 0px 2px 5px gray;
